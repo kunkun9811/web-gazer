@@ -3,8 +3,11 @@ import json
 from data_process import *
 
 app = Flask(__name__)
-threshold_1 = 100
-threshold_2 = 200
+# threshold_1 = 100
+# threshold_2 = 200
+threshold_1 = 1
+threshold_2 = 2
+
 
 @app.route('/')
 def hello():
