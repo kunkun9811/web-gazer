@@ -1,35 +1,37 @@
 # Get Started with Custom Web Gazer
 
-## NOTE
+### NOTE
 
 Still very early in development
 
-## Description
+# Description
+
+This project tracks where users are looking on the screen and transform those raw coordinates into useful data for research and development
 
 # This Project Uses the Following Technologies
 
 - **Webgazer.js** (https://github.com/brownhci/WebGazer) to detect where users are lookin on the screen and provides coordinates in pixels and the time it happened<br>
 - **Flask** as a lightweight backend to receive POST request from the frontend every _10 seconds_. Process the data and return useful information including fixation points and their corresponding times of occurences, distances, midpoints, and velocities
 
-## To Get Started
+# To Get Started
 
-# 1. Start the React App
+## 1. Start the React App
 
 `npm start`
 
-# 2. Create Python Virtual Environment
+## 2. Create Python Virtual Environment
 
 `python -m venv ~/.virtualenvs/web-gazer`
 
 NOTE: In the above command I specified to store environment information in _~/.virtualenvs_
 
-# 3. Start the Flask Server Endpoints
+## 3. Start the Flask Server Endpoints
 
 - `cd server`
 - `export FLASK_APP=server`
 - `flask run`
 
-# 4. Done
+## 4. Done
 
 The frontend and the backend should now be running. The frontend will utilize **Webgazer.js** to gather coordinates and send them back every 10 seconds
 
