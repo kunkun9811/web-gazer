@@ -1,4 +1,39 @@
-# Getting Started with Create React App
+# Get Started with Custom Web Gazer
+
+## NOTE
+
+Still very early in development
+
+## Description
+
+# This Project Uses the Following Technologies
+
+- **Webgazer.js** (https://github.com/brownhci/WebGazer) to detect where users are lookin on the screen and provides coordinates in pixels and the time it happened<br>
+- **Flask** as a lightweight backend to receive POST request from the frontend every _10 seconds_. Process the data and return useful information including fixation points and their corresponding times of occurences, distances, midpoints, and velocities
+
+## To Get Started
+
+# 1. Start the React App
+
+`npm start`
+
+# 2. Create Python Virtual Environment
+
+`python -m venv ~/.virtualenvs/web-gazer`
+
+NOTE: In the above command I specified to store environment information in _~/.virtualenvs_
+
+# 3. Start the Flask Server Endpoints
+
+- `cd server`
+- `export FLASK_APP=server`
+- `flask run`
+
+# 4. Done
+
+The frontend and the backend should now be running. The frontend will utilize **Webgazer.js** to gather coordinates and send them back every 10 seconds
+
+# Basic Create React App commands
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -38,33 +73,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
