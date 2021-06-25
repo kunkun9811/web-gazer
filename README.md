@@ -52,7 +52,7 @@ fetch(urlProcess, {
   .catch((err) => console.log(`TEST FAILED => ${err}`));
 ```
 
-6. Host the simple web app with any tools you like, once the page loads it will call to the **Flask** endpoint explained below
+6. Host the simple web app with any tools you like, once the page loads it will call the **Flask** endpoint explained below
 
 ## 2. Create Python Virtual Environment
 
