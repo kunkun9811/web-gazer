@@ -17,7 +17,7 @@ This project tracks where users are looking on the screen and transform those ra
 
 ## 1. Start the React App
 
-`npm start`
+`yarn start` or `npm start`
 
 ## 2. Create Python Virtual Environment
 
