@@ -147,10 +147,11 @@ def classify_fixation(data, t1, t2):
 
         fixations = produceFixations(cluster_t2)
 
-        # print("***************fixations (fixation + time)***************")
-        # print(fixations)
-        # print()
+        print("***************fixations (fixation + time)***************")
+        print(fixations)
+        print()
 
+        # Check if threshold 2 is of any use
         # print("Cluster size - fixation size =", len(clusters[0]['points']) - len(fixations[0]['points']))
 
         return fixations
@@ -179,6 +180,10 @@ def measureDistance(fixations):
                         # get distance
                         fixations[key]['distance'] = getPointsDist(prevFixMid[0], mean_x, prevFixMid[1], mean_y)
                         prevFixMid = fixations[key]['midpoint']
+
+        print("***************fixations (fixation + time + distance + midpoint)***************")
+        print(fixations)
+        print()
         return fixations
 
 # TODO: Need distance first
@@ -195,7 +200,10 @@ def measureVelocities(fixations):
                 # NOTE: fixations[key]['distance'] = distance between current fixation's midpoint and previous fixation's midpoint
                 fixations[key]['velocity(px/ms)'] = fixations[key]['distance'] / (fixations[key]['startTime'] - prevEndTime)
                 prevEndTime = fixations[key]['endTime']
-        
-        # TODO: getting divided by 0 because my elapsed time all the same
+        # NOTE: getting divided by 0 might happen in "testing" dataset if time elapsed aren't set properly
+
+        print("***************fixations (fixation + time + distance + midpoint + velocity)***************")
+        print(fixations)
+        print()
 
         return fixations

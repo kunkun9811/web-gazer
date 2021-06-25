@@ -28,25 +28,10 @@ def process():
                 
                 # classify fixations
                 fixations = classify_fixation(json_data, threshold_1, threshold_2)
-
-                print("***************fixations (fixation + time)***************")
-                print(fixations)
-                print()
-
                 # measure distance between consecutive fixations
                 fixations = measureDistance(fixations)
-
-                print("***************fixations (fixation + time + distance + midpoint)***************")
-                print(fixations)
-                print()
-
-                # TODO: measure velocities between consecutive fixations
+                # measure velocities between consecutive fixations
                 fixations = measureVelocities(fixations)
-
-                print("***************fixations (fixation + time + distance + midpoint + velocity)***************")
-                print(fixations)
-                print()
-                
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
                 return res
