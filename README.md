@@ -15,9 +15,44 @@ This project tracks where users are looking on the screen and transform those ra
 
 # To Get Started
 
-## 1. Start the React App
+## 1. Start the React App or Use testing frontend
+
+### Option 1: Use React App with Webgazer.js
 
 `yarn start` or `npm start`
+
+### Option 2: Use testing frontend file
+
+1. Create **index.html** at a new folder outside of the React App workspace
+2. Insert a **script** in the _head_ tags
+3. Create a **JavaScript** file with name corresponding to the name you specified in **index.html**
+4. Inside the **JavaScript** file, create **points** with the structure like the follow:
+
+```
+p1 = {
+  data: { x: 1, y: 0 },
+  elapsedTime: 100,
+};
+```
+
+5. Do a fetch call to _localhost:YOUR_PORT_NUMBER_ like the following:
+
+```
+const urlProcess = "http://localhost:5000/process";
+
+// data to send
+data = [p1, p2, p4, p5, p6, p7, p8, p9, p10, p3, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23];
+
+// fetch call
+fetch(urlProcess, {
+  method: "POST",
+  body: JSON.stringify(data),
+})
+  .then((response) => console.log("TEST SUCCESS!!"))
+  .catch((err) => console.log(`TEST FAILED => ${err}`));
+```
+
+6. Host the simple web app with any tools you like, once the page loads it will call to the **Flask** endpoint explained below
 
 ## 2. Create Python Virtual Environment
 
