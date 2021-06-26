@@ -4,12 +4,12 @@ from data_process import *
 
 app = Flask(__name__)
 # NOTE: For production
-# threshold_1 = 100
-# threshold_2 = 200
+threshold_1 = 100
+threshold_2 = 200
 
 # NOTE: For development testing
-threshold_1 = 1
-threshold_2 = 2
+# threshold_1 = 1
+# threshold_2 = 2
 
 
 @app.route('/')
@@ -22,10 +22,18 @@ def hello():
 @app.route('/process', methods=['POST', 'OPTIONS'])
 def process():
         if request.method == 'POST':
-                print("Received data...")
-                print("Processing data...")
+                # unpack json
                 json_data = json.loads(request.data)
                 
+                if len(json_data) == 0:
+                        print("*******NO DATA*******")
+                        # TODO: Double check the correct status code
+                        res = make_response("No Data", 400)
+                        res.headers['Access-Control-Allow-Origin'] = '*'
+                        return res
+                
+                print("Received data...")
+                print("Processing data...")
                 # classify fixations
                 fixations = classify_fixation(json_data, threshold_1, threshold_2)
                 # measure distance between consecutive fixations

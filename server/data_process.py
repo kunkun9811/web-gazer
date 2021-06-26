@@ -76,9 +76,9 @@ def produceFixations(cluster_t2):
 # Output (JSON): array of clusters, cluster = {""}
 # **NOTE: Curent behavior is that points out of the diameter (greater than t2) are just removed
 def classify_fixation(data, t1, t2):
-        if len(data) == 0:
-                print("*******NO DATA*******")
-                return
+        # if len(data) == 0:
+        #         print("*******NO DATA*******")
+        #         return
         # Print input data out
         print("***data***")
         print(data)
@@ -135,7 +135,6 @@ def classify_fixation(data, t1, t2):
         print(clusters)
         print()
         
-        # TODO: Modify parameters
         # Finalize fixations - using threshold 2
         cluster_t2 = {}
         for i in range(len(clusters)):

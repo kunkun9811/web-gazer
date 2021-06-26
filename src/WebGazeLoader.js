@@ -29,7 +29,7 @@ export default function WebGazeLoader() {
       .begin();
 
     console.log(webgazer);
-    webgazer.showFaceOverlay(false);
+    webgazer.showFaceOverlay(false).showVideoPreview(false);
   };
 
   const handleScriptError = () => {
