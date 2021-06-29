@@ -1,0 +1,32 @@
+.main-container {
+  height: 100%;
+  width: 100%;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin-bottom: 5rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.btn {
+  width: 10vw;
+  height: 5vh;
+}
+
+.col-odd {
+  background-color: teal;
+}
+
+.col-even {
+  background-color: tomato;
+}

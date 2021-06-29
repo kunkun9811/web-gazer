@@ -1,0 +1,47 @@
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.welcome-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  /* opacity: 0;
+  font-size: 7rem;
+  animation-name: pop-in;
+  animation-duration: 2s;
+  animation-fill-mode: forwards; */
+}
+
+.welcome-text {
+  color: white;
+  opacity: 0;
+  font-size: 7rem;
+  animation-name: pop-in;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+/* #welcome-btn {
+  opacity: 0;
+  animation-name: pop-in;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+  transition: ease-in-out 2s;
+  background-color: rgba(34, 167, 240, 1);
+}
+
+#welcome-btn:hover {
+  transition: ease-in-out;
+  animation-duration: 2s;
+  background-color: rgba(34, 167, 240, 1);
+} */

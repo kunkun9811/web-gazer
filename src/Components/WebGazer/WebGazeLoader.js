@@ -1,7 +1,8 @@
 import Script from "react-load-script";
+import "./WebGazeLoader.css";
 import { WebGazeContext } from "./WebGazeContext";
 // import webgazer from "webgazer.js";
-import MainApp from "./Main";
+import MainApp from "../Main/Main";
 
 // instruct compiler that "webgazer" was already declared From WebGazer.js [consider using Typescript instead of Javascript?]
 declare var webgazer;
@@ -60,7 +61,7 @@ export default function WebGazeLoader() {
   setInterval(processSessionData, 10000);
 
   return (
-    <div>
+    <div class="web-gazer-container">
       <Script url="https://webgazer.cs.brown.edu/webgazer.js" onLoad={handleScriptLoad} onError={handleScriptError} />
       <MainApp />
     </div>
