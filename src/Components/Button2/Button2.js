@@ -1,7 +1,6 @@
 import React from "react";
-import "./Button.css";
 
-const Button = ({ label, BtnId, onClickHandler, selectedBtn }) => {
+const Button2 = ({ label, BtnId, onClickHandler, selectedBtn }) => {
   const isSelected = selectedBtn === BtnId ? "selected" : "not-selected";
 
   return (
@@ -11,4 +10,4 @@ const Button = ({ label, BtnId, onClickHandler, selectedBtn }) => {
   );
 };
 
-export default Button;
+export default Button2;

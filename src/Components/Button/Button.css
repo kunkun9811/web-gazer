@@ -35,7 +35,7 @@
   background-color: rgba(34, 167, 240, 1);
 } */
 
-.button-btn:hover {
+.custom-button:hover {
   transition: ease-in-out 0.2s;
   background-color: rgba(34, 167, 240, 1);
 }

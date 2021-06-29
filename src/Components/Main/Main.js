@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "../Button/Button";
+import { CustomButton } from "../Button2/Button2.Style";
 import YoutubeEmbed from "../Utils/YoutubeEmbed";
 
 // css
@@ -26,6 +27,7 @@ export default function MainApp() {
         <Button label="Chill YouTube Video" BtnId="1" onClickHandler={onClickHandler} selectedBtn={selectedContent} />
         <Button label="Academic Video" BtnId="2" onClickHandler={onClickHandler} selectedBtn={selectedContent} />
         <Button label="Reading" BtnId="3" onClickHandler={onClickHandler} selectedBtn={selectedContent} />
+        <CustomButton selected={selectedContent} />
       </div>
 
       {selectedContent === "1" ? <YoutubeEmbed embedId="JUF5cJCCp-8" /> : selectedContent === "2" ? <YoutubeEmbed embedId="QVKj3LADCnA" /> : <div>Reading</div>}
