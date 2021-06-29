@@ -1,7 +1,6 @@
 import Script from "react-load-script";
 import "./WebGazeLoader.css";
 import { WebGazeContext } from "./WebGazeContext";
-// import webgazer from "webgazer.js";
 import MainApp from "../Main/Main";
 
 // instruct compiler that "webgazer" was already declared From WebGazer.js [consider using Typescript instead of Javascript?]

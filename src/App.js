@@ -21,10 +21,12 @@ function App() {
     else if (curState === pageState.CALIBRATION) updateCurState(pageState.READY);
   };
 
-  if (curState === pageState.WELCOME) return <Welcome onClickHandler={onClickHandler} />;
-  else if (curState === pageState.CALIBRATION) return <Calibration />;
-  else return <WebGazeLoader />;
+  // if (curState === pageState.WELCOME) return <Welcome onClickHandler={onClickHandler} />;
+  // else if (curState === pageState.CALIBRATION) return <Calibration />;
+  // else return <WebGazeLoader />;
   // return <WebGazeLoader />;
+  // return <Welcome onClickHandler={onClickHandler}
+  return <Calibration />;
 }
 
 export default App;
