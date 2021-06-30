@@ -3,30 +3,22 @@ import "./App.css";
 import WebGazeLoader from "./Components/WebGazer/WebGazeLoader";
 import Welcome from "./Components/Welcome/Welcome";
 import Calibration from "./Components/Calibration/Calibration";
-
-// ENUMS
-const pageState = {
-  WELCOME: 0,
-  CALIBRATION: 1,
-  READY: 2,
-};
-
-Object.freeze(pageState);
+import PageState from "./Components/Utils/PageState";
 
 function App() {
-  const [curState, updateCurState] = useState(pageState.WELCOME);
+  const [curState, updateCurState] = useState(PageState.WELCOME);
 
   const onClickHandler = () => {
-    if (curState === pageState.WELCOME) updateCurState(pageState.CALIBRATION);
-    else if (curState === pageState.CALIBRATION) updateCurState(pageState.READY);
+    if (curState === PageState.WELCOME) updateCurState(PageState.CALIBRATION);
+    // else if (curState === PageState.CALIBRATION) updateCurState(PageState.READY);
   };
 
-  // if (curState === pageState.WELCOME) return <Welcome onClickHandler={onClickHandler} />;
-  // else if (curState === pageState.CALIBRATION) return <Calibration />;
-  // else return <WebGazeLoader />;
+  if (curState === PageState.WELCOME) return <Welcome onClickHandler={onClickHandler} />;
+  // else if (curState === PageState.CALIBRATION) return <Calibration />;
+  else return <WebGazeLoader />;
   // return <WebGazeLoader />;
   // return <Welcome onClickHandler={onClickHandler}
-  return <Calibration />;
+  // return <Calibration />;
 }
 
 export default App;

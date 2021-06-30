@@ -1,28 +1,54 @@
+import React, { useState } from "react";
 import Script from "react-load-script";
 import "./WebGazeLoader.css";
 import { WebGazeContext } from "./WebGazeContext";
 import MainApp from "../Main/Main";
+import Calibration from "../Calibration/Calibration";
+import PageState from "../Utils/PageState";
 
 // instruct compiler that "webgazer" was already declared From WebGazer.js [consider using Typescript instead of Javascript?]
 declare var webgazer;
 
-const urlGet = "http://localhost:5000/";
+// const urlGet = "http://localhost:5000/";
 const urlProcess = "http://localhost:5000/process";
 
 export default function WebGazeLoader() {
+  /* state fields */
+  const [curPageState, updateCurPageState] = useState(PageState.CALIBRATION);
+  const [finishedCalibPoints, updateFinishedCalibPoints] = useState([]);
+
+  /* fields */
   const sessionData = [];
+
+  /* Methods */
+  // push finished points into "finishedCalibPoints" array
+  const checkIfPointsFinished = (clickedCounts) => {
+    for (let point in clickedCounts) {
+      if (clickedCounts[point] === 3) updateFinishedCalibPoints((prevFinishedCalibPoints) => [...prevFinishedCalibPoints, point]);
+    }
+
+    console.log("----------------------------------------Clicked Counts--------------------------------------");
+    console.log(clickedCounts);
+
+    checkAllPointsClicked();
+  };
+
+  // check if all 8 calibration points have been clicked
+  const checkAllPointsClicked = () => {
+    console.log("----------------------------------------Finished Counts--------------------------------------");
+    console.log(finishedCalibPoints);
+    console.log(finishedCalibPoints.length);
+    console.log(`finishedCalibPoints.length === 8 => ${finishedCalibPoints.length === 8}`);
+    if (finishedCalibPoints.length === 8) updateCurPageState(PageState.READY);
+    console.log(`-----------------------------------${curPageState}`);
+  };
+
   const handleScriptLoad = () => {
     webgazer
       .setGazeListener((data, elapsedTime) => {
         if (data == null) {
           return;
         }
-        // console.log("**** Web Gazer Working *****");
-        // console.log("**data**");
-        // console.log(data);
-        // console.log("**elapsedTime**");
-        // console.log(elapsedTime);
-        // console.log("--------------------------------------------------------------------------------------------------------");
 
         sessionData.push({ data: data.all[0], elapsedTime: elapsedTime });
       })
@@ -57,12 +83,13 @@ export default function WebGazeLoader() {
     console.log(`sessionData size = ${sessionData.length}`);
   };
 
-  setInterval(processSessionData, 10000);
+  // setInterval(processSessionData, 10000);
 
   return (
     <div class="web-gazer-container">
       <Script url="https://webgazer.cs.brown.edu/webgazer.js" onLoad={handleScriptLoad} onError={handleScriptError} />
-      <MainApp />
+      {curPageState === PageState.CALIBRATION ? <Calibration checkIfPointsFinished={checkIfPointsFinished} /> : <MainApp />}
+      {/* <MainApp /> */}
     </div>
   );
 }

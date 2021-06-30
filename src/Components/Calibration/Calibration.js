@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Calibration.css";
 import { Circle } from "../Utils/CircleElement";
 
-export const Calibration = () => {
+export const Calibration = ({ checkIfPointsFinished }) => {
   /* states */
   const [calibPointsClickCnt, updateCalibPointsClickCnt] = useState({
     topLeft: 0,
@@ -18,10 +18,17 @@ export const Calibration = () => {
   /* methods */
   // on click handler for calibration points
   const calibPointsOnClick = (clickedBtn) => {
-    updateCalibPointsClickCnt((prevCounts) => ({
-      ...prevCounts,
-      clickedBtn: calibPointsClickCnt[clickedBtn]++,
-    }));
+    var newCount = calibPointsClickCnt[clickedBtn] + 1;
+    updateCalibPointsClickCnt((prevCounts) => {
+      return {
+        ...prevCounts,
+        [clickedBtn]: newCount,
+      };
+    });
+
+    console.log(`------------------------------------clickedBtn = ${clickedBtn}`);
+
+    checkIfPointsFinished(calibPointsClickCnt);
   };
 
   return (
