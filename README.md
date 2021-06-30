@@ -19,7 +19,7 @@ This project tracks where users are looking on the screen and transform those ra
 
 ### Option 1: Use React App with Webgazer.js
 
-`yarn start` or `npm start`
+`yarn start` or `npm install` and `npm start`
 
 ### Option 2: Use testing frontend file
 
