@@ -33,14 +33,15 @@ def process():
                 
                 print("Received data...")
                 print("Processing data...")
+                # NOTE: data_collection is the amalgamation of fixations and saccades data
                 # classify fixations
-                fixations = classify_fixation(json_data, threshold_1, threshold_2)
+                data_collection = classify_fixation(json_data, threshold_1, threshold_2)
                 # measure distance between consecutive saccades
-                fixations = measureDistance(fixations)
+                data_collection = measureDistance(data_collection)
                 # measure velocities between consecutive fixations
-                fixations = measureVelocities(fixations)
-                # final fixations and saccades information
-                final_fixations, final_saccades = produceStructureOfData(fixations)
+                data_collection = measureVelocities(data_collection)
+                # separate final fixations and saccades information in "data_collection"
+                final_fixations, final_saccades = produceStructureOfData(data_collection)
                 # calculate reading score
                 reading_score = measureReadingScore(final_fixations)
                 # combine processed informations
@@ -60,6 +61,3 @@ def process():
 
 if __name__ == "__main__":
         app.run(use_reloader=False)
-
-# source ~/anaconda3/etc/profile.d/conda.sh
-# conda activate my_env
