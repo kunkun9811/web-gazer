@@ -70,7 +70,7 @@ export default function WebGazeLoader() {
   };
 
   const processSessionData = async () => {
-    console.log("-----------------useState method-------------------");
+    console.log("-----------------useState method--------------------");
 
     console.log(collectedData);
 
