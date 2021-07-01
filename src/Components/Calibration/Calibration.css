@@ -1,5 +1,11 @@
-p {
-  color: white;
+@keyframes pop-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
 
 .calibration-container {
@@ -12,6 +18,21 @@ p {
   color: white;
 }
 
+.calibration-circles {
+  opacity: 0;
+  font-size: 7rem;
+  animation-name: pop-in;
+  animation-duration: 2s;
+  animation-delay: 6.5s;
+  animation-fill-mode: forwards;
+}
+
+/* p {
+  color: white;
+  font-size: 1.2rem;
+  opacity: 0;
+} */
+
 .calibration-text {
   color: white;
   opacity: 0;
@@ -21,6 +42,34 @@ p {
   animation-fill-mode: forwards;
 }
 
-#calibration-subtitle {
+.calibration-subtitle-pre {
+  opacity: 0;
+  color: white;
   font-size: 1.2rem;
+  animation-name: pop-in;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.calibration-subtitle-pre-hide {
+  color: white;
+  font-size: 1.2rem;
+  animation-name: pop-out;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.calibration-subtitle-initial {
+  opacity: 0;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.calibration-subtitle {
+  opacity: 0;
+  color: white;
+  font-size: 1.2rem;
+  animation-name: pop-in;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Script from "react-load-script";
 import "./WebGazeLoader.css";
 import { WebGazeContext } from "./WebGazeContext";
@@ -24,23 +24,26 @@ export default function WebGazeLoader() {
   // push finished points into "finishedCalibPoints" array
   const checkIfPointsFinished = (clickedCounts) => {
     for (let point in clickedCounts) {
-      if (clickedCounts[point] === 3) updateFinishedCalibPoints((prevFinishedCalibPoints) => [...prevFinishedCalibPoints, point]);
+      // 0 is the first click
+      if (clickedCounts[point] === 4) updateFinishedCalibPoints((prevFinishedCalibPoints) => [...prevFinishedCalibPoints, point]);
     }
 
-    console.log("----------------------------------------Clicked Counts--------------------------------------");
-    console.log(clickedCounts);
+    // console.log("----------------------------------------Clicked Counts--------------------------------------");
+    // console.log(clickedCounts);
 
     checkAllPointsClicked();
   };
 
   // check if all 8 calibration points have been clicked
   const checkAllPointsClicked = () => {
-    console.log("----------------------------------------Finished Counts--------------------------------------");
-    console.log(finishedCalibPoints);
-    console.log(finishedCalibPoints.length);
-    console.log(`finishedCalibPoints.length === 8 => ${finishedCalibPoints.length === 8}`);
-    if (finishedCalibPoints.length === 8) updateCurPageState(PageState.READY);
-    console.log(`-----------------------------------${curPageState}`);
+    // console.log("----------------------------------------Finished Counts--------------------------------------");
+    // console.log(finishedCalibPoints);
+    // console.log(finishedCalibPoints.length);
+    /* Production */
+    // if (finishedCalibPoints.length === 8) updateCurPageState(PageState.READY);
+    /* Development */
+    if (finishedCalibPoints.length === 1) updateCurPageState(PageState.READY);
+    // console.log(`-----------------------------After update cheack, finishedCalibPoints = ${curPageState}`);
   };
 
   const handleScriptLoad = () => {
@@ -88,7 +91,7 @@ export default function WebGazeLoader() {
   return (
     <div class="web-gazer-container">
       <Script url="https://webgazer.cs.brown.edu/webgazer.js" onLoad={handleScriptLoad} onError={handleScriptError} />
-      {curPageState === PageState.CALIBRATION ? <Calibration checkIfPointsFinished={checkIfPointsFinished} /> : <MainApp />}
+      {curPageState === PageState.CALIBRATION ? <Calibration checkIfPointsFinished={checkIfPointsFinished} /> : <MainApp sendDataToBackEnd={processSessionData} />}
       {/* <MainApp /> */}
     </div>
   );

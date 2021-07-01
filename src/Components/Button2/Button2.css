@@ -1,26 +1,25 @@
-.not-selected {
-  width: 200px;
-  height: 80px;
+.btn-2-not-selected {
+  width: 300px;
+  height: 100%;
   border-radius: 50px;
   border: none;
   outline: none;
-  background-color: rgba(228, 241, 254, 1);
-  color: black;
+  background-color: transparent;
+  color: white;
   transition: ease-in-out 0.2s;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30px;
-  margin: 20px 20px 10px 20px;
+  margin: 10px 20px 10px 20px;
 }
 
-.selected {
+.btn-2-selected {
   width: 300px;
   height: 100px;
-  border-radius: 50px;
+  background-color: transparent;
   border: none;
-  outline: none;
-  background-color: rgba(34, 167, 240, 1);
+  border-bottom: 3px solid white;
   color: white;
   transition: ease-in-out 0.2s;
   display: flex;
@@ -31,11 +30,12 @@
 }
 
 /* button:hover {
-  transition: ease-in-out 0.2s;
-  background-color: rgba(34, 167, 240, 1);
-} */
+        transition: ease-in-out 0.2s;
+        background-color: rgba(34, 167, 240, 1);
+      } */
 
-.custom-button:hover {
+.btn-2:hover {
   transition: ease-in-out 0.2s;
-  background-color: rgba(34, 167, 240, 1);
+  /* background-color: rgba(34, 167, 240, 1); */
+  color: rgba(34, 167, 240, 1);
 }

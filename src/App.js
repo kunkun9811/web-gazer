@@ -14,7 +14,6 @@ function App() {
   };
 
   if (curState === PageState.WELCOME) return <Welcome onClickHandler={onClickHandler} />;
-  // else if (curState === PageState.CALIBRATION) return <Calibration />;
   else return <WebGazeLoader />;
   // return <WebGazeLoader />;
   // return <Welcome onClickHandler={onClickHandler}
