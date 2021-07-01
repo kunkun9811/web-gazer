@@ -8,8 +8,7 @@ import NavBar from "../NavBar";
 // css
 import "./Main.css";
 
-/* Bootstrap 5 breakpoints = (xs, sm, md, lg, and xl)*/
-export default function MainApp({ sendDataToBackEnd }) {
+export default function MainApp({ processSessionData }) {
   /* State Variables */
   const [selectedContent, updateSelectedContent] = useState("1");
 
@@ -22,18 +21,8 @@ export default function MainApp({ sendDataToBackEnd }) {
   return (
     <div class="main-container">
       <NavBar selectedContent={selectedContent} onClickHandler={onClickHandler} />
-      {/* <div className="title-container">
-        <h1>Hello!</h1>
-        <p>Select the task you would like to do</p>
-      </div> */}
-      {/* <div className="buttons">
-        <Button label="Chill YouTube Video" BtnId="1" onClickHandler={onClickHandler} selectedBtn={selectedContent} />
-        <Button label="Academic Video" BtnId="2" onClickHandler={onClickHandler} selectedBtn={selectedContent} />
-        <Button label="Reading" BtnId="3" onClickHandler={onClickHandler} selectedBtn={selectedContent} />
-      </div> */}
-
       {selectedContent === "1" ? <YoutubeEmbed embedId="JUF5cJCCp-8" /> : selectedContent === "2" ? <YoutubeEmbed embedId="QVKj3LADCnA" /> : <Reading />}
-      <Button label="Done!" BtnId="4" onClickHandler={sendDataToBackEnd} selectedBtn="5" />
+      <Button label="Done!" BtnId="done" onClickHandler={processSessionData} selectedBtn={selectedContent} />
     </div>
   );
 }

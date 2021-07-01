@@ -14,11 +14,9 @@ const urlProcess = "http://localhost:5000/process";
 
 export default function WebGazeLoader() {
   /* state fields */
-  const [curPageState, updateCurPageState] = useState(PageState.CALIBRATION);
-  const [finishedCalibPoints, updateFinishedCalibPoints] = useState([]);
-
-  /* fields */
-  const sessionData = [];
+  const [curPageState, updateCurPageState] = useState(PageState.CALIBRATION); // for switching page content
+  const [finishedCalibPoints, updateFinishedCalibPoints] = useState([]); // for checking how many calibration points have finished
+  const [collectedData, updateCollectedData] = useState([]); // for collecting WebGazer.js data
 
   /* Methods */
   // push finished points into "finishedCalibPoints" array
@@ -53,7 +51,13 @@ export default function WebGazeLoader() {
           return;
         }
 
-        sessionData.push({ data: data.all[0], elapsedTime: elapsedTime });
+        updateCollectedData((prevEntries) => [
+          ...prevEntries,
+          {
+            data: data.all[0],
+            elapsedTime: elapsedTime,
+          },
+        ]);
       })
       .begin();
 
@@ -66,24 +70,29 @@ export default function WebGazeLoader() {
   };
 
   const processSessionData = async () => {
+    console.log("-----------------useState method-------------------");
+
+    console.log(collectedData);
+
+    console.log("---------------------------------------------------");
     console.log("Sending data to backend...");
     console.log("Processing data to backend...");
-    console.log(`sessionData size = ${sessionData.length}`);
+    console.log(`collectedData size = ${collectedData.length}`);
     // check what data looks like
-    console.log(sessionData);
+    console.log(collectedData);
     // (TESTING) send to backend [GET]
     // await fetch(urlGet).then((response) => console.log(response));
     // send data to backend for processing
     await fetch(urlProcess, {
       method: "POST",
-      body: JSON.stringify(sessionData),
+      body: JSON.stringify(collectedData),
     }).then((response) => {
       console.log(`Successfully connected with {POST} endpoint => response:`);
       console.log(response.body);
     });
     // remove sent data
-    sessionData.splice(0, sessionData.length);
-    console.log(`sessionData size = ${sessionData.length}`);
+    updateCollectedData([]);
+    console.log(`collectedData size = ${collectedData.length}`);
   };
 
   // setInterval(processSessionData, 10000);
@@ -91,7 +100,7 @@ export default function WebGazeLoader() {
   return (
     <div class="web-gazer-container">
       <Script url="https://webgazer.cs.brown.edu/webgazer.js" onLoad={handleScriptLoad} onError={handleScriptError} />
-      {curPageState === PageState.CALIBRATION ? <Calibration checkIfPointsFinished={checkIfPointsFinished} /> : <MainApp sendDataToBackEnd={processSessionData} />}
+      {curPageState === PageState.CALIBRATION ? <Calibration checkIfPointsFinished={checkIfPointsFinished} /> : <MainApp processSessionData={processSessionData} />}
       {/* <MainApp /> */}
     </div>
   );
