@@ -4,8 +4,6 @@ import "./Button.css";
 const Button = ({ label, BtnId, onClickHandler, selectedBtn }) => {
   const isSelected = selectedBtn === BtnId ? "selected" : "not-selected";
 
-  // console.log(`-------------------------------------------------------OnClickHandler = ${onClickHandler}`);
-
   return (
     <button onClick={BtnId === "done" ? onClickHandler : () => onClickHandler(BtnId)} className={`custom-button ${isSelected}`} id={BtnId}>
       {label}

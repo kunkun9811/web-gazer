@@ -25,23 +25,15 @@ export default function WebGazeLoader() {
       // 0 is the first click
       if (clickedCounts[point] === 4) updateFinishedCalibPoints((prevFinishedCalibPoints) => [...prevFinishedCalibPoints, point]);
     }
-
-    // console.log("----------------------------------------Clicked Counts--------------------------------------");
-    // console.log(clickedCounts);
-
     checkAllPointsClicked();
   };
 
   // check if all 8 calibration points have been clicked
   const checkAllPointsClicked = () => {
-    // console.log("----------------------------------------Finished Counts--------------------------------------");
-    // console.log(finishedCalibPoints);
-    // console.log(finishedCalibPoints.length);
     /* Production */
     // if (finishedCalibPoints.length === 8) updateCurPageState(PageState.READY);
     /* Development */
     if (finishedCalibPoints.length === 1) updateCurPageState(PageState.READY);
-    // console.log(`-----------------------------After update cheack, finishedCalibPoints = ${curPageState}`);
   };
 
   const handleScriptLoad = () => {
@@ -70,18 +62,10 @@ export default function WebGazeLoader() {
   };
 
   const processSessionData = async () => {
-    console.log("-----------------useState method--------------------");
-
-    console.log(collectedData);
-
-    console.log("---------------------------------------------------");
     console.log("Sending data to backend...");
     console.log("Processing data to backend...");
     console.log(`collectedData size = ${collectedData.length}`);
-    // check what data looks like
     console.log(collectedData);
-    // (TESTING) send to backend [GET]
-    // await fetch(urlGet).then((response) => console.log(response));
     // send data to backend for processing
     await fetch(urlProcess, {
       method: "POST",
@@ -94,8 +78,6 @@ export default function WebGazeLoader() {
     updateCollectedData([]);
     console.log(`collectedData size = ${collectedData.length}`);
   };
-
-  // setInterval(processSessionData, 10000);
 
   return (
     <div class="web-gazer-container">

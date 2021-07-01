@@ -32,10 +32,6 @@ export const Calibration = ({ checkIfPointsFinished }) => {
         [clickedBtn]: newCount,
       };
     });
-
-    // console.log(`------------------------------------clickedBtn = ${clickedBtn}`);
-    // console.log("---------------------passed in calibPointsClickCnt----------------------");
-    // console.log(calibPointsClickCnt);
   };
 
   setTimeout(() => {
@@ -49,7 +45,6 @@ export const Calibration = ({ checkIfPointsFinished }) => {
   return (
     <div className="calibration-container">
       <p className="calibration-text">Calibration</p>
-      {/* <p className="calibration-text" id="calibration-subtitle"> */}
       <p className={`calibration-subtitle-pre ${hideCalibPreText ? `calibration-subtitle-pre-hide` : ""}`}>
         Please wait until the tracking red dot and the blue calibration points to appear, thank you :)
       </p>

@@ -10,7 +10,6 @@ function App() {
 
   const onClickHandler = () => {
     if (curState === PageState.WELCOME) updateCurState(PageState.CALIBRATION);
-    // else if (curState === PageState.CALIBRATION) updateCurState(PageState.READY);
   };
 
   if (curState === PageState.WELCOME) return <Welcome onClickHandler={onClickHandler} />;
