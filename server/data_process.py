@@ -8,6 +8,14 @@ def addOne(num):
         print("After, num = ", num)
 
 # ** Helper functions **
+
+# print the final result
+# Input (object): Object of the post processed data
+# Output: None
+def printFinalData(data):
+        print("**********Post-Processed Data**********")
+        print(data)
+
 # Get distance between two points
 # Input (4 doubles): coordinates of 2 points
 # Output (double): Distance between two points
@@ -193,11 +201,11 @@ def measureVelocities(fixations):
                 # first fixation, no velocity
                 if key == 0:
                         prevEndTime = fixations[key]['endTime']
-                        fixations[key]['velocity(px/ms)'] = 0
+                        fixations[key]['velocity'] = 0
                         continue
                 # Calculate velocity w.r.t. previous fixation 
                 # NOTE: fixations[key]['distance'] = distance between current fixation's midpoint and previous fixation's midpoint
-                fixations[key]['velocity(px/ms)'] = fixations[key]['distance'] / (fixations[key]['startTime'] - prevEndTime)
+                fixations[key]['velocity'] = fixations[key]['distance'] / (fixations[key]['startTime'] - prevEndTime)
                 prevEndTime = fixations[key]['endTime']
         # NOTE: getting divided by 0 might happen in "testing" dataset if time elapsed aren't set properly
 
@@ -206,3 +214,78 @@ def measureVelocities(fixations):
         print()
 
         return fixations
+
+# separate collected information into "fixations" data and "saccades" data
+# Input (object): information we collected and formulated from previous functions
+# Output (objects) x2: structured fixation and saccades information
+def produceStructureOfData(fixations):
+        final_fixations = {}
+        final_saccades = {}
+        prevEndTime = None
+
+        for key in fixations:
+
+                # current fixation info
+                cur_fixation = {
+                        'points': [d for d in fixations[key]['points']],
+                        'startTime': fixations[key]['startTime'],
+                        'endTime': fixations[key]['endTime'],
+                        'midpoint': fixations[key]['midpoint'],
+                        'duration': fixations[key]['duration'],
+                        'num_points': len(fixations[key]['points']),
+                }
+
+                final_fixations[key] = cur_fixation
+
+                # if this is the first fixation, no saccade info yet
+                if key == 0:
+                        prevEndTime = fixations[key]['endTime']
+                        continue
+                
+                # current saccade info
+                cur_saccade = {
+                        'distance': fixations[key]['distance'],
+                        'duration': fixations[key]['startTime'] - prevEndTime,
+                        'velocity': fixations[key]['velocity'],  # NOTE: in pixels/ms
+                }
+
+                # final_saccades[0] is the saccade from fixation[0] to fixation[1]
+                final_saccades[key-1] = cur_saccade
+
+                # update prevEndTime
+                prevEndTime = fixations[key]['endTime']
+
+        print("***************final fixations***************")
+        print(final_fixations)
+        print("***************final saccades***************")
+        print(final_saccades)
+
+        return final_fixations, final_saccades
+
+# measure reading score
+# Input (object): fixations
+# Output (int): reading score
+def measureReadingScore(fixations):
+        prev_x_coord = None
+        reading_score = 0
+
+        for key in fixations:
+                if key == 0:
+                        prev_x_coord = fixations[key]['midpoint'][0]
+                        continue
+
+                cur_x = fixations[key]['midpoint'][0]
+                if cur_x < prev_x_coord:
+                        reading_score -= 1
+                else:
+                        reading_score += 1
+        
+        return reading_score
+
+def structureProcessedData(final_fixations, final_saccades, reading_score):
+        processed_data = {
+                'fixations': [final_fixations[key] for key in final_fixations],
+                'saccades': [final_saccades[key] for key in final_saccades],
+                'reading_score': reading_score,
+        }
+        return processed_data

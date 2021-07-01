@@ -4,13 +4,12 @@ from data_process import *
 
 app = Flask(__name__)
 # NOTE: For production
-# threshold_1 = 100
-# threshold_2 = 200
+threshold_1 = 100
+threshold_2 = 200
 
 # NOTE: For development testing
-threshold_1 = 1
-threshold_2 = 2
-
+# threshold_1 = 1
+# threshold_2 = 2
 
 @app.route('/')
 def hello():
@@ -36,10 +35,19 @@ def process():
                 print("Processing data...")
                 # classify fixations
                 fixations = classify_fixation(json_data, threshold_1, threshold_2)
-                # measure distance between consecutive fixations
+                # measure distance between consecutive saccades
                 fixations = measureDistance(fixations)
                 # measure velocities between consecutive fixations
                 fixations = measureVelocities(fixations)
+                # final fixations and saccades information
+                final_fixations, final_saccades = produceStructureOfData(fixations)
+                # calculate reading score
+                reading_score = measureReadingScore(final_fixations)
+                # combine processed informations
+                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score)
+                # print processed data
+                printFinalData(processed_data)
+
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
                 return res
