@@ -4,12 +4,12 @@ from data_process import *
 
 app = Flask(__name__)
 # NOTE: For production
-threshold_1 = 100
-threshold_2 = 200
+# threshold_1 = 100
+# threshold_2 = 200
 
 # NOTE: For development testing
-# threshold_1 = 1
-# threshold_2 = 2
+threshold_1 = 1
+threshold_2 = 2
 
 
 @app.route('/')
