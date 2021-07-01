@@ -19,7 +19,7 @@ export default function WebGazeLoader() {
   const [collectedData, updateCollectedData] = useState([]); // for collecting WebGazer.js data
 
   /* Methods */
-  // push finished points into "finishedCalibPoints" array
+  // push finished calibration points into "finishedCalibPoints" array
   const checkIfPointsFinished = (clickedCounts) => {
     for (let point in clickedCounts) {
       // 0 is the first click
@@ -28,7 +28,7 @@ export default function WebGazeLoader() {
     checkAllPointsClicked();
   };
 
-  // check if all 8 calibration points have been clicked
+  // check if all 8 calibration points have been clicked 5 times
   const checkAllPointsClicked = () => {
     /* Production */
     // if (finishedCalibPoints.length === 8) updateCurPageState(PageState.READY);
@@ -36,13 +36,13 @@ export default function WebGazeLoader() {
     if (finishedCalibPoints.length === 1) updateCurPageState(PageState.READY);
   };
 
+  // callback for when WebGazer.js is loaded
   const handleScriptLoad = () => {
     webgazer
       .setGazeListener((data, elapsedTime) => {
         if (data == null) {
           return;
         }
-
         updateCollectedData((prevEntries) => [
           ...prevEntries,
           {
@@ -57,11 +57,13 @@ export default function WebGazeLoader() {
     webgazer.showFaceOverlay(false).showVideoPreview(false);
   };
 
+  // callback for error loading WebGazer.js
   const handleScriptError = () => {
     console.log("error");
   };
 
-  const processSessionData = async () => {
+  // send raw WebGazer.js data to the backend for processing
+  const processCollectedData = async () => {
     console.log("Sending data to backend...");
     console.log("Processing data to backend...");
     console.log(`collectedData size = ${collectedData.length}`);
@@ -74,16 +76,16 @@ export default function WebGazeLoader() {
       console.log(`Successfully connected with {POST} endpoint => response:`);
       console.log(response.body);
     });
-    // remove sent data
+    // clear sent data
     updateCollectedData([]);
-    console.log(`collectedData size = ${collectedData.length}`);
   };
 
   return (
     <div class="web-gazer-container">
+      {/* Load WebGazer.js */}
       <Script url="https://webgazer.cs.brown.edu/webgazer.js" onLoad={handleScriptLoad} onError={handleScriptError} />
-      {curPageState === PageState.CALIBRATION ? <Calibration checkIfPointsFinished={checkIfPointsFinished} /> : <MainApp processSessionData={processSessionData} />}
-      {/* <MainApp /> */}
+      {/* Load page by PageState's condition */}
+      {curPageState === PageState.CALIBRATION ? <Calibration checkIfPointsFinished={checkIfPointsFinished} /> : <MainApp processCollectedData={processCollectedData} />}
     </div>
   );
 }

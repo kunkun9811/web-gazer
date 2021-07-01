@@ -14,6 +14,7 @@ function App() {
 
   if (curState === PageState.WELCOME) return <Welcome onClickHandler={onClickHandler} />;
   else return <WebGazeLoader />;
+  /* For development purposes */
   // return <WebGazeLoader />;
   // return <Welcome onClickHandler={onClickHandler}
   // return <Calibration />;

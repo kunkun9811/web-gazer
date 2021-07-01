@@ -8,7 +8,7 @@ import NavBar from "../NavBar";
 // css
 import "./Main.css";
 
-export default function MainApp({ processSessionData }) {
+export default function MainApp({ processCollectedData }) {
   /* State Variables */
   const [selectedContent, updateSelectedContent] = useState("1");
 
@@ -22,7 +22,7 @@ export default function MainApp({ processSessionData }) {
     <div class="main-container">
       <NavBar selectedContent={selectedContent} onClickHandler={onClickHandler} />
       {selectedContent === "1" ? <YoutubeEmbed embedId="JUF5cJCCp-8" /> : selectedContent === "2" ? <YoutubeEmbed embedId="QVKj3LADCnA" /> : <Reading />}
-      <Button label="Done!" BtnId="done" onClickHandler={processSessionData} selectedBtn={selectedContent} />
+      <Button label="Done!" BtnId="done" onClickHandler={processCollectedData} selectedBtn={selectedContent} />
     </div>
   );
 }

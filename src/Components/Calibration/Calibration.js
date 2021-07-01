@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./Calibration.css";
 import { Circle } from "../Utils/CircleElement";
 
+// TODO: Might need to turn off clickListener after calibration - understand what clickListener do in WebGazer.js
 export const Calibration = ({ checkIfPointsFinished }) => {
   /* states */
+  // keeps track of the click count of each calibration point
   const [calibPointsClickCnt, updateCalibPointsClickCnt] = useState({
     topLeft: 0,
     topMid: 0,
@@ -18,6 +20,7 @@ export const Calibration = ({ checkIfPointsFinished }) => {
   const [showCalibText, updateShowCalibText] = useState(false);
 
   /* useEffect listeners */
+  // listen to changes of click counts of each calibration points
   useEffect(() => {
     checkIfPointsFinished(calibPointsClickCnt);
   }, [calibPointsClickCnt]);
@@ -34,10 +37,12 @@ export const Calibration = ({ checkIfPointsFinished }) => {
     });
   };
 
+  // for animating the first instruction
   setTimeout(() => {
     updateHideCalibPreText(true);
   }, 5000);
 
+  // for animating the second instruction
   setTimeout(() => {
     updateShowCalibText(true);
   }, 6000);

@@ -25,6 +25,7 @@ export const NavBarContainer = styled.div`
   /* margin-left: 1rem; */
 `;
 
+// TODO: Figure out how to cleanly incorporate logo
 // export const NavLogo = styled.div`
 //   background: transparent;
 //   color: white;
