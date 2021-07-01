@@ -49,6 +49,9 @@ def process():
                 # print processed data
                 printFinalData(processed_data)
 
+                # NOTE: For development - write data to database
+                writeToDB(processed_data)
+
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
                 return res

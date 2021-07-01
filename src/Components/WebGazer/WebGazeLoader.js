@@ -33,7 +33,11 @@ export default function WebGazeLoader() {
     /* Production */
     // if (finishedCalibPoints.length === 8) updateCurPageState(PageState.READY);
     /* Development */
-    if (finishedCalibPoints.length === 1) updateCurPageState(PageState.READY);
+    if (finishedCalibPoints.length === 1) {
+      updateCurPageState(PageState.READY);
+      // not allowing calibration coordaintes be part of the data
+      updateCollectedData([]); // resetting it here because not sure why curPageState doesn't get updated in "setGazeListener"
+    }
   };
 
   // callback for when WebGazer.js is loaded
@@ -43,6 +47,7 @@ export default function WebGazeLoader() {
         if (data == null) {
           return;
         }
+
         updateCollectedData((prevEntries) => [
           ...prevEntries,
           {

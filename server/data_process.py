@@ -1,5 +1,6 @@
 from statistics import mean
 from math import sqrt
+import json
 
 # TODO: To be deleted
 def addOne(num):
@@ -289,3 +290,26 @@ def structureProcessedData(final_fixations, final_saccades, reading_score):
                 'reading_score': reading_score,
         }
         return processed_data
+
+def writeToDB(processed_data):
+        # get next id
+        json_object = {}
+        with open("./database/database_info.json", "r") as openfile:
+                json_object = json.load(openfile)
+
+        next_id = json_object['id']
+        json_object['id'] += 1
+
+        # update next id
+        new_json_object = json.dumps(json_object, indent=4)
+        with open("./database/database_info.json", "w") as outfile:
+                outfile.write(new_json_object)
+
+        # create new entry in the database
+        new_file_name = "entry_{name}".format(name=next_id)
+        processed_data_json_object = json.dumps(processed_data, indent=4)
+        with open("./database/{file_name}.json".format(file_name=new_file_name), "w") as outfile:
+                outfile.write(processed_data_json_object)
+
+        print("Created database entry!")
+        return
