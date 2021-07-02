@@ -1,6 +1,14 @@
 from statistics import mean
 from math import sqrt
 import json
+# mongo db
+import pymongo
+
+# ** MongoDB configuration **
+#name of the database
+db_name = "pitch_data"
+client = pymongo.MongoClient('mongodb+srv://dev:Devdev123@pitch-cluster.02iwu.mongodb.net/{db_name}?retryWrites=true&w=majority'.format(db_name=db_name))
+db = client.pitch_data
 
 # TODO: To be deleted
 def addOne(num):
@@ -314,5 +322,14 @@ def writeToDB(processed_data):
         print("Created database entry!")
         return
 
-def writeToMongoDB(processed_data):
-        
+def casualVideoDataToMongoDB(processed_data):
+        casual_video_collection = db.casual_video
+        casual_video_collection.insert_one(processed_data)
+
+def seriousVideoDataToMongoDB(processed_data):
+        serious_video_collection = db.serious_video
+        serious_video_collection.insert_one(processed_data)
+
+def readingDataToMongoDB(processed_data):
+        reading_collection = db.reading
+        reading_collection.insert_one(processed_data)

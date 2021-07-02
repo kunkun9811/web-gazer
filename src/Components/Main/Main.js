@@ -22,7 +22,10 @@ export default function MainApp({ processCollectedData }) {
     <div class="main-container">
       <NavBar selectedContent={selectedContent} onClickHandler={onClickHandler} />
       {selectedContent === "1" ? <YoutubeEmbed embedId="JUF5cJCCp-8" /> : selectedContent === "2" ? <YoutubeEmbed embedId="QVKj3LADCnA" /> : <Reading />}
-      <Button label="Done!" BtnId="done" onClickHandler={processCollectedData} selectedBtn={selectedContent} />
+      {/* BtnId = selectedContent for deciding which database to populate in the backend */}
+      {/* selectedBtn = "done" for not ever showing it as "selected" */}
+      {/* TODO: modify the Button functionality */}
+      <Button label="Done!" BtnId="done" onClickHandler={() => processCollectedData({ selectedContent })} selectedBtn={selectedContent} />
     </div>
   );
 }

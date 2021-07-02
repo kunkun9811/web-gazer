@@ -9,8 +9,7 @@ import PageState from "../Utils/PageState";
 // instruct compiler that "webgazer" was already declared From WebGazer.js [consider using Typescript instead of Javascript?]
 declare var webgazer;
 
-// const urlGet = "http://localhost:5000/";
-const urlProcess = "http://localhost:5000/process";
+const url = "http://localhost:5000";
 
 export default function WebGazeLoader() {
   /* state fields */
@@ -68,19 +67,38 @@ export default function WebGazeLoader() {
   };
 
   // send raw WebGazer.js data to the backend for processing
-  const processCollectedData = async () => {
+  // NOTE:
+  // dataType = 1 => casual_video
+  //          = 2 => serious_video
+  //          = 3 => reading
+  const processCollectedData = async (type) => {
+    // log info
     console.log("Sending data to backend...");
     console.log("Processing data to backend...");
     console.log(`collectedData size = ${collectedData.length}`);
     console.log(collectedData);
+
+    // request url
+    console.log(`--------------------------------------------type = ${type}-------------------------------------------------------`);
+    console.log(type.selectedContent);
+
+    const dataType = type.selectedContent;
+    var request_url = "";
+    if (dataType === "1") request_url = `${url}/casual_video`;
+    else if (dataType === "2") request_url = `${url}/serious_video`;
+    else if (dataType === "3") request_url = `${url}/reading`;
+
+    console.log(`--------------------------------request url = ${request_url} --------------------------------------`);
+
     // send data to backend for processing
-    await fetch(urlProcess, {
+    await fetch(request_url, {
       method: "POST",
       body: JSON.stringify(collectedData),
     }).then((response) => {
       console.log(`Successfully connected with {POST} endpoint => response:`);
       console.log(response.body);
     });
+
     // clear sent data
     updateCollectedData([]);
   };
