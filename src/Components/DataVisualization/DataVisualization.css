@@ -1,0 +1,19 @@
+.data-visualization-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /* background-color: white; */
+}
+
+.data-visualization-container p {
+  color: white;
+  font-size: large;
+}
+
+.bar-container {
+  height: 60%;
+  width: 40%;
+}

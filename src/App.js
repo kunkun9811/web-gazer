@@ -1,23 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import WebGazeLoader from "./Components/WebGazer/WebGazeLoader";
-import Welcome from "./Components/Welcome/Welcome";
-import Calibration from "./Components/Calibration/Calibration";
-import PageState from "./Components/Utils/PageState";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Entry from "./Components/Entry";
+import DataVisualization from "./Components/DataVisualization";
 
 function App() {
-  const [curState, updateCurState] = useState(PageState.WELCOME);
-
-  const onClickHandler = () => {
-    if (curState === PageState.WELCOME) updateCurState(PageState.CALIBRATION);
-  };
-
-  if (curState === PageState.WELCOME) return <Welcome onClickHandler={onClickHandler} />;
-  else return <WebGazeLoader />;
-  /* For development purposes */
-  // return <WebGazeLoader />;
-  // return <Welcome onClickHandler={onClickHandler}
-  // return <Calibration />;
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Entry />
+        </Route>
+        <Route exact path="/viz">
+          <DataVisualization />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
