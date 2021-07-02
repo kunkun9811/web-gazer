@@ -79,16 +79,11 @@ export default function WebGazeLoader() {
     console.log(collectedData);
 
     // request url
-    console.log(`--------------------------------------------type = ${type}-------------------------------------------------------`);
-    console.log(type.selectedContent);
-
     const dataType = type.selectedContent;
     var request_url = "";
     if (dataType === "1") request_url = `${url}/casual_video`;
     else if (dataType === "2") request_url = `${url}/serious_video`;
     else if (dataType === "3") request_url = `${url}/reading`;
-
-    console.log(`--------------------------------request url = ${request_url} --------------------------------------`);
 
     // send data to backend for processing
     await fetch(request_url, {
