@@ -313,3 +313,6 @@ def writeToDB(processed_data):
 
         print("Created database entry!")
         return
+
+def writeToMongoDB(processed_data):
+        
