@@ -3,6 +3,7 @@ from math import sqrt
 import json
 # mongo db
 import pymongo
+import datetime
 
 # ** MongoDB configuration **
 #name of the database
@@ -299,7 +300,9 @@ def measureReadingScore(fixations):
         return reading_score
 
 def structureProcessedData(final_fixations, final_saccades, reading_score):
+        cur_time = datetime.datetime.now()
         processed_data = {
+                'time_created': cur_time,
                 'fixations': [final_fixations[key] for key in final_fixations],
                 'saccades': [final_saccades[key] for key in final_saccades],
                 'reading_score': reading_score,
@@ -328,6 +331,73 @@ def writeToDB(processed_data):
 
         print("Created database entry!")
         return
+
+def getLatestCasualVideoData(dataType):
+        # determine which table/collection to query
+        cursor = None
+        if dataType == 0:
+                cursor = db.casual_video.find().limit(1).sort([('$natural',-1)])
+        elif dataType == 1:
+                cursor = db.serious_video.find().limit(1).sort([('$natural',-1)])
+        else:
+                cursor = db.reading.find().limit(1).sort([('$natural',-1)])
+                
+        last_doc = None
+        for doc in cursor:
+                last_doc = doc
+
+        print(last_doc)
+
+        # fixation durations
+        fixation_druations = [d['duration'] for d in last_doc['fixations']]
+        print("***************fixation durations****************")
+        print(fixation_druations)
+        avg_fixation_durations = mean(fixation_druations)
+
+        # num points of fixations
+        fixation_num_points = [d['num_points'] for d in last_doc['fixations']]
+        print("***************number of points in fixation****************")
+        print(fixation_num_points)
+        avg_fixation_num_points = mean(fixation_num_points)
+
+        # frequency of fixations
+        total_num_fixations = len(last_doc['fixations'])
+        start_time = last_doc['fixations'][0]['startTime']
+        end_time = last_doc['fixations'][len(last_doc['fixations']) - 1]['endTime']
+        fixation_frequency = total_num_fixations / (end_time - start_time)
+        print("***************fixation frequency****************")
+        print(fixation_frequency)
+
+        # velocities of saccades
+        saccades_velocities = [d['velocity'] for d in last_doc['saccades']]
+        print("***************velocities of saccades****************")
+        print(saccades_velocities)
+        avg_saccades_velocities = mean(saccades_velocities)
+
+        # lengths of saccades
+        saccades_lengths = [d['distance'] for d in last_doc['saccades']]
+        print("***************lengths of saccades****************")
+        print(saccades_lengths)
+        avg_saccades_lengths = mean(saccades_lengths)
+
+        # duration of saccades
+        saccades_durations = [d['duration'] for d in last_doc['saccades']]
+        print("***************duration of saccades****************")
+        print(saccades_durations)
+        avg_saccades_durations = mean(saccades_durations)
+
+        res = {
+                "avg_fixation_durations": avg_fixation_durations,
+                "avg_fixation_num_points": avg_fixation_num_points,
+                "fixation_frequency": fixation_frequency,
+                "avg_saccades_velocities": avg_saccades_velocities,
+                "avg_saccades_lengths": avg_saccades_lengths,
+                "avg_saccades_durations": avg_saccades_durations
+        }
+        
+        return res
+        
+
 
 def casualVideoDataToMongoDB(processed_data):
         casual_video_collection = db.casual_video

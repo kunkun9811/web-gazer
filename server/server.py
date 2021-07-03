@@ -176,5 +176,29 @@ def reading():
                 res.headers["Content-Type"] = "*"
                 return res
 
+# 0 = casual_video
+# 1 = serious_video
+# 2 = reading
+@app.route('/get_latest_casual_video', methods=['GET'])
+def getLastEntryCasualVideo():
+        data = getLatestCasualVideoData(0)
+        res = make_response(data, 200)
+        res.headers['Access-Control-Allow-Origin'] = '*'
+        return res
+
+@app.route('/get_latest_serious_video', methods=['GET'])
+def getLastEntrySeriousVideo():
+        data = getLatestCasualVideoData(1)
+        res = make_response(data, 200)
+        res.headers['Access-Control-Allow-Origin'] = '*'
+        return res
+
+@app.route('/get_latest_reading', methods=['GET'])
+def getLastEntryReading():
+        data = getLatestCasualVideoData(2)
+        res = make_response(data, 200)
+        res.headers['Access-Control-Allow-Origin'] = '*'
+        return res
+
 if __name__ == "__main__":
         app.run(use_reloader=False)
