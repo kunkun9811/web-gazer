@@ -8,6 +8,10 @@
   /* background-color: white; */
 }
 
+#data-visualization-title {
+  color: white;
+}
+
 .data-visualization-container p {
   color: white;
   font-size: large;

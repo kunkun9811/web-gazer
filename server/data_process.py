@@ -124,13 +124,16 @@ def classify_fixation(data, t1, t2):
 
                 # if distance is greater than the mean, create new cluster and flush out cur_clusters
                 if dist > t1:
-                        # Add points and their corresponding times into "clusters"
-                        clusters[cur_cluster_id] = {
-                                "points": [xy for xy in zip(cur_cluster_x, cur_cluster_y)],
-                                "times": [t for t in cur_cluster_times]
-                        }
+                        # NOTE: cluster of 1 point is not considered as fixation
+                        if len(cur_cluster_times) > 1:
+                                # Add points and their corresponding times into "clusters"
+                                clusters[cur_cluster_id] = {
+                                        "points": [xy for xy in zip(cur_cluster_x, cur_cluster_y)],
+                                        "times": [t for t in cur_cluster_times]
+                                }
+                                # update next cluster id
+                                cur_cluster_id += 1
 
-                        cur_cluster_id += 1
                         cur_cluster_x.clear()
                         cur_cluster_y.clear()
                         cur_cluster_times.clear()
@@ -155,7 +158,11 @@ def classify_fixation(data, t1, t2):
         # Finalize fixations - using threshold 2
         cluster_t2 = {}
         for i in range(len(clusters)):
-                cluster_t2[i] = removeOutOfBoundPoints(clusters[i],t2)
+                # remove points that are out of threshold 2 boundaries
+                new_cluster_t2 = removeOutOfBoundPoints(clusters[i],t2)
+                # only include as fixations iff there are more than one points in the cluster
+                if len(new_cluster_t2['points']) > 1:
+                        cluster_t2[i] = removeOutOfBoundPoints(clusters[i],t2)
 
         print("***************cluster_t2***************")
         print(cluster_t2)
