@@ -45,14 +45,14 @@ def casual_video():
                 # calculate reading score
                 reading_score = measureReadingScore(final_fixations)
                 # combine processed informations
-                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score)
+                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score, 0)
                 # print processed data
                 printFinalData(processed_data)
 
                 # NOTE: For development - write data to database
                 # writeToDB(processed_data)
                 # NOTE: MongoDB (currently using free version)
-                casualVideoDataToMongoDB(processed_data)
+                insertToMongoDB(processed_data)
 
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
@@ -101,14 +101,14 @@ def serious_video():
                 # calculate reading score
                 reading_score = measureReadingScore(final_fixations)
                 # combine processed informations
-                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score)
+                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score, 1)
                 # print processed data
                 printFinalData(processed_data)
 
                 # NOTE: For development - write data to database
                 # writeToDB(processed_data)
                 # NOTE: MongoDB (currently using free version)
-                seriousVideoDataToMongoDB(processed_data)
+                insertToMongoDB(processed_data)
 
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
@@ -157,14 +157,14 @@ def reading():
                 # calculate reading score
                 reading_score = measureReadingScore(final_fixations)
                 # combine processed informations
-                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score)
+                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score, 2)
                 # print processed data
                 printFinalData(processed_data)
 
                 # NOTE: For development - write data to database
                 # writeToDB(processed_data)
                 # NOTE: MongoDB (currently using free version)
-                readingDataToMongoDB(processed_data)
+                insertToMongoDB(processed_data)
 
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
@@ -176,26 +176,27 @@ def reading():
                 res.headers["Content-Type"] = "*"
                 return res
 
+# ***** Get averages *****
 # 0 = casual_video
 # 1 = serious_video
 # 2 = reading
 @app.route('/get_latest_casual_video', methods=['GET'])
 def getLastEntryCasualVideo():
-        data = getLatestCasualVideoData(0)
+        data = getLatestData(0)
         res = make_response(data, 200)
         res.headers['Access-Control-Allow-Origin'] = '*'
         return res
 
 @app.route('/get_latest_serious_video', methods=['GET'])
 def getLastEntrySeriousVideo():
-        data = getLatestCasualVideoData(1)
+        data = getLatestData(1)
         res = make_response(data, 200)
         res.headers['Access-Control-Allow-Origin'] = '*'
         return res
 
 @app.route('/get_latest_reading', methods=['GET'])
 def getLastEntryReading():
-        data = getLatestCasualVideoData(2)
+        data = getLatestData(2)
         res = make_response(data, 200)
         res.headers['Access-Control-Allow-Origin'] = '*'
         return res

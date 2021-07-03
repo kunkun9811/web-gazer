@@ -299,10 +299,19 @@ def measureReadingScore(fixations):
         
         return reading_score
 
-def structureProcessedData(final_fixations, final_saccades, reading_score):
+def structureProcessedData(final_fixations, final_saccades, reading_score, dataType):
+        doc_type = None
+        if dataType == 0:
+                doc_type = 'casual_video'
+        elif dataType == 1:
+                doc_type = 'serious_video'
+        else:
+                doc_type = 'reading'
+
         cur_time = datetime.datetime.now()
         processed_data = {
                 'time_created': cur_time,
+                'doc_type': doc_type,
                 'fixations': [final_fixations[key] for key in final_fixations],
                 'saccades': [final_saccades[key] for key in final_saccades],
                 'reading_score': reading_score,
@@ -332,7 +341,7 @@ def writeToDB(processed_data):
         print("Created database entry!")
         return
 
-def getLatestCasualVideoData(dataType):
+def getLatestData(dataType):
         # determine which table/collection to query
         cursor = None
         if dataType == 0:
@@ -396,17 +405,22 @@ def getLatestCasualVideoData(dataType):
         }
         
         return res
-        
+
+# *** OG *** 
+# def casualVideoDataToMongoDB(processed_data):
+#         casual_video_collection = db.casual_video
+#         casual_video_collection.insert_one(processed_data)
+
+# def seriousVideoDataToMongoDB(processed_data):
+#         serious_video_collection = db.serious_video
+#         serious_video_collection.insert_one(processed_data)
+
+# def readingDataToMongoDB(processed_data):
+#         reading_collection = db.reading
+#         reading_collection.insert_one(processed_data)
 
 
-def casualVideoDataToMongoDB(processed_data):
-        casual_video_collection = db.casual_video
-        casual_video_collection.insert_one(processed_data)
-
-def seriousVideoDataToMongoDB(processed_data):
-        serious_video_collection = db.serious_video
-        serious_video_collection.insert_one(processed_data)
-
-def readingDataToMongoDB(processed_data):
-        reading_collection = db.reading
-        reading_collection.insert_one(processed_data)
+# *** TMP ***
+def insertToMongoDB(processed_data):
+        collection = db.all
+        collection.insert_one(processed_data)
