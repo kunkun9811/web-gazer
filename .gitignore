@@ -11,6 +11,9 @@
 # production
 /build
 
+# ignore server.js
+server.js
+
 # misc
 .DS_Store
 .env.local
