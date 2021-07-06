@@ -1,4 +1,4 @@
-/* This file is for running PM2 on the remote server */
+/* This file is for running PM2 on the remote server to server the site */
 const express = require("express");
 const path = require("path");
 const app = express();
