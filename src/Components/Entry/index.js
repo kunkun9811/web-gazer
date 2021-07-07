@@ -3,7 +3,7 @@ import WebGazeLoader from "../WebGazer/WebGazeLoader";
 import Welcome from "../Welcome/Welcome";
 import PageState from "../Utils/PageState";
 
-export const Entry = () => {
+export const Try = () => {
   const [curState, updateCurState] = useState(PageState.WELCOME);
 
   const onClickHandler = () => {
@@ -19,4 +19,4 @@ export const Entry = () => {
   // return <Calibration />;
 };
 
-export default Entry;
+export default Try;

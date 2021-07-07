@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Entry from "./Components/Entry";
+import Home from "./Components/Home";
+import Try from "./Components/Entry";
 import DataVisualization from "./Components/DataVisualization";
 
 function App() {
@@ -9,7 +10,10 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Entry />
+          <Home />
+        </Route>
+        <Route exact path="/try">
+          <Try />
         </Route>
         <Route exact path="/viz">
           <DataVisualization />

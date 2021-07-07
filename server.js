@@ -12,7 +12,8 @@ const PORT_NUMBER = process.env.NODE_ENV.trim() === "production" ? parseInt(proc
 // specify build folder as the production directory
 app.use(express.static(path.join(__dirname, "./public_html/build")));
 
-app.get("/", function (req, res) {
+// NOTE: It is important to add '*'
+app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "./public_html/build", "index.html"));
 });
 
