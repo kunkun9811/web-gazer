@@ -6,7 +6,7 @@ import { topDataObj, aboutDataObj } from "../InfoSection/Data";
 import TeamSection from "../TeamSection";
 import { teamMemberObj } from "../TeamSection/TeamData";
 import InsightSection from "../InsightSection";
-import { demoObj } from "../InsightSection/InsightData";
+import { demoObj, vizObj } from "../InsightSection/InsightData";
 
 const Home = () => {
   console.log("TOP OBJECT");
@@ -19,6 +19,7 @@ const Home = () => {
       <InfoSection {...aboutDataObj} />
       <TeamSection {...teamMemberObj} />
       <InsightSection {...demoObj} />
+      <InsightSection {...vizObj} />
     </HomePage>
   );
 };

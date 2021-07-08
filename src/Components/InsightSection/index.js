@@ -1,11 +1,11 @@
 import React from "react";
 import { InsightSectionContainer, InsightSectionInnerContainer, Column1, Column2, DemoIntro, Button, ImgWrapper } from "./InsightElements";
 
-const InsightSection = ({ title, button_label }) => {
+const InsightSection = ({ title, button_label, imgPos }) => {
   return (
     <>
       <InsightSectionContainer>
-        <InsightSectionInnerContainer>
+        <InsightSectionInnerContainer imgPos={imgPos}>
           {/* TODO: Column1 is going to be images */}
           <Column1>
             <ImgWrapper></ImgWrapper>

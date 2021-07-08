@@ -15,9 +15,10 @@ export const InsightSectionInnerContainer = styled.div`
   max-width: 1400px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: "col1 col2";
-  /* TODO: Conditionalize col1 and col2 position */
-  background-color: pink;
+  /* NOTE: Remember to but a single quote inside the double quotes for it to work */
+  // reason being the syntax => https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
+  grid-template-areas: ${({ imgPos }) => (imgPos === "left" ? "'col1 col2'" : "'col2 col1'")};
+  /* background-color: pink; */
 `;
 
 export const Column1 = styled.div`
@@ -28,7 +29,7 @@ export const Column1 = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: burlywood;
+  /* background-color: burlywood; */
 `;
 
 export const Column2 = styled.div`
@@ -40,7 +41,7 @@ export const Column2 = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: crimson;
+  /* background-color: crimson; */
 `;
 
 export const ImgWrapper = styled.div`
