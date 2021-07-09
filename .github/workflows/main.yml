@@ -48,14 +48,17 @@ jobs:
         env:
           CI: false
           
-      # Remove files in the target build directory on the web server
+      # Remove files in the target build directory on the web server and flask server files
       - name: Remove old files in the target build directory on the web server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_KEY }}
-          script: rm -rf ${{ secrets.REMOTE_DIR }}
+          script: |
+            rm -rf ${{ secrets.REMOTE_DIR }}
+            cd ${{ secrets.REMOTE_SERVER_DIR }}
+            rm ./*.py
           
       # Deploy build files to target build directory on the web server
       - name: Deploy to server
@@ -90,5 +93,17 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           rm: false
           source: "server/data_process.py"
+          strip_components: 1
+          target: ${{ secrets.REMOTE_SERVER_DIR }}
+          
+      # Deploy wsgi.py file to server
+      - name: Deploy server.py to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          rm: false
+          source: "server/wsgi.py"
           strip_components: 1
           target: ${{ secrets.REMOTE_SERVER_DIR }}
