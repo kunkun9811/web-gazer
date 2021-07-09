@@ -13,7 +13,7 @@ const NavBarV2 = () => {
     <Nav>
       <NavBarContainer>
         <NavLogo to="top-page" onClick={scrollToTop}>
-          Aankhaaa
+          Aankh
         </NavLogo>
         <NavBarMenu>
           <NavItem>
