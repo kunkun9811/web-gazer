@@ -1,10 +1,10 @@
 import React from "react";
 import { TeamSectionContainer, TeamSectionInnerContainer, TeamMember, TeamMemberImage, Name, TeamMemberDesc } from "./TeamSectionElements";
 
-const TeamSection = ({ img1, img2, name1, name2, desc1, desc2 }) => {
+const TeamSection = ({ id, img1, img2, name1, name2, desc1, desc2 }) => {
   return (
     <>
-      <TeamSectionContainer>
+      <TeamSectionContainer id={id}>
         <TeamSectionInnerContainer>
           <TeamMember>
             <TeamMemberImage></TeamMemberImage>

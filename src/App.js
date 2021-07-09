@@ -12,7 +12,7 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/try">
+        <Route exact path="/demo">
           <Try />
         </Route>
         <Route exact path="/viz">

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link as LinkRedirect } from "react-router-dom";
 
 export const InsightSectionContainer = styled.div`
   width: 100%;
@@ -54,10 +55,11 @@ export const ImgWrapper = styled.div`
 export const DemoIntro = styled.p`
   color: white;
   font-size: 1.5rem;
+  text-align: center;
 `;
 
 // TODO: This will use Link from react-xxx-dom
-export const Button = styled.div`
+export const Button = styled(LinkRedirect)`
   height: 100px;
   width: 300px;
   display: flex;
@@ -69,4 +71,10 @@ export const Button = styled.div`
   font-size: 1.5rem;
   color: white;
   background-color: violet;
+  text-decoration: none !important;
+
+  &:hover {
+    background-color: rgb(255, 192, 203);
+    color: white;
+  }
 `;

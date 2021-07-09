@@ -24,6 +24,4 @@ const Home = () => {
   );
 };
 
-/* Going to make team member object only one object */
-
 export default Home;

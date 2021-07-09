@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link as LinkScroll, animateScroll as scroll } from "react-scroll";
 
 export const Nav = styled.nav`
   width: 100%;
@@ -12,6 +13,7 @@ export const Nav = styled.nav`
   top: 0;
   left: 0;
   padding-top: 20px;
+  cursor: pointer;
 `;
 
 export const NavBarContainer = styled.div`
@@ -52,6 +54,11 @@ export const NavBarMenu = styled.ul`
 `;
 
 export const NavItem = styled.li`
+  color: white;
+  height: 100%;
+`;
+
+export const NavLink = styled(LinkScroll)`
   display: flex;
   justify-self: center;
   align-items: flex-end;
@@ -60,6 +67,22 @@ export const NavItem = styled.li`
   padding: 3px 20px;
   margin: 0;
   font-size: 1.1rem;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   background-color: transparent;
+  text-decoration: none !important;
+  cursor: pointer;
+
+  /* &.hover {
+    color: red;
+    text-decoration: none !important;
+    cursor: pointer;
+  } */
+
+  &:hover {
+    color: pink;
+  }
+
+  &:active {
+    border-bottom: 3px solid white !important;
+  }
 `;
