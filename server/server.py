@@ -13,9 +13,8 @@ threshold_2 = 200
 
 @app.route('/')
 def hello():
-        res = Response('Hello from flask backend!')
+        res = Response("<h1>This is Aankh's API, it is currently in development :)</h1>")
         res.headers['Access-Control-Allow-Origin'] = '*'
-        addOne(2)
         return res
 
 @app.route('/casual_video', methods=['POST', 'OPTIONS'])
