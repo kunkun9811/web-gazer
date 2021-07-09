@@ -78,4 +78,17 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           rm: false
           source: "server/server.py"
+          strip_components: 1
+          target: ${{ secrets.REMOTE_SERVER_DIR }}
+          
+      # Deploy data_process.py file to server
+      - name: Deploy server.py to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          rm: false
+          source: "server/data_process.py"
+          strip_components: 1
           target: ${{ secrets.REMOTE_SERVER_DIR }}
