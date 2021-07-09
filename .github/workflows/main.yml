@@ -78,4 +78,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           rm: false
           source: "server/server.py"
-          target: ${{ secrets.REMOTE_DIR_NODE }}
+          target: ${{ secrets.REMOTE_SERVER_DIR }}
