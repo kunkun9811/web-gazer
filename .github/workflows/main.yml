@@ -69,8 +69,8 @@ jobs:
           strip_components: 1
           target: ${{ secrets.REMOTE_DIR }}
           
-      # Deploy server.js file to server
-      - name: Deploy server.js to server
+      # Deploy server.py file to server
+      - name: Deploy server.py to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
