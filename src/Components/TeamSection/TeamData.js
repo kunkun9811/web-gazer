@@ -5,6 +5,6 @@ export const teamMemberObj = {
   name1: "CHIEHKUN CHEN",
   desc1: "Graduated from University of California, San Diego",
   img2: "NOT DONE",
-  name2: "TEJAS CHOUDHA",
+  name2: "TEJAS CHOUDHARY",
   desc2: "Graduated from University of California, San Diego",
 };
