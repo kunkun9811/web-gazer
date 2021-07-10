@@ -11,14 +11,25 @@ export const InsightSectionContainer = styled.div`
 `;
 
 export const InsightSectionInnerContainer = styled.div`
-  height: 1350px;
+  height: 1200px;
   width: 100%;
   max-width: 1400px;
+  padding: 50px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   /* NOTE: Remember to but a single quote inside the double quotes for it to work */
   // reason being the syntax => https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
   grid-template-areas: ${({ imgPos }) => (imgPos === "left" ? "'col1 col2'" : "'col2 col1'")};
+
+  @media screen and (max-width: 992px) {
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0;
+    padding: 0;
+  }
   /* background-color: pink; */
 `;
 
@@ -30,6 +41,7 @@ export const Column1 = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   /* background-color: burlywood; */
 `;
 
@@ -43,25 +55,45 @@ export const Column2 = styled.div`
   justify-content: center;
   align-items: center;
   /* background-color: crimson; */
+
+  @media screen and (max-width: 992px) {
+    height: 40%;
+    padding-top: 50px;
+  }
+
+  @media screen and (max-width: 720px) {
+    height: 40%;
+    padding: 0;
+  }
 `;
 
 export const ImgWrapper = styled.div`
   height: 60%;
-  width: 90%;
+  width: 100%;
   border-radius: 50px;
   background-color: grey;
+
+  @media screen and (max-width: 992px) {
+    height: 600px;
+    width: 600px;
+  }
+
+  @media screen and (max-width: 720px) {
+    height: 400px;
+    min-width: 400px;
+  }
 `;
 
 export const DemoIntro = styled.p`
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: center;
 `;
 
 // TODO: This will use Link from react-xxx-dom
 export const Button = styled(LinkRedirect)`
-  height: 100px;
-  width: 300px;
+  height: 80px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;

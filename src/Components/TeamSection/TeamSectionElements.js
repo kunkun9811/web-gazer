@@ -10,7 +10,7 @@ export const TeamSectionContainer = styled.div`
 `;
 
 export const TeamSectionInnerContainer = styled.div`
-  height: 1300px;
+  height: 1200px;
   width: 100%;
   max-width: 1400px;
   display: flex;
@@ -45,15 +45,28 @@ export const TeamMemberImage = styled.div`
   border-radius: 50px;
   margin-bottom: 50px;
   background-color: grey;
+
+  @media screen and (max-width: 992px) {
+    height: 400px;
+    width: 300px;
+  }
 `;
 
 export const Name = styled.p`
   color: white;
   font-size: 2rem;
+
+  @media screen and (max-width: 992px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const TeamMemberDesc = styled.p`
   color: white;
   font-size: 1.5rem;
   text-align: center;
+
+  @media screen and (max-width: 992px) {
+    font-size: 1.1rem;
+  }
 `;
