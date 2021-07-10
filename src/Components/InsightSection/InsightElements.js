@@ -11,7 +11,7 @@ export const InsightSectionContainer = styled.div`
 `;
 
 export const InsightSectionInnerContainer = styled.div`
-  height: 1200px;
+  height: 950px;
   width: 100%;
   max-width: 1400px;
   padding: 50px;

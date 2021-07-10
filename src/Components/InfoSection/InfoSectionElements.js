@@ -6,18 +6,18 @@ export const InfoSectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 340px; */
   /* background-color: teal; */
 `;
 
 export const InfoSectionInnerContainer = styled.div`
-  height: 1200px;
+  height: 950px;
   width: 100%;
   max-width: 1400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 80px;
   /* background: pink; */
 
   /* @media screen and (max-width: 992px) {

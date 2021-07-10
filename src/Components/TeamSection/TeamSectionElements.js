@@ -6,11 +6,12 @@ export const TeamSectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
   /* background-color: teal; */
 `;
 
 export const TeamSectionInnerContainer = styled.div`
-  height: 1200px;
+  height: 950px;
   width: 100%;
   max-width: 1400px;
   display: flex;

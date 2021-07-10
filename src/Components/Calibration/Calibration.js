@@ -59,13 +59,13 @@ export const Calibration = ({ checkIfPointsFinished }) => {
 
       <div className="calibration-circles">
         <Circle top="80" left="80" clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeft")} />
-        <Circle top="80" left="1380" clickCount={calibPointsClickCnt.topMid} onCircleClicked={() => calibPointsOnClick("topMid")} />
+        {/* <Circle top="80" left="1380" clickCount={calibPointsClickCnt.topMid} onCircleClicked={() => calibPointsOnClick("topMid")} />
         <Circle top="80" right="80" clickCount={calibPointsClickCnt.topRight} onCircleClicked={() => calibPointsOnClick("topRight")} />
         <Circle top="740" right="80" clickCount={calibPointsClickCnt.rightMid} onCircleClicked={() => calibPointsOnClick("rightMid")} />
         <Circle bottom="80" right="80" clickCount={calibPointsClickCnt.bottomRight} onCircleClicked={() => calibPointsOnClick("bottomRight")} />
         <Circle bottom="80" left="1380" clickCount={calibPointsClickCnt.bottomMid} onCircleClicked={() => calibPointsOnClick("bottomMid")} />
         <Circle bottom="80" left="80" clickCount={calibPointsClickCnt.bottomLeft} onCircleClicked={() => calibPointsOnClick("bottomLeft")} />
-        <Circle bottom="740" left="80" clickCount={calibPointsClickCnt.leftMid} onCircleClicked={() => calibPointsOnClick("leftMid")} />
+        <Circle bottom="740" left="80" clickCount={calibPointsClickCnt.leftMid} onCircleClicked={() => calibPointsOnClick("leftMid")} /> */}
       </div>
     </div>
   );
