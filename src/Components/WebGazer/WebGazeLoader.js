@@ -9,7 +9,10 @@ import PageState from "../Utils/PageState";
 // instruct compiler that "webgazer" was already declared From WebGazer.js [consider using Typescript instead of Javascript?]
 declare var webgazer;
 
-const url = "http://localhost:5000";
+// Development use
+// const url = "http://localhost:5000";
+// Production use
+const url = "https://api.aankh.co";
 
 export default function WebGazeLoader() {
   /* state fields */
