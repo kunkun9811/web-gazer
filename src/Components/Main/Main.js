@@ -15,13 +15,14 @@ export default function MainApp({ processCollectedData }) {
   /* Functions */
   // onClick Handler
   const onClickHandler = (BtnId) => {
+    console.log(`current selectedContent = ${BtnId}`);
     updateSelectedContent(BtnId);
   };
 
   return (
     <div class="main-container">
       <NavBar selectedContent={selectedContent} onClickHandler={onClickHandler} />
-      {selectedContent === "1" ? <YoutubeEmbed embedId="JUF5cJCCp-8" /> : selectedContent === "2" ? <YoutubeEmbed embedId="QVKj3LADCnA" /> : <Reading />}
+      {selectedContent === "1" ? <YoutubeEmbed embedId="JUF5cJCCp-8" /> : selectedContent === "2" ? <YoutubeEmbed embedId="QVKj3LADCnA" /> : <Reading onClickHandler={onClickHandler} />}
       {/* BtnId = selectedContent for deciding which database to populate in the backend */}
       {/* selectedBtn = "done" for not ever showing it as "selected" */}
       {/* TODO: modify the Button functionality */}

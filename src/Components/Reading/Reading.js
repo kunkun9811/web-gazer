@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import "./Reading.css";
 import { easyRead, hardRead } from "./ReadingData";
 
-export const Reading = () => {
+export const Reading = ({ onClickHandler }) => {
   // true = easy, false = hard
   const [readingLvl, setReadingLvl] = useState(true);
 
   const changeReadingLvl = () => {
-    setReadingLvl((prevState) => !prevState);
+    setReadingLvl((prevState) => {
+      // NOTE: prevState === true means it is currently "easy" and going to change to "hard". So BtnId shud be 4
+      if (prevState) onClickHandler("4");
+      else onClickHandler("3");
+      return !prevState;
+    });
   };
 
   return (

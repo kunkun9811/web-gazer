@@ -305,8 +305,10 @@ def structureProcessedData(final_fixations, final_saccades, reading_score, dataT
                 doc_type = 'casual_video'
         elif dataType == 1:
                 doc_type = 'serious_video'
-        else:
+        elif dataType == 2:
                 doc_type = 'reading'
+        else:
+                doc_type = 'hard_reading'
 
         cur_time = datetime.datetime.now()
         processed_data = {
@@ -318,6 +320,7 @@ def structureProcessedData(final_fixations, final_saccades, reading_score, dataT
         }
         return processed_data
 
+# NOTE: Legacy
 def writeToDB(processed_data):
         # get next id
         json_object = {}
@@ -420,7 +423,7 @@ def getLatestData(dataType):
 #         reading_collection.insert_one(processed_data)
 
 
-# *** TMP ***
+# *** NEW ***
 def insertToMongoDB(processed_data):
         collection = db.all
         collection.insert_one(processed_data)
