@@ -3,14 +3,38 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 5rem;
+}
+
+.reading-inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #2e3131;
-  width: 40%;
+  width: 60%;
   min-width: 800px;
   margin-top: 50px;
 }
 
-.reading-text {
+.reading-text-easy {
   color: white;
   font-size: 1.2rem;
   padding: 6rem 3rem 6rem 3rem;
+  line-height: 5rem;
+}
+
+.reading-toggle {
+  height: 80px;
+  width: 150px;
+  border-radius: 20px;
+  background-color: lightgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.hard-btn {
+  background-color: pink;
 }
