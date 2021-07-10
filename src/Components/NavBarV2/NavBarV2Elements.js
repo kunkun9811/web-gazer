@@ -35,6 +35,7 @@ export const NavLogo = styled.div`
   align-items: flex-end;
   color: white;
   font-size: 2rem;
+  padding-left: 50px;
   /* background-color: pink; */
   background-color: transparent;
 `;

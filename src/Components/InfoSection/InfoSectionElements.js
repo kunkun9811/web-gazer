@@ -19,6 +19,10 @@ export const InfoSectionInnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   /* background: pink; */
+
+  /* @media screen and (max-width: 992px) {
+    padding: 0 50px;
+  } */
 `;
 
 export const Title = styled.p`

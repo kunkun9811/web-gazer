@@ -18,6 +18,10 @@ export const TeamSectionInnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   /* background-color: pink; */
+
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+  }
 `;
 
 export const TeamMember = styled.div`
@@ -26,7 +30,12 @@ export const TeamMember = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 50px;
   /* background-color: blue; */
+
+  @media screen and (max-width: 992px) {
+    padding: 50px;
+  }
 `;
 
 /* TODO: Need to change this to image */
