@@ -3,6 +3,7 @@ export const topDataObj = {
   id: "top-data",
   title: "Welcome to Aankh",
   subtitle: "Striving to be the eye of the future",
+  paddingTop: 80,
 };
 
 export const aboutDataObj = {

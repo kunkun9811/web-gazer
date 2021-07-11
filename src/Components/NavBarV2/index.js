@@ -17,22 +17,22 @@ const NavBarV2 = () => {
         </NavLogo>
         <NavBarMenu>
           <NavItem>
-            <NavLink to="about" smooth={true} spy={true} duration={500}>
+            <NavLink to="about" smooth={true} spy={true} duration={500} offset={-250}>
               ABOUT
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="team" smooth={true} spy={true} duration={500}>
+            <NavLink to="team" smooth={true} spy={true} duration={500} offset={-250}>
               TEAM
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="demo" smooth={true} spy={true} duration={500}>
+            <NavLink to="demo" smooth={true} spy={true} duration={500} offset={-250}>
               DEMO
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="viz" smooth={true} spy={true} duration={500}>
+            <NavLink to="viz" smooth={true} spy={true} duration={500} offset={-250}>
               DATA EXPLORATION
             </NavLink>
           </NavItem>

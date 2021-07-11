@@ -6,6 +6,7 @@ export const InfoSectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: ${({ paddingTop }) => (paddingTop !== "undefined" ? `${paddingTop}px` : `none`)};
   /* background-color: teal; */
 `;
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { InfoSectionContainer, InfoSectionInnerContainer, Title, Subtitle } from "./InfoSectionElements.js";
 
-const InfoSection = ({ id, title, subtitle }) => {
+const InfoSection = ({ id, title, subtitle, paddingTop }) => {
   return (
     <>
-      <InfoSectionContainer id={id}>
+      <InfoSectionContainer id={id} paddingTop={paddingTop}>
         <InfoSectionInnerContainer>
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
