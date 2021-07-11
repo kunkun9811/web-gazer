@@ -22,6 +22,7 @@ export const TeamSectionInnerContainer = styled.div`
 
   @media screen and (max-width: 992px) {
     flex-direction: column;
+    height: 1500px;
   }
 `;
 
