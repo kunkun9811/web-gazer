@@ -57,7 +57,7 @@ export const NavBarMenu = styled.ul`
 
 export const MobileNavIconConatiner = styled.div`
   padding-top: 10px;
-  padding-right: 1em;
+  padding-right: 3.5em;
   display: none;
 
   @media screen and (max-width: 768px) {

@@ -42,6 +42,16 @@ export const Column1 = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media screen and (max-width: 992px) {
+    height: 50%;
+    padding-top: 50px;
+  }
+
+  @media screen and (max-width: 720px) {
+    height: 20%;
+    padding: 0;
+  }
+
   /* background-color: burlywood; */
 `;
 
@@ -58,7 +68,7 @@ export const Column2 = styled.div`
 
   @media screen and (max-width: 992px) {
     height: 40%;
-    padding-top: 50px;
+    /* padding-top: 50px; */
   }
 
   @media screen and (max-width: 720px) {
@@ -99,7 +109,7 @@ export const Button = styled(LinkRedirect)`
   align-items: center;
   border: none;
   border-radius: 80px;
-  margin: 50px 0;
+  /* margin: 0px 0; */
   font-size: 1.5rem;
   color: white;
   background-color: violet;
