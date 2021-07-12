@@ -11,8 +11,8 @@ export const InsightSectionContainer = styled.div`
 `;
 
 export const InsightSectionInnerContainer = styled.div`
-  height: 1200px;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   max-width: 1400px;
   padding: 50px;
   display: grid;
@@ -78,7 +78,7 @@ export const Column2 = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  height: 60%;
+  height: 55%;
   width: 100%;
   border-radius: 50px;
   background-color: grey;
@@ -89,8 +89,8 @@ export const ImgWrapper = styled.div`
   }
 
   @media screen and (max-width: 720px) {
-    height: 350px;
-    min-width: 350px;
+    height: 325px;
+    width: 325px;
   }
 `;
 
