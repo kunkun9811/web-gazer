@@ -11,6 +11,7 @@ export const Nav = styled.nav`
   /* background-color: red; */
   background-color: rgba(146, 146, 146, 0.01);
   position: fixed;
+  z-index: 50;
   top: 0;
   left: 0;
   padding-top: 20px;
