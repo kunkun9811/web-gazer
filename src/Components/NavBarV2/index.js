@@ -29,22 +29,22 @@ const NavBarV2 = () => {
             <MobileMenuIcon onClick={menuIconClicked} />
           </MobileNavIconConatiner>
           <NavItem>
-            <NavLink to="about" smooth={true} spy={true} duration={500} offset={80}>
+            <NavLink to="about" smooth={true} spy={true} duration={500}>
               ABOUT
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="team" smooth={true} spy={true} duration={500} offset={80}>
+            <NavLink to="team" smooth={true} spy={true} duration={500}>
               TEAM
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="demo" smooth={true} spy={true} duration={500} offset={80}>
+            <NavLink to="demo" smooth={true} spy={true} duration={500}>
               DEMO
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="viz" smooth={true} spy={true} duration={500} offset={80}>
+            <NavLink to="viz" smooth={true} spy={true} duration={500}>
               DATA EXPLORATION
             </NavLink>
           </NavItem>

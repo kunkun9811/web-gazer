@@ -12,16 +12,16 @@ const DropDownSideBar = ({ closedIconClicked, isOpen }) => {
         <ClosedIconContainer>
           <ClosedIcon onClick={onClickHandler} />
         </ClosedIconContainer>
-        <MenuItem to="about" smooth={true} spy={true} duration={500} offset={80} onClick={onClickHandler}>
+        <MenuItem to="about" smooth={true} spy={true} duration={500} onClick={onClickHandler}>
           ABOUT
         </MenuItem>
-        <MenuItem to="team" smooth={true} spy={true} duration={500} offset={80} onClick={onClickHandler}>
+        <MenuItem to="team" smooth={true} spy={true} duration={500} onClick={onClickHandler}>
           TEAM
         </MenuItem>
-        <MenuItem to="demo" smooth={true} spy={true} duration={500} offset={80} onClick={onClickHandler}>
+        <MenuItem to="demo" smooth={true} spy={true} duration={500} onClick={onClickHandler}>
           DEMO
         </MenuItem>
-        <MenuItem to="viz" smooth={true} spy={true} duration={500} offset={80} onClick={onClickHandler}>
+        <MenuItem to="viz" smooth={true} spy={true} duration={500} onClick={onClickHandler}>
           DATA EXPLORATION
         </MenuItem>
       </DropDownSideBarInnerContainer>
