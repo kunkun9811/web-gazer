@@ -72,7 +72,7 @@ export const Column2 = styled.div`
   }
 
   @media screen and (max-width: 720px) {
-    height: 40%;
+    height: 35%;
     padding: 0;
   }
 `;
@@ -89,8 +89,8 @@ export const ImgWrapper = styled.div`
   }
 
   @media screen and (max-width: 720px) {
-    height: 400px;
-    min-width: 400px;
+    height: 350px;
+    min-width: 350px;
   }
 `;
 
@@ -98,6 +98,10 @@ export const DemoIntro = styled.p`
   color: white;
   font-size: 1.2rem;
   text-align: center;
+
+  @media screen and (max-width: 720px) {
+    width: 300px;
+  }
 `;
 
 // TODO: This will use Link from react-xxx-dom
