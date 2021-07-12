@@ -13,7 +13,8 @@ export const InfoSectionContainer = styled.div`
 `;
 
 export const InfoSectionInnerContainer = styled.div`
-  height: 1000px;
+  /* height: 1000px; */
+  height: 100vh;
   width: 100%;
   max-width: 1400px;
   display: flex;

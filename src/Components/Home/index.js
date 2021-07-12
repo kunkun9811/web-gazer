@@ -8,12 +8,16 @@ import { teamMemberObj } from "../TeamSection/TeamData";
 import InsightSection from "../InsightSection";
 import { demoObj, vizObj } from "../InsightSection/InsightData";
 
+// TODO: Remove this
+import DropDownSideBar from "../DropDownSideBar";
+
 const Home = () => {
   console.log("TOP OBJECT");
   console.log(topDataObj);
 
   return (
     <HomePage>
+      {/* <DropDownSideBar /> */}
       <NavBarV2 />
       <InfoSection {...topDataObj} />
       <InfoSection {...aboutDataObj} />

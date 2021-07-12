@@ -11,7 +11,8 @@ export const TeamSectionContainer = styled.div`
 `;
 
 export const TeamSectionInnerContainer = styled.div`
-  height: 1000px;
+  /* height: 1000px; */
+  height: 100vh;
   width: 100%;
   max-width: 1400px;
   display: flex;

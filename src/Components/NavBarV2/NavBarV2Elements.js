@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link as LinkScroll, animateScroll as scroll } from "react-scroll";
+import MenuIcon from "@material-ui/icons/Menu";
 
 export const Nav = styled.nav`
   width: 100%;
@@ -54,9 +55,28 @@ export const NavBarMenu = styled.ul`
   background-color: transparent;
 `;
 
+export const MobileNavIconConatiner = styled.div`
+  padding-top: 10px;
+  padding-right: 1em;
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+`;
+
+export const MobileMenuIcon = styled(MenuIcon)`
+  font-size: 2.2rem !important;
+  color: white;
+`;
+
 export const NavItem = styled.li`
   color: white;
   height: 100%;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const NavLink = styled(LinkScroll)`
@@ -72,12 +92,6 @@ export const NavLink = styled(LinkScroll)`
   background-color: transparent;
   text-decoration: none !important;
   cursor: pointer;
-
-  /* &.hover {
-    color: red;
-    text-decoration: none !important;
-    cursor: pointer;
-  } */
 
   &:hover {
     color: pink;

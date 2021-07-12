@@ -1,6 +1,8 @@
-import React from "react";
-import { Nav, NavBarContainer, NavLogo, NavBarMenu, NavItem, NavLink } from "./NavBarV2Elements";
+import React, { useState } from "react";
+import { Nav, NavBarContainer, NavLogo, NavBarMenu, MobileNavIconConatiner, MobileMenuIcon, NavItem, NavLink } from "./NavBarV2Elements";
 import { animateScroll as scroll } from "react-scroll";
+import DropDownSideBar from "../DropDownSideBar";
+
 // import "./NavBarV2.css";
 
 const scrollToTop = () => {
@@ -9,13 +11,23 @@ const scrollToTop = () => {
 
 // TODO: Fix the buggy active state
 const NavBarV2 = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const menuIconClicked = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+
   return (
     <Nav>
+      <DropDownSideBar closedIconClicked={menuIconClicked} isOpen={isOpen} />
       <NavBarContainer>
         <NavLogo to="top-page" onClick={scrollToTop}>
           Aankh
         </NavLogo>
         <NavBarMenu>
+          <MobileNavIconConatiner>
+            <MobileMenuIcon onClick={menuIconClicked} />
+          </MobileNavIconConatiner>
           <NavItem>
             <NavLink to="about" smooth={true} spy={true} duration={500} offset={80}>
               ABOUT
