@@ -26,7 +26,7 @@ export const Circle = styled(CircleComponent)`
   width: 30px;
   height: 30px;
   position: absolute;
-  transition: 0.1s linear;
+  transition: 0.2s linear;
 
   /* Custom positions */
   ${({ top }) => (top !== undefined ? `top: ${top}px;` : "")}

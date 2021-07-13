@@ -4,22 +4,11 @@ import { Circle } from "../Utils/CircleElement";
 import BrowserDimensions from "../Utils/BrowserDimensions";
 
 // TODO: Might need to turn off clickListener after calibration - understand what clickListener do in WebGazer.js
-export const Calibration = ({ checkIfPointsFinished, calibratePosition, calibrationFinished }) => {
+export const Calibration = ({ calibratePosition, calibrationFinished }) => {
   /* Browser Dimensions */
   const { width: browserWidth, height: browserHeight } = BrowserDimensions();
 
   /* states */
-  // keeps track of the click count of each calibration point
-  const [calibPointsClickCnt, updateCalibPointsClickCnt] = useState({
-    topLeft: 0,
-    topMid: 0,
-    topRight: 0,
-    rightMid: 0,
-    bottomRight: 0,
-    bottomMid: 0,
-    bottomLeft: 0,
-    leftMid: 0,
-  });
   const [hideCalibPreText, updateHideCalibPreText] = useState(false);
   const [showCalibText, updateShowCalibText] = useState(false);
 
@@ -51,23 +40,6 @@ export const Calibration = ({ checkIfPointsFinished, calibratePosition, calibrat
   const [currentCalibPoint, updateCurrentCalibPoint] = useState(0);
 
   /* useEffect listeners */
-  // listen to changes of click counts of each calibration points
-  useEffect(() => {
-    checkIfPointsFinished(calibPointsClickCnt);
-  }, [calibPointsClickCnt]);
-
-  /* methods */
-  // on click handler for calibration points
-  const calibPointsOnClick = (clickedBtn) => {
-    var newCount = calibPointsClickCnt[clickedBtn] + 1;
-    updateCalibPointsClickCnt((prevCounts) => {
-      return {
-        ...prevCounts,
-        [clickedBtn]: newCount,
-      };
-    });
-  };
-
   // check if all points have been calibrated
   useEffect(() => {
     console.log("********In useEffect********");
@@ -137,7 +109,6 @@ export const Calibration = ({ checkIfPointsFinished, calibratePosition, calibrat
       </p>
 
       <div className="calibration-circles">
-        {/* <Circle top={browserHeight / 15} left={browserWidth / 30} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeft")} /> */}
         {currentCalibPoint < calibrationPoints.length ? (
           <Circle
             top={calibrationPoints[currentCalibPoint].top}
@@ -145,8 +116,6 @@ export const Calibration = ({ checkIfPointsFinished, calibratePosition, calibrat
             bottom={calibrationPoints[currentCalibPoint].bottom}
             left={calibrationPoints[currentCalibPoint].left}
             onMouseHover={onMouseHover}
-            clickCount={calibPointsClickCnt.topLeft}
-            onCircleClicked={() => calibPointsOnClick("topLeft")}
           />
         ) : null}
       </div>

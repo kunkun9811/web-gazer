@@ -17,30 +17,9 @@ const url = "https://api.aankh.co";
 export default function WebGazeLoader() {
   /* state fields */
   const [curPageState, updateCurPageState] = useState(PageState.CALIBRATION); // for switching page content
-  const [finishedCalibPoints, updateFinishedCalibPoints] = useState([]); // for checking how many calibration points have finished
   const [collectedData, updateCollectedData] = useState([]); // for collecting WebGazer.js data
 
   /* Methods */
-  // push finished calibration points into "finishedCalibPoints" array
-  const checkIfPointsFinished = (clickedCounts) => {
-    for (let point in clickedCounts) {
-      // 0 is the first click
-      if (clickedCounts[point] === 4) updateFinishedCalibPoints((prevFinishedCalibPoints) => [...prevFinishedCalibPoints, point]);
-    }
-    checkAllPointsClicked();
-  };
-
-  // check if all 8 calibration points have been clicked 5 times
-  const checkAllPointsClicked = () => {
-    /* Production */
-    // if (finishedCalibPoints.length === 8) updateCurPageState(PageState.READY);
-    /* Development */
-    if (finishedCalibPoints.length === 1) {
-      updateCurPageState(PageState.READY);
-      // not allowing calibration coordaintes be part of the data
-      updateCollectedData([]); // resetting it here because not sure why curPageState doesn't get updated in "setGazeListener"
-    }
-  };
 
   const calibrationFinished = () => {
     /* Production */
@@ -53,6 +32,7 @@ export default function WebGazeLoader() {
     updateCollectedData([]); // resetting it here because not sure why curPageState doesn't get updated in "setGazeListener"
   };
 
+  // Using the current mouse position to calibrate webgazer
   const calibratePosition = (x, y) => {
     console.log("**********In calibratePosition**********");
     console.log(`x = ${x}, y=${y}`);
@@ -93,7 +73,8 @@ export default function WebGazeLoader() {
   // NOTE:
   // dataType = 1 => casual_video
   //          = 2 => serious_video
-  //          = 3 => reading
+  //          = 3 => easy reading
+  //          = 4 => hard reading
   const processCollectedData = async (type) => {
     // log info
     console.log("Sending data to backend...");
@@ -135,7 +116,7 @@ export default function WebGazeLoader() {
       <Script url="https://webgazer.cs.brown.edu/webgazer.js" onLoad={handleScriptLoad} onError={handleScriptError} />
       {/* Load page by PageState's condition */}
       {curPageState === PageState.CALIBRATION ? (
-        <Calibration checkIfPointsFinished={checkIfPointsFinished} calibratePosition={calibratePosition} calibrationFinished={calibrationFinished} />
+        <Calibration calibratePosition={calibratePosition} calibrationFinished={calibrationFinished} />
       ) : (
         <MainApp processCollectedData={processCollectedData} />
       )}
