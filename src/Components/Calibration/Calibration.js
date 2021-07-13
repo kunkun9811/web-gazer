@@ -68,7 +68,12 @@ export const Calibration = ({ checkIfPointsFinished, calibratePosition, calibrat
     });
   };
 
+  // check if all points have been calibrated
   useEffect(() => {
+    console.log("********In useEffect********");
+    console.log(`currentCalibPoint = ${currentCalibPoint}`);
+    console.log(`calibrationPoints.length = ${calibrationPoints.length}`);
+
     if (currentCalibPoint === calibrationPoints.length) calibrationFinished();
   }, [currentCalibPoint]);
 
@@ -144,32 +149,6 @@ export const Calibration = ({ checkIfPointsFinished, calibratePosition, calibrat
             onCircleClicked={() => calibPointsOnClick("topLeft")}
           />
         ) : null}
-        {/* TODO: Finished the first 5 points, CONTINUE */}
-        {/* OUTER */}
-        {/* <Circle top={browserHeight / 15} left={browserWidth / 30} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeft")} /> */}
-        {/* <Circle top={browserHeight / 15} left={browserWidth / 3.7} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeftMid")} /> */}
-        {/* <Circle top={browserHeight / 15} left={browserWidth / 2} clickCount={calibPointsClickCnt.topMid} onCircleClicked={() => calibPointsOnClick("topMid")} /> */}
-        {/* <Circle top={browserHeight / 15} left={browserWidth / 1.38} clickCount={calibPointsClickCnt.topRight} onCircleClicked={() => calibPointsOnClick("topRightMid")} /> */}
-        {/* <Circle top={browserHeight / 15} left={browserWidth / 1.05} clickCount={calibPointsClickCnt.topRight} onCircleClicked={() => calibPointsOnClick("topRight")} /> */}
-        {/* <Circle top={browserHeight / 2} left={browserWidth / 1.05} clickCount={calibPointsClickCnt.rightMid} onCircleClicked={() => calibPointsOnClick("rightMid")} /> */}
-        {/* <Circle top={browserHeight / 1.1} left={browserWidth / 1.05} clickCount={calibPointsClickCnt.bottomRight} onCircleClicked={() => calibPointsOnClick("bottomRight")} /> */}
-        {/* <Circle top={browserHeight / 1.1} left={browserWidth / 1.38} clickCount={calibPointsClickCnt.bottomRight} onCircleClicked={() => calibPointsOnClick("bottomRightMid")} /> */}
-        {/* <Circle top={browserHeight / 1.1} left={browserWidth / 2} clickCount={calibPointsClickCnt.bottomMid} onCircleClicked={() => calibPointsOnClick("bottomMid")} /> */}
-        {/* <Circle top={browserHeight / 1.1} left={browserWidth / 3.7} clickCount={calibPointsClickCnt.bottomLeft} onCircleClicked={() => calibPointsOnClick("bottomLeftMid")} /> */}
-        {/* <Circle top={browserHeight / 1.1} left={browserWidth / 30} clickCount={calibPointsClickCnt.bottomLeft} onCircleClicked={() => calibPointsOnClick("bottomLeft")} /> */}
-        {/* <Circle top={browserHeight / 2} left={browserWidth / 30} clickCount={calibPointsClickCnt.leftMid} onCircleClicked={() => calibPointsOnClick("leftMid")} /> */}
-        {/* INNER */}
-        {/* <Circle top={browserHeight / 4} left={browserWidth / 7} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeftInner")} /> */}
-        {/* <Circle top={browserHeight / 4} left={browserWidth / 2} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
-        {/* <Circle top={browserHeight / 4} left={browserWidth / 1.17} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
-        {/* <Circle top={browserHeight / 1.37} left={browserWidth / 7} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeftInner")} /> */}
-        {/* <Circle top={browserHeight / 1.37} left={browserWidth / 2} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
-        {/* <Circle top={browserHeight / 1.37} left={browserWidth / 1.17} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
-        {/* INNER MOST */}
-        {/* <Circle top={browserHeight / 3} left={browserWidth / 2} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInnerMost")} /> */}
-        {/* <Circle top={browserHeight / 2} left={browserWidth / 2.5} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("leftInnerMost")} /> */}
-        {/* <Circle top={browserHeight / 1.55} left={browserWidth / 2} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("bottomMidInnerMost")} /> */}
-        {/* <Circle top={browserHeight / 2} left={browserWidth / 1.68} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("rightInnerMost")} /> */}
       </div>
     </div>
   );
