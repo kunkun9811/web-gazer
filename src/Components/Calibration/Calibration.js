@@ -25,28 +25,28 @@ export const Calibration = ({ checkIfPointsFinished, calibratePosition, calibrat
 
   // TODO:
   const [calibrationPoints, updateCalibrationPoints] = useState([
-    { top: browserHeight / 15, right: undefined, bottom: undefined, left: browserWidth / 30 },
-    { top: browserHeight / 15, right: undefined, bottom: undefined, left: browserWidth / 3.7 },
-    { top: browserHeight / 15, right: undefined, bottom: undefined, left: browserWidth / 2 },
-    { top: browserHeight / 15, right: undefined, bottom: undefined, left: browserWidth / 3.7 },
-    { top: browserHeight / 15, right: undefined, bottom: undefined, left: browserWidth / 30 },
-    { top: browserHeight / 2, right: browserWidth / 30 },
-    { top: undefined, right: browserWidth / 30, bottom: browserHeight / 15, left: undefined },
-    { top: undefined, right: browserWidth / 3.7, bottom: browserHeight / 15, left: undefined },
-    { top: undefined, right: undefined, bottom: browserHeight / 15, left: browserWidth / 2 },
-    { top: undefined, right: undefined, bottom: browserHeight / 15, left: browserWidth / 3.7 },
-    { top: undefined, right: undefined, bottom: browserHeight / 15, left: browserWidth / 30 },
-    { top: undefined, right: undefined, bottom: browserHeight / 2, left: browserWidth / 30 },
-    { top: browserHeight / 4, right: undefined, bottom: undefined, left: browserWidth / 7 },
-    { top: browserHeight / 4, right: undefined, bottom: undefined, left: browserWidth / 2 },
-    { top: browserHeight / 4, right: browserWidth / 7, bottom: undefined, left: undefined },
-    { top: undefined, right: undefined, bottom: browserHeight / 4, left: browserWidth / 7 },
-    { top: undefined, right: undefined, bottom: browserHeight / 4, left: browserWidth / 2 },
-    { top: undefined, right: browserWidth / 7, bottom: browserHeight / 4, left: undefined },
-    { top: browserHeight / 3, right: undefined, bottom: undefined, left: browserWidth / 2 },
-    { top: browserHeight / 2, right: undefined, bottom: undefined, left: browserWidth / 2.5 },
-    { top: undefined, right: browserWidth / 2, bottom: browserHeight / 3, left: undefined },
-    { top: undefined, right: browserWidth / 2.5, bottom: browserHeight / 2, left: undefined },
+    { top: browserHeight / 15, left: browserWidth / 30 },
+    { top: browserHeight / 15, left: browserWidth / 3.7 },
+    { top: browserHeight / 15, left: browserWidth / 2 },
+    { top: browserHeight / 15, left: browserWidth / 1.38 },
+    { top: browserHeight / 15, left: browserWidth / 1.05 },
+    { top: browserHeight / 2, left: browserWidth / 1.05 },
+    { top: browserHeight / 1.1, left: browserWidth / 1.05 },
+    { top: browserHeight / 1.1, left: browserWidth / 1.38 },
+    { top: browserHeight / 1.1, left: browserWidth / 2 },
+    { top: browserHeight / 1.1, left: browserWidth / 3.7 },
+    { top: browserHeight / 1.1, left: browserWidth / 30 },
+    { top: browserHeight / 2, left: browserWidth / 30 },
+    { top: browserHeight / 4, left: browserWidth / 7 },
+    { top: browserHeight / 4, left: browserWidth / 2 },
+    { top: browserHeight / 4, left: browserWidth / 1.17 },
+    { top: browserHeight / 1.37, left: browserWidth / 7 },
+    { top: browserHeight / 1.37, left: browserWidth / 2 },
+    { top: browserHeight / 1.37, left: browserWidth / 1.17 },
+    { top: browserHeight / 3, left: browserWidth / 2 },
+    { top: browserHeight / 2, left: browserWidth / 2.5 },
+    { top: browserHeight / 1.55, left: browserWidth / 2 },
+    { top: browserHeight / 2, left: browserWidth / 1.68 },
   ]);
   const [currentCalibPoint, updateCurrentCalibPoint] = useState(0);
 
@@ -75,28 +75,28 @@ export const Calibration = ({ checkIfPointsFinished, calibratePosition, calibrat
   // allows responsive calibration points
   useEffect(() => {
     updateCalibrationPoints([
-      { top: browserHeight / 15, right: undefined, bottom: undefined, left: browserWidth / 30 },
-      { top: browserHeight / 15, right: undefined, bottom: undefined, left: browserWidth / 3.7 },
-      { top: browserHeight / 15, right: undefined, bottom: undefined, left: browserWidth / 2 },
-      { top: browserHeight / 15, right: undefined, bottom: undefined, left: browserWidth / 3.7 },
-      { top: browserHeight / 15, right: undefined, bottom: undefined, left: browserWidth / 30 },
-      { top: browserHeight / 2, right: browserWidth / 30 },
-      { top: undefined, right: browserWidth / 30, bottom: browserHeight / 15, left: undefined },
-      { top: undefined, right: browserWidth / 3.7, bottom: browserHeight / 15, left: undefined },
-      { top: undefined, right: undefined, bottom: browserHeight / 15, left: browserWidth / 2 },
-      { top: undefined, right: undefined, bottom: browserHeight / 15, left: browserWidth / 3.7 },
-      { top: undefined, right: undefined, bottom: browserHeight / 15, left: browserWidth / 30 },
-      { top: undefined, right: undefined, bottom: browserHeight / 2, left: browserWidth / 30 },
-      { top: browserHeight / 4, right: undefined, bottom: undefined, left: browserWidth / 7 },
-      { top: browserHeight / 4, right: undefined, bottom: undefined, left: browserWidth / 2 },
-      { top: browserHeight / 4, right: browserWidth / 7, bottom: undefined, left: undefined },
-      { top: undefined, right: undefined, bottom: browserHeight / 4, left: browserWidth / 7 },
-      { top: undefined, right: undefined, bottom: browserHeight / 4, left: browserWidth / 2 },
-      { top: undefined, right: browserWidth / 7, bottom: browserHeight / 4, left: undefined },
-      { top: browserHeight / 3, right: undefined, bottom: undefined, left: browserWidth / 2 },
-      { top: browserHeight / 2, right: undefined, bottom: undefined, left: browserWidth / 2.5 },
-      { top: undefined, right: browserWidth / 2, bottom: browserHeight / 3, left: undefined },
-      { top: undefined, right: browserWidth / 2.5, bottom: browserHeight / 2, left: undefined },
+      { top: browserHeight / 15, left: browserWidth / 30 },
+      { top: browserHeight / 15, left: browserWidth / 3.7 },
+      { top: browserHeight / 15, left: browserWidth / 2 },
+      { top: browserHeight / 15, left: browserWidth / 1.38 },
+      { top: browserHeight / 15, left: browserWidth / 1.05 },
+      { top: browserHeight / 2, left: browserWidth / 1.05 },
+      { top: browserHeight / 1.1, left: browserWidth / 1.05 },
+      { top: browserHeight / 1.1, left: browserWidth / 1.38 },
+      { top: browserHeight / 1.1, left: browserWidth / 2 },
+      { top: browserHeight / 1.1, left: browserWidth / 3.7 },
+      { top: browserHeight / 1.1, left: browserWidth / 30 },
+      { top: browserHeight / 2, left: browserWidth / 30 },
+      { top: browserHeight / 4, left: browserWidth / 7 },
+      { top: browserHeight / 4, left: browserWidth / 2 },
+      { top: browserHeight / 4, left: browserWidth / 1.17 },
+      { top: browserHeight / 1.37, left: browserWidth / 7 },
+      { top: browserHeight / 1.37, left: browserWidth / 2 },
+      { top: browserHeight / 1.37, left: browserWidth / 1.17 },
+      { top: browserHeight / 3, left: browserWidth / 2 },
+      { top: browserHeight / 2, left: browserWidth / 2.5 },
+      { top: browserHeight / 1.55, left: browserWidth / 2 },
+      { top: browserHeight / 2, left: browserWidth / 1.68 },
     ]);
   }, [browserWidth, browserHeight]);
 
@@ -112,12 +112,12 @@ export const Calibration = ({ checkIfPointsFinished, calibratePosition, calibrat
   // for animating the first instruction
   setTimeout(() => {
     updateHideCalibPreText(true);
-  }, 5000);
+  }, 1000); // TODO: og 5000
 
   // for animating the second instruction
   setTimeout(() => {
     updateShowCalibText(true);
-  }, 6000);
+  }, 1000); // TODO: og 6000
 
   console.log(`${browserHeight}, ${browserWidth}`);
 
@@ -146,30 +146,30 @@ export const Calibration = ({ checkIfPointsFinished, calibratePosition, calibrat
         ) : null}
         {/* TODO: Finished the first 5 points, CONTINUE */}
         {/* OUTER */}
-        {/* <Circle top={browserHeight / 15} left={browserWidth / 30} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeft")} />
-        <Circle top={browserHeight / 15} left={browserWidth / 3.7} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeftMid")} />
-        <Circle top={browserHeight / 15} left={browserWidth / 2} clickCount={calibPointsClickCnt.topMid} onCircleClicked={() => calibPointsOnClick("topMid")} />
-        <Circle top={browserHeight / 15} left={browserWidth / 1.38} clickCount={calibPointsClickCnt.topRight} onCircleClicked={() => calibPointsOnClick("topRightMid")} />
-        <Circle top={browserHeight / 15} left={browserWidth / 1.05} clickCount={calibPointsClickCnt.topRight} onCircleClicked={() => calibPointsOnClick("topRight")} /> */}
-        {/* <Circle top={browserHeight / 2} right={browserWidth / 30} clickCount={calibPointsClickCnt.rightMid} onCircleClicked={() => calibPointsOnClick("rightMid")} /> */}
-        {/* <Circle bottom={browserHeight / 15} right={browserWidth / 30} clickCount={calibPointsClickCnt.bottomRight} onCircleClicked={() => calibPointsOnClick("bottomRight")} /> */}
-        {/* <Circle bottom={browserHeight / 15} right={browserWidth / 3.7} clickCount={calibPointsClickCnt.bottomRight} onCircleClicked={() => calibPointsOnClick("bottomRightMid")} /> */}
-        {/* <Circle bottom={browserHeight / 15} left={browserWidth / 2} clickCount={calibPointsClickCnt.bottomMid} onCircleClicked={() => calibPointsOnClick("bottomMid")} /> */}
-        {/* <Circle bottom={browserHeight / 15} left={browserWidth / 3.7} clickCount={calibPointsClickCnt.bottomLeft} onCircleClicked={() => calibPointsOnClick("bottomLeftMid")} /> */}
-        {/* <Circle bottom={browserHeight / 15} left={browserWidth / 30} clickCount={calibPointsClickCnt.bottomLeft} onCircleClicked={() => calibPointsOnClick("bottomLeft")} /> */}
-        {/* <Circle bottom={browserHeight / 2} left={browserWidth / 30} clickCount={calibPointsClickCnt.leftMid} onCircleClicked={() => calibPointsOnClick("leftMid")} /> */}
+        {/* <Circle top={browserHeight / 15} left={browserWidth / 30} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeft")} /> */}
+        {/* <Circle top={browserHeight / 15} left={browserWidth / 3.7} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeftMid")} /> */}
+        {/* <Circle top={browserHeight / 15} left={browserWidth / 2} clickCount={calibPointsClickCnt.topMid} onCircleClicked={() => calibPointsOnClick("topMid")} /> */}
+        {/* <Circle top={browserHeight / 15} left={browserWidth / 1.38} clickCount={calibPointsClickCnt.topRight} onCircleClicked={() => calibPointsOnClick("topRightMid")} /> */}
+        {/* <Circle top={browserHeight / 15} left={browserWidth / 1.05} clickCount={calibPointsClickCnt.topRight} onCircleClicked={() => calibPointsOnClick("topRight")} /> */}
+        {/* <Circle top={browserHeight / 2} left={browserWidth / 1.05} clickCount={calibPointsClickCnt.rightMid} onCircleClicked={() => calibPointsOnClick("rightMid")} /> */}
+        {/* <Circle top={browserHeight / 1.1} left={browserWidth / 1.05} clickCount={calibPointsClickCnt.bottomRight} onCircleClicked={() => calibPointsOnClick("bottomRight")} /> */}
+        {/* <Circle top={browserHeight / 1.1} left={browserWidth / 1.38} clickCount={calibPointsClickCnt.bottomRight} onCircleClicked={() => calibPointsOnClick("bottomRightMid")} /> */}
+        {/* <Circle top={browserHeight / 1.1} left={browserWidth / 2} clickCount={calibPointsClickCnt.bottomMid} onCircleClicked={() => calibPointsOnClick("bottomMid")} /> */}
+        {/* <Circle top={browserHeight / 1.1} left={browserWidth / 3.7} clickCount={calibPointsClickCnt.bottomLeft} onCircleClicked={() => calibPointsOnClick("bottomLeftMid")} /> */}
+        {/* <Circle top={browserHeight / 1.1} left={browserWidth / 30} clickCount={calibPointsClickCnt.bottomLeft} onCircleClicked={() => calibPointsOnClick("bottomLeft")} /> */}
+        {/* <Circle top={browserHeight / 2} left={browserWidth / 30} clickCount={calibPointsClickCnt.leftMid} onCircleClicked={() => calibPointsOnClick("leftMid")} /> */}
         {/* INNER */}
         {/* <Circle top={browserHeight / 4} left={browserWidth / 7} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeftInner")} /> */}
         {/* <Circle top={browserHeight / 4} left={browserWidth / 2} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
-        {/* <Circle top={browserHeight / 4} right={browserWidth / 7} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
-        {/* <Circle bottom={browserHeight / 4} left={browserWidth / 7} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeftInner")} /> */}
-        {/* <Circle bottom={browserHeight / 4} left={browserWidth / 2} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
-        {/* <Circle bottom={browserHeight / 4} right={browserWidth / 7} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
+        {/* <Circle top={browserHeight / 4} left={browserWidth / 1.17} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
+        {/* <Circle top={browserHeight / 1.37} left={browserWidth / 7} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topLeftInner")} /> */}
+        {/* <Circle top={browserHeight / 1.37} left={browserWidth / 2} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
+        {/* <Circle top={browserHeight / 1.37} left={browserWidth / 1.17} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInner")} /> */}
         {/* INNER MOST */}
         {/* <Circle top={browserHeight / 3} left={browserWidth / 2} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("topMidInnerMost")} /> */}
         {/* <Circle top={browserHeight / 2} left={browserWidth / 2.5} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("leftInnerMost")} /> */}
-        {/* <Circle bottom={browserHeight / 3} right={browserWidth / 2} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("bottomMidInnerMost")} /> */}
-        {/* <Circle bottom={browserHeight / 2} right={browserWidth / 2.5} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("rightInnerMost")} /> */}
+        {/* <Circle top={browserHeight / 1.55} left={browserWidth / 2} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("bottomMidInnerMost")} /> */}
+        {/* <Circle top={browserHeight / 2} left={browserWidth / 1.68} clickCount={calibPointsClickCnt.topLeft} onCircleClicked={() => calibPointsOnClick("rightInnerMost")} /> */}
       </div>
     </div>
   );
