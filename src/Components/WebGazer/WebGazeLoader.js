@@ -42,6 +42,24 @@ export default function WebGazeLoader() {
     }
   };
 
+  const calibrationFinished = () => {
+    /* Production */
+    // if (finishedCalibPoints.length === 8) updateCurPageState(PageState.READY);
+    /* Development */
+    if (finishedCalibPoints.length === 1) {
+      updateCurPageState(PageState.READY);
+      // not allowing calibration coordaintes be part of the data
+      updateCollectedData([]); // resetting it here because not sure why curPageState doesn't get updated in "setGazeListener"
+    }
+  };
+
+  const calibratePosition = (x, y) => {
+    console.log("**********In calibratePosition**********");
+    console.log(`x = ${x}, y=${y}`);
+
+    webgazer.recordScreenPosition(x, y, "click");
+  };
+
   // callback for when WebGazer.js is loaded
   const handleScriptLoad = () => {
     webgazer
@@ -61,7 +79,9 @@ export default function WebGazeLoader() {
       .begin();
 
     console.log(webgazer);
-    webgazer.showFaceOverlay(false).showVideoPreview(false);
+    webgazer.showFaceOverlay(false);
+    webgazer.showVideoPreview(false);
+    webgazer.saveDataAcrossSessions(false);
   };
 
   // callback for error loading WebGazer.js
@@ -114,7 +134,11 @@ export default function WebGazeLoader() {
       {/* Load WebGazer.js */}
       <Script url="https://webgazer.cs.brown.edu/webgazer.js" onLoad={handleScriptLoad} onError={handleScriptError} />
       {/* Load page by PageState's condition */}
-      {curPageState === PageState.CALIBRATION ? <Calibration checkIfPointsFinished={checkIfPointsFinished} /> : <MainApp processCollectedData={processCollectedData} />}
+      {curPageState === PageState.CALIBRATION ? (
+        <Calibration checkIfPointsFinished={checkIfPointsFinished} calibratePosition={calibratePosition} calibrationFinished={calibrationFinished} />
+      ) : (
+        <MainApp processCollectedData={processCollectedData} />
+      )}
     </div>
   );
 }

@@ -29,6 +29,7 @@
   animation-name: pop-in;
   animation-duration: 2s;
   animation-fill-mode: forwards;
+  text-align: center;
 }
 
 #welcome-btn {
@@ -44,4 +45,10 @@
   transition: ease-in-out;
   animation-duration: 2s;
   background-color: rgba(34, 167, 240, 1);
+}
+
+@media only screen and (max-width: 992px) {
+  .welcome-text {
+    font-size: 3rem;
+  }
 }
