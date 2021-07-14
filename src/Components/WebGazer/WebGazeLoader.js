@@ -9,6 +9,7 @@ import PageState from "../Utils/PageState";
 // instruct compiler that "webgazer" was already declared From WebGazer.js [consider using Typescript instead of Javascript?]
 declare var webgazer;
 
+/* TODO: */
 // Development use
 // const url = "http://localhost:5000";
 // Production use
@@ -26,8 +27,9 @@ export default function WebGazeLoader() {
     // if (finishedCalibPoints.length === 8) updateCurPageState(PageState.READY);
     /* Development */
     console.log("*****In CalibrationFinished*****");
-
     updateCurPageState(PageState.READY);
+    // disabling click listener to prevent inaccurate calibration in demo
+    webgazer = webgazer.removeMouseEventListeners();
     // not allowing calibration coordaintes be part of the data
     updateCollectedData([]); // resetting it here because not sure why curPageState doesn't get updated in "setGazeListener"
   };
@@ -59,6 +61,7 @@ export default function WebGazeLoader() {
       .begin();
 
     console.log(webgazer);
+    console.log("REMOVING!");
     webgazer.showFaceOverlay(false);
     webgazer.showVideoPreview(false);
     webgazer.saveDataAcrossSessions(false);

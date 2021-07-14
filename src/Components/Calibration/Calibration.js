@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Calibration.css";
 import { Circle } from "../Utils/CircleElement";
 import BrowserDimensions from "../Utils/BrowserDimensions";
+import CustomModal from "../CustomModal";
+import { agreementModal } from "./CalibrationData";
 
 // TODO: Might need to turn off clickListener after calibration - understand what clickListener do in WebGazer.js
 export const Calibration = ({ calibratePosition, calibrationFinished }) => {
@@ -9,10 +11,13 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
   const { width: browserWidth, height: browserHeight } = BrowserDimensions();
 
   /* states */
+  // TODO: Going to add page state for Calibration too, CONSENT STATE and CALIBRATION STATE
+  // const []
   const [hideCalibPreText, updateHideCalibPreText] = useState(false);
   const [showCalibText, updateShowCalibText] = useState(false);
-
-  // TODO:
+  const [agreementModalIsOpen, updateAgreementModalIsOpen] = useState(true);
+  const [calibCompleteModalIsOpen, updateCalibCompleteModalIsOpen] = useState(false);
+  const [currentCalibPoint, updateCurrentCalibPoint] = useState(0);
   const [calibrationPoints, updateCalibrationPoints] = useState([
     { top: browserHeight / 15, left: browserWidth / 30 },
     { top: browserHeight / 15, left: browserWidth / 3.7 },
@@ -37,7 +42,6 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
     { top: browserHeight / 1.55, left: browserWidth / 2 },
     { top: browserHeight / 2, left: browserWidth / 1.68 },
   ]);
-  const [currentCalibPoint, updateCurrentCalibPoint] = useState(0);
 
   /* useEffect listeners */
   // check if all points have been calibrated
@@ -77,6 +81,7 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
     ]);
   }, [browserWidth, browserHeight]);
 
+  /* Methods */
   // on mouse hover over calibration points handler
   const onMouseHover = () => {
     console.log(`ENTERED on MouseOver, current calibration is = ${currentCalibPoint}`);
@@ -84,6 +89,14 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
     let y = calibrationPoints[currentCalibPoint].top !== undefined ? calibrationPoints[currentCalibPoint].top : calibrationPoints[currentCalibPoint].bottom;
     calibratePosition(x, y);
     updateCurrentCalibPoint((prevCnt) => prevCnt + 1);
+  };
+
+  const toggleAgreementModal = () => {
+    updateAgreementModalIsOpen((prevState) => !prevState);
+  };
+
+  const toggleCompletionModal = () => {
+    updateCalibCompleteModalIsOpen((prevState) => !prevState);
   };
 
   // for animating the first instruction
@@ -96,10 +109,24 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
     updateShowCalibText(true);
   }, 1000); // TODO: og 6000
 
-  console.log(`${browserHeight}, ${browserWidth}`);
-
   return (
     <div className="calibration-container">
+      <CustomModal
+        isOpen={agreementModalIsOpen}
+        onClick1={toggleAgreementModal}
+        title={agreementModal.title}
+        subtitle={agreementModal.subtitle}
+        label1={agreementModal.label1}
+        label2={agreementModal.label2}
+      />
+      {/* <CustomModal
+        isOpen={calibCompleteModalIsOpen}
+        onClick1={toggleCompletionModal}
+        title={agreementModal.title}
+        subtitle={agreementModal.subtitle}
+        label1={agreementModal.label1}
+        label2={agreementModal.label2}
+      /> */}
       <p className="calibration-text">Calibration</p>
       <p className={`calibration-subtitle-pre ${hideCalibPreText ? `calibration-subtitle-pre-hide` : ""}`}>
         Please wait until the tracking red dot and the blue calibration points to appear, thank you :)

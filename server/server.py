@@ -51,7 +51,7 @@ def casual_video():
                 # NOTE: For development - write data to database
                 # writeToDB(processed_data)
                 # NOTE: MongoDB (currently using free version)
-                insertToMongoDB(processed_data)
+                # insertToMongoDB(processed_data)
 
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
@@ -107,7 +107,7 @@ def serious_video():
                 # NOTE: For development - write data to database
                 # writeToDB(processed_data)
                 # NOTE: MongoDB (currently using free version)
-                insertToMongoDB(processed_data)
+                # insertToMongoDB(processed_data)
 
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
@@ -164,7 +164,7 @@ def reading():
                 # NOTE: For development - write data to database
                 # writeToDB(processed_data)
                 # NOTE: MongoDB (currently using free version)
-                insertToMongoDB(processed_data)
+                # insertToMongoDB(processed_data)
 
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
@@ -221,7 +221,7 @@ def hard_video():
                 # NOTE: For development - write data to database
                 # writeToDB(processed_data)
                 # NOTE: MongoDB (currently using free version)
-                insertToMongoDB(processed_data)
+                # insertToMongoDB(processed_data)
 
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
