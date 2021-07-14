@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-  background: transparent;
+  background-color: rgba(31, 31, 31, 1);
   height: 100px;
   width: 100%;
   /* margin-top: -80px; */

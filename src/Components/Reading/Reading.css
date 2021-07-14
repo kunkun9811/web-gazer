@@ -15,24 +15,31 @@
   width: 60%;
   min-width: 800px;
   margin-top: 50px;
+  padding: 6rem 3rem 6rem 3rem;
 }
 
 .reading-text-easy {
   color: white;
   font-size: 1.2rem;
-  padding: 6rem 3rem 6rem 3rem;
+
   line-height: 5rem;
+}
+
+.toggle-btns-group {
+  background-color: skyblue;
 }
 
 .reading-toggle {
   height: 80px;
-  width: 150px;
+  width: 200px;
   border-radius: 20px;
   background-color: lightgreen;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  padding: 50px 50px;
+  margin-top: 20px;
 }
 
 .hard-btn {

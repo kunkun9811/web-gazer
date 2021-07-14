@@ -3,7 +3,7 @@ import "./Calibration.css";
 import { Circle } from "../Utils/CircleElement";
 import BrowserDimensions from "../Utils/BrowserDimensions";
 import CustomModal from "../CustomModal";
-import { agreementModal, calibCompleteModal } from "./CalibrationData";
+import { agreementModal, calibCompleteModal, instruction1, instruction2 } from "./CalibrationData";
 import CalibrationPageState from "../Utils/CalibrationPageState";
 
 // TODO: Might need to turn off clickListener after calibration - understand what clickListener do in WebGazer.js
@@ -26,27 +26,27 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
   const [currentCalibPoint, updateCurrentCalibPoint] = useState(0);
   const [calibrationPoints, updateCalibrationPoints] = useState([
     { top: browserHeight / 15, left: browserWidth / 30 },
-    { top: browserHeight / 15, left: browserWidth / 3.7 },
-    { top: browserHeight / 15, left: browserWidth / 2 },
-    { top: browserHeight / 15, left: browserWidth / 1.38 },
-    { top: browserHeight / 15, left: browserWidth / 1.05 },
-    { top: browserHeight / 2, left: browserWidth / 1.05 },
-    { top: browserHeight / 1.1, left: browserWidth / 1.05 },
-    { top: browserHeight / 1.1, left: browserWidth / 1.38 },
-    { top: browserHeight / 1.1, left: browserWidth / 2 },
-    { top: browserHeight / 1.1, left: browserWidth / 3.7 },
-    { top: browserHeight / 1.1, left: browserWidth / 30 },
-    { top: browserHeight / 2, left: browserWidth / 30 },
-    { top: browserHeight / 4, left: browserWidth / 7 },
-    { top: browserHeight / 4, left: browserWidth / 2 },
-    { top: browserHeight / 4, left: browserWidth / 1.17 },
-    { top: browserHeight / 1.37, left: browserWidth / 7 },
-    { top: browserHeight / 1.37, left: browserWidth / 2 },
-    { top: browserHeight / 1.37, left: browserWidth / 1.17 },
-    { top: browserHeight / 3, left: browserWidth / 2 },
-    { top: browserHeight / 2, left: browserWidth / 2.5 },
-    { top: browserHeight / 1.55, left: browserWidth / 2 },
-    { top: browserHeight / 2, left: browserWidth / 1.68 },
+    // { top: browserHeight / 15, left: browserWidth / 3.7 },
+    // { top: browserHeight / 15, left: browserWidth / 2 },
+    // { top: browserHeight / 15, left: browserWidth / 1.38 },
+    // { top: browserHeight / 15, left: browserWidth / 1.05 },
+    // { top: browserHeight / 2, left: browserWidth / 1.05 },
+    // { top: browserHeight / 1.1, left: browserWidth / 1.05 },
+    // { top: browserHeight / 1.1, left: browserWidth / 1.38 },
+    // { top: browserHeight / 1.1, left: browserWidth / 2 },
+    // { top: browserHeight / 1.1, left: browserWidth / 3.7 },
+    // { top: browserHeight / 1.1, left: browserWidth / 30 },
+    // { top: browserHeight / 2, left: browserWidth / 30 },
+    // { top: browserHeight / 4, left: browserWidth / 7 },
+    // { top: browserHeight / 4, left: browserWidth / 2 },
+    // { top: browserHeight / 4, left: browserWidth / 1.17 },
+    // { top: browserHeight / 1.37, left: browserWidth / 7 },
+    // { top: browserHeight / 1.37, left: browserWidth / 2 },
+    // { top: browserHeight / 1.37, left: browserWidth / 1.17 },
+    // { top: browserHeight / 3, left: browserWidth / 2 },
+    // { top: browserHeight / 2, left: browserWidth / 2.5 },
+    // { top: browserHeight / 1.55, left: browserWidth / 2 },
+    // { top: browserHeight / 2, left: browserWidth / 1.68 },
   ]);
 
   /* useEffect listeners */
@@ -79,27 +79,27 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
   useEffect(() => {
     updateCalibrationPoints([
       { top: browserHeight / 15, left: browserWidth / 30 },
-      { top: browserHeight / 15, left: browserWidth / 3.7 },
-      { top: browserHeight / 15, left: browserWidth / 2 },
-      { top: browserHeight / 15, left: browserWidth / 1.38 },
-      { top: browserHeight / 15, left: browserWidth / 1.05 },
-      { top: browserHeight / 2, left: browserWidth / 1.05 },
-      { top: browserHeight / 1.1, left: browserWidth / 1.05 },
-      { top: browserHeight / 1.1, left: browserWidth / 1.38 },
-      { top: browserHeight / 1.1, left: browserWidth / 2 },
-      { top: browserHeight / 1.1, left: browserWidth / 3.7 },
-      { top: browserHeight / 1.1, left: browserWidth / 30 },
-      { top: browserHeight / 2, left: browserWidth / 30 },
-      { top: browserHeight / 4, left: browserWidth / 7 },
-      { top: browserHeight / 4, left: browserWidth / 2 },
-      { top: browserHeight / 4, left: browserWidth / 1.17 },
-      { top: browserHeight / 1.37, left: browserWidth / 7 },
-      { top: browserHeight / 1.37, left: browserWidth / 2 },
-      { top: browserHeight / 1.37, left: browserWidth / 1.17 },
-      { top: browserHeight / 3, left: browserWidth / 2 },
-      { top: browserHeight / 2, left: browserWidth / 2.5 },
-      { top: browserHeight / 1.55, left: browserWidth / 2 },
-      { top: browserHeight / 2, left: browserWidth / 1.68 },
+      // { top: browserHeight / 15, left: browserWidth / 3.7 },
+      // { top: browserHeight / 15, left: browserWidth / 2 },
+      // { top: browserHeight / 15, left: browserWidth / 1.38 },
+      // { top: browserHeight / 15, left: browserWidth / 1.05 },
+      // { top: browserHeight / 2, left: browserWidth / 1.05 },
+      // { top: browserHeight / 1.1, left: browserWidth / 1.05 },
+      // { top: browserHeight / 1.1, left: browserWidth / 1.38 },
+      // { top: browserHeight / 1.1, left: browserWidth / 2 },
+      // { top: browserHeight / 1.1, left: browserWidth / 3.7 },
+      // { top: browserHeight / 1.1, left: browserWidth / 30 },
+      // { top: browserHeight / 2, left: browserWidth / 30 },
+      // { top: browserHeight / 4, left: browserWidth / 7 },
+      // { top: browserHeight / 4, left: browserWidth / 2 },
+      // { top: browserHeight / 4, left: browserWidth / 1.17 },
+      // { top: browserHeight / 1.37, left: browserWidth / 7 },
+      // { top: browserHeight / 1.37, left: browserWidth / 2 },
+      // { top: browserHeight / 1.37, left: browserWidth / 1.17 },
+      // { top: browserHeight / 3, left: browserWidth / 2 },
+      // { top: browserHeight / 2, left: browserWidth / 2.5 },
+      // { top: browserHeight / 1.55, left: browserWidth / 2 },
+      // { top: browserHeight / 2, left: browserWidth / 1.68 },
     ]);
   }, [browserWidth, browserHeight]);
 
@@ -168,12 +168,8 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
         label2={calibCompleteModal.label2}
       />
       {/* <p className="calibration-text">Calibration</p> */}
-      <p className={`${showInstruction ? `calibration-subtitle-show` : "calibration-subtitle-pre-hide"}`}>
-        Please wait until the tracking red dot and the blue calibration points to appear, thank you :)
-      </p>
-      <p className={`${showInstruction ? "calibration-subtitle-show" : "calibration-subtitle-pre-hide"}`}>
-        To achieve the best accuracy, please keep your eyes on your cursor and click each blue points until it becomes yellow!
-      </p>
+      <p className={`${showInstruction ? `calibration-subtitle-show` : "calibration-subtitle-pre-hide"}`}>{instruction1}</p>
+      <p className={`${showInstruction ? "calibration-subtitle-show" : "calibration-subtitle-pre-hide"}`}>{instruction2}</p>
 
       <div className={showCalibPoints ? "calibration-circles-show" : "calibration-circles"}>
         {currentCalibPoint < calibrationPoints.length ? (

@@ -9,7 +9,7 @@ export const Nav = styled.nav`
   justify-content: center;
   align-items: center;
   /* background-color: red; */
-  background-color: rgba(146, 146, 146, 0.01);
+  background-color: rgba(31, 31, 31, 1);
   position: fixed;
   z-index: 50;
   top: 0;
