@@ -8,7 +8,7 @@ import NavBar from "../NavBar";
 // css
 import "./Main.css";
 
-export default function MainApp({ processCollectedData }) {
+export default function MainApp({ processCollectedData, clearDataCollection }) {
   /* State Variables */
   const [selectedContent, updateSelectedContent] = useState("1");
 
@@ -26,6 +26,7 @@ export default function MainApp({ processCollectedData }) {
       {/* BtnId = selectedContent for deciding which database to populate in the backend */}
       {/* selectedBtn = "done" for not ever showing it as "selected" */}
       {/* TODO: modify the Button functionality */}
+      <Button label="Start" BtnId="start" onClickHandler={() => clearDataCollection()} selectedBtn={selectedContent} />
       <Button label="Done!" BtnId="done" onClickHandler={() => processCollectedData({ selectedContent })} selectedBtn={selectedContent} />
     </div>
   );

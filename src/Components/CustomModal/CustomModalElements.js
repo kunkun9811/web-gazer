@@ -11,6 +11,10 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: 0.3s ease-in-out;
+  // TODO: Animation using useSpring if needed
+  /* transform: ${({ isOpen }) => (isOpen ? "0%" : "-100%")};
+  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")}; */
 `;
 
 export const ModalInnerContainer = styled.div`

@@ -20,20 +20,8 @@ export default function WebGazeLoader() {
   const [curPageState, updateCurPageState] = useState(PageState.CALIBRATION); // for switching page content
   const [collectedData, updateCollectedData] = useState([]); // for collecting WebGazer.js data
 
-  /* Methods */
-
-  const calibrationFinished = () => {
-    /* Production */
-    // if (finishedCalibPoints.length === 8) updateCurPageState(PageState.READY);
-    /* Development */
-    console.log("*****In CalibrationFinished*****");
-    updateCurPageState(PageState.READY);
-    // disabling click listener to prevent inaccurate calibration in demo
-    webgazer = webgazer.removeMouseEventListeners();
-    // not allowing calibration coordaintes be part of the data
-    updateCollectedData([]); // resetting it here because not sure why curPageState doesn't get updated in "setGazeListener"
-  };
-
+  /** Methods **/
+  /* For Calibration */
   // Using the current mouse position to calibrate webgazer
   const calibratePosition = (x, y) => {
     console.log("**********In calibratePosition**********");
@@ -42,6 +30,16 @@ export default function WebGazeLoader() {
     webgazer.recordScreenPosition(x, y, "click");
   };
 
+  const calibrationFinished = () => {
+    console.log("*****In CalibrationFinished*****");
+    updateCurPageState(PageState.READY);
+    // disabling click listener to prevent inaccurate calibration in demo
+    webgazer = webgazer.removeMouseEventListeners();
+    // not allowing calibration coordaintes be part of the data
+    updateCollectedData([]);
+  };
+
+  /* For webgazer */
   // callback for when WebGazer.js is loaded
   const handleScriptLoad = () => {
     webgazer
@@ -72,6 +70,7 @@ export default function WebGazeLoader() {
     console.log("error");
   };
 
+  /* For data collection */
   // send raw WebGazer.js data to the backend for processing
   // NOTE:
   // dataType = 1 => casual_video
@@ -113,6 +112,18 @@ export default function WebGazeLoader() {
     updateCollectedData([]);
   };
 
+  const clearDataCollection = () => {
+    console.log("*** In clearDataCollection ***");
+    updateCollectedData([]);
+  };
+
+  useEffect(() => {
+    if (collectedData.length === 0) {
+      console.log("*** CLEARED ***");
+      console.log(collectedData);
+    }
+  }, [collectedData]);
+
   return (
     <div class="web-gazer-container">
       {/* Load WebGazer.js */}
@@ -121,7 +132,7 @@ export default function WebGazeLoader() {
       {curPageState === PageState.CALIBRATION ? (
         <Calibration calibratePosition={calibratePosition} calibrationFinished={calibrationFinished} />
       ) : (
-        <MainApp processCollectedData={processCollectedData} />
+        <MainApp processCollectedData={processCollectedData} clearDataCollection={clearDataCollection} />
       )}
     </div>
   );

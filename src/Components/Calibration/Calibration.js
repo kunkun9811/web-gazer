@@ -3,7 +3,8 @@ import "./Calibration.css";
 import { Circle } from "../Utils/CircleElement";
 import BrowserDimensions from "../Utils/BrowserDimensions";
 import CustomModal from "../CustomModal";
-import { agreementModal } from "./CalibrationData";
+import { agreementModal, calibCompleteModal } from "./CalibrationData";
+import CalibrationPageState from "../Utils/CalibrationPageState";
 
 // TODO: Might need to turn off clickListener after calibration - understand what clickListener do in WebGazer.js
 export const Calibration = ({ calibratePosition, calibrationFinished }) => {
@@ -12,9 +13,14 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
 
   /* states */
   // TODO: Going to add page state for Calibration too, CONSENT STATE and CALIBRATION STATE
-  // const []
+  const [calibPageState, updateCalibPageState] = useState(CalibrationPageState.AGREEMENT);
   const [hideCalibPreText, updateHideCalibPreText] = useState(false);
   const [showCalibText, updateShowCalibText] = useState(false);
+
+  // TODO:
+  const [showInstruction, updateShowInstruction] = useState(false);
+  const [showCalibPoints, updateShowCalibPoints] = useState(false);
+
   const [agreementModalIsOpen, updateAgreementModalIsOpen] = useState(true);
   const [calibCompleteModalIsOpen, updateCalibCompleteModalIsOpen] = useState(false);
   const [currentCalibPoint, updateCurrentCalibPoint] = useState(0);
@@ -50,8 +56,24 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
     console.log(`currentCalibPoint = ${currentCalibPoint}`);
     console.log(`calibrationPoints.length = ${calibrationPoints.length}`);
 
-    if (currentCalibPoint === calibrationPoints.length) calibrationFinished();
+    // if (currentCalibPoint === calibrationPoints.length) calibrationFinished();
+    if (currentCalibPoint === calibrationPoints.length) changeCalibPageState(CalibrationPageState.CALIBRATE_DONE);
   }, [currentCalibPoint]);
+
+  // update which modal to open based on page state
+  useEffect(() => {
+    if (calibPageState === CalibrationPageState.AGREEMENT) {
+      toggleCompletionModal(false);
+      toggleAgreementModal(true);
+    } else if (calibPageState === CalibrationPageState.CALIBRATE) {
+      toggleCompletionModal(false);
+      toggleAgreementModal(false);
+      startCalibrationAnimation();
+    } else if (calibPageState === CalibrationPageState.CALIBRATE_DONE) {
+      toggleAgreementModal(false);
+      toggleCompletionModal(true);
+    }
+  }, [calibPageState]);
 
   // allows responsive calibration points
   useEffect(() => {
@@ -91,51 +113,69 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
     updateCurrentCalibPoint((prevCnt) => prevCnt + 1);
   };
 
-  const toggleAgreementModal = () => {
-    updateAgreementModalIsOpen((prevState) => !prevState);
+  // toggle agreement modal appearance
+  const toggleAgreementModal = (newState) => {
+    updateAgreementModalIsOpen(newState);
   };
 
-  const toggleCompletionModal = () => {
-    updateCalibCompleteModalIsOpen((prevState) => !prevState);
+  // toggle calibration completion modal appearance
+  const toggleCompletionModal = (newState) => {
+    updateCalibCompleteModalIsOpen(newState);
   };
 
-  // for animating the first instruction
-  setTimeout(() => {
-    updateHideCalibPreText(true);
-  }, 1000); // TODO: og 5000
+  // update "calibPageState" to the [newPageState]
+  const changeCalibPageState = (newPageState) => {
+    updateCalibPageState(newPageState);
+  };
 
-  // for animating the second instruction
-  setTimeout(() => {
-    updateShowCalibText(true);
-  }, 1000); // TODO: og 6000
+  // user ready to do to demo
+  const userReadyForDemo = () => {
+    calibrationFinished();
+  };
+
+  // start calibration animation after user accepts the disclaimer
+  const startCalibrationAnimation = () => {
+    updateShowInstruction(true);
+    setTimeout(() => {
+      updateShowInstruction(false);
+    }, 7000);
+
+    setTimeout(() => {
+      updateShowCalibPoints(true);
+    }, 7000);
+  };
+
+  console.log(`------------------------------------------------calibPageState = ${calibPageState}`);
+  console.log(`------------------------------------------------agreementModalIsOpen = ${agreementModalIsOpen}`);
+  console.log(`------------------------------------------------calibCompleteModalIsOpen = ${calibCompleteModalIsOpen}`);
 
   return (
     <div className="calibration-container">
       <CustomModal
         isOpen={agreementModalIsOpen}
-        onClick1={toggleAgreementModal}
+        onClick1={() => changeCalibPageState(CalibrationPageState.CALIBRATE)}
         title={agreementModal.title}
         subtitle={agreementModal.subtitle}
         label1={agreementModal.label1}
         label2={agreementModal.label2}
       />
-      {/* <CustomModal
+      <CustomModal
         isOpen={calibCompleteModalIsOpen}
-        onClick1={toggleCompletionModal}
-        title={agreementModal.title}
-        subtitle={agreementModal.subtitle}
-        label1={agreementModal.label1}
-        label2={agreementModal.label2}
-      /> */}
-      <p className="calibration-text">Calibration</p>
-      <p className={`calibration-subtitle-pre ${hideCalibPreText ? `calibration-subtitle-pre-hide` : ""}`}>
+        onClick1={userReadyForDemo}
+        title={calibCompleteModal.title}
+        subtitle={calibCompleteModal.subtitle}
+        label1={calibCompleteModal.label1}
+        label2={calibCompleteModal.label2}
+      />
+      {/* <p className="calibration-text">Calibration</p> */}
+      <p className={`${showInstruction ? `calibration-subtitle-show` : "calibration-subtitle-pre-hide"}`}>
         Please wait until the tracking red dot and the blue calibration points to appear, thank you :)
       </p>
-      <p className={`${showCalibText ? "calibration-subtitle" : "calibration-subtitle-initial"}`}>
+      <p className={`${showInstruction ? "calibration-subtitle-show" : "calibration-subtitle-pre-hide"}`}>
         To achieve the best accuracy, please keep your eyes on your cursor and click each blue points until it becomes yellow!
       </p>
 
-      <div className="calibration-circles">
+      <div className={showCalibPoints ? "calibration-circles-show" : "calibration-circles"}>
         {currentCalibPoint < calibrationPoints.length ? (
           <Circle
             top={calibrationPoints[currentCalibPoint].top}
