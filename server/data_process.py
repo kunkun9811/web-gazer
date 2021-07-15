@@ -313,7 +313,7 @@ def structureProcessedData(final_fixations, final_saccades, reading_score, dataT
         elif dataType == 1:
                 doc_type = 'serious_video'
         elif dataType == 2:
-                doc_type = 'reading'
+                doc_type = 'easy_reading'
         else:
                 doc_type = 'hard_reading'
 
@@ -327,29 +327,26 @@ def structureProcessedData(final_fixations, final_saccades, reading_score, dataT
         }
         return processed_data
 
-# NOTE: Legacy
-def writeToDB(processed_data):
-        # get next id
-        json_object = {}
-        with open("./database/database_info.json", "r") as openfile:
-                json_object = json.load(openfile)
+def processData(json_data, threshold_1, threshold_2, dataType):
+        print("Processing data...")
+        # NOTE: data_collection is the amalgamation of fixations and saccades data
+        # classify fixations
+        data_collection = classify_fixation(json_data, threshold_1, threshold_2)
+        # measure distance between consecutive saccades
+        data_collection = measureDistance(data_collection)
+        # measure velocities between consecutive fixations
+        data_collection = measureVelocities(data_collection)
+        # separate final fixations and saccades information in "data_collection"
+        final_fixations, final_saccades = produceStructureOfData(data_collection)
+        # calculate reading score
+        reading_score = measureReadingScore(final_fixations)
+        # combine processed informations
+        processed_data = structureProcessedData(final_fixations, final_saccades, reading_score, dataType)
+        # print processed data
+        printFinalData(processed_data)
 
-        next_id = json_object['id']
-        json_object['id'] += 1
-
-        # update next id
-        new_json_object = json.dumps(json_object, indent=4)
-        with open("./database/database_info.json", "w") as outfile:
-                outfile.write(new_json_object)
-
-        # create new entry in the database
-        new_file_name = "entry_{name}".format(name=next_id)
-        processed_data_json_object = json.dumps(processed_data, indent=4)
-        with open("./database/{file_name}.json".format(file_name=new_file_name), "w") as outfile:
-                outfile.write(processed_data_json_object)
-
-        print("Created database entry!")
-        return
+        return processed_data
+        
 
 def getLatestData(dataType):
         # determine which table/collection to query

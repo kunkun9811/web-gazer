@@ -29,29 +29,20 @@ def casual_video():
                         res = make_response("No Data", 400)
                         res.headers['Access-Control-Allow-Origin'] = '*'
                         return res
-                
-                print("Received data...")
-                print("Processing data...")
-                # NOTE: data_collection is the amalgamation of fixations and saccades data
-                # classify fixations
-                data_collection = classify_fixation(json_data, threshold_1, threshold_2)
-                # measure distance between consecutive saccades
-                data_collection = measureDistance(data_collection)
-                # measure velocities between consecutive fixations
-                data_collection = measureVelocities(data_collection)
-                # separate final fixations and saccades information in "data_collection"
-                final_fixations, final_saccades = produceStructureOfData(data_collection)
-                # calculate reading score
-                reading_score = measureReadingScore(final_fixations)
-                # combine processed informations
-                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score, 0)
-                # print processed data
-                printFinalData(processed_data)
 
-                # NOTE: For development - write data to database
-                # writeToDB(processed_data)
+                # received data confirmation
+                print("Received data casual video...")
+
+                # set type of data
+                casual_video_dataType = 0
+
+                # process json_data into useful features for data analysis
+                processed_data = processData(json_data, threshold_1, threshold_2, casual_video_dataType)
+
                 # NOTE: MongoDB (currently using free version)
+                # store to database
                 insertToMongoDB(processed_data)
+                
 
                 res = make_response("Data Processed!", 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
@@ -66,18 +57,8 @@ def casual_video():
 @app.route('/serious_video', methods=['POST', 'OPTIONS'])
 def serious_video():
         if request.method == 'POST':
-                # OG
-                json_data = json.loads(request.data)
-                
-                print(json_data)
-
                 # unpack json
-                # received_data = json.loads(request.data)
-
-                # print(received_data)
-
-                # dataType = received_data['dataType']
-                # json_data = received_data['data']
+                json_data = json.loads(request.data)
                 
                 if len(json_data) == 0:
                         print("*******NO DATA*******")
@@ -86,27 +67,17 @@ def serious_video():
                         res.headers['Access-Control-Allow-Origin'] = '*'
                         return res
                 
-                print("Received data...")
-                print("Processing data...")
-                # NOTE: data_collection is the amalgamation of fixations and saccades data
-                # classify fixations
-                data_collection = classify_fixation(json_data, threshold_1, threshold_2)
-                # measure distance between consecutive saccades
-                data_collection = measureDistance(data_collection)
-                # measure velocities between consecutive fixations
-                data_collection = measureVelocities(data_collection)
-                # separate final fixations and saccades information in "data_collection"
-                final_fixations, final_saccades = produceStructureOfData(data_collection)
-                # calculate reading score
-                reading_score = measureReadingScore(final_fixations)
-                # combine processed informations
-                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score, 1)
-                # print processed data
-                printFinalData(processed_data)
+                # received data confirmation
+                print("Received data for serious video...")
 
-                # NOTE: For development - write data to database
-                # writeToDB(processed_data)
+                # set type of data
+                serious_video_dataType = 1
+
+                # process json_data into useful features for data analysis
+                processed_data = processData(json_data, threshold_1, threshold_2, serious_video_dataType)
+
                 # NOTE: MongoDB (currently using free version)
+                # store to database
                 insertToMongoDB(processed_data)
 
                 res = make_response("Data Processed!", 200)
@@ -123,18 +94,8 @@ def serious_video():
 @app.route('/reading', methods=['POST', 'OPTIONS'])
 def reading():
         if request.method == 'POST':
-                # OG
-                json_data = json.loads(request.data)
-                
-                print(json_data)
-
                 # unpack json
-                # received_data = json.loads(request.data)
-
-                # print(received_data)
-
-                # dataType = received_data['dataType']
-                # json_data = received_data['data']
+                json_data = json.loads(request.data)
                 
                 if len(json_data) == 0:
                         print("*******NO DATA*******")
@@ -143,27 +104,17 @@ def reading():
                         res.headers['Access-Control-Allow-Origin'] = '*'
                         return res
                 
-                print("Received data...")
-                print("Processing data...")
-                # NOTE: data_collection is the amalgamation of fixations and saccades data
-                # classify fixations
-                data_collection = classify_fixation(json_data, threshold_1, threshold_2)
-                # measure distance between consecutive saccades
-                data_collection = measureDistance(data_collection)
-                # measure velocities between consecutive fixations
-                data_collection = measureVelocities(data_collection)
-                # separate final fixations and saccades information in "data_collection"
-                final_fixations, final_saccades = produceStructureOfData(data_collection)
-                # calculate reading score
-                reading_score = measureReadingScore(final_fixations)
-                # combine processed informations
-                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score, 2)
-                # print processed data
-                printFinalData(processed_data)
+                # received data confirmation
+                print("Received data for easy reading...")
 
-                # NOTE: For development - write data to database
-                # writeToDB(processed_data)
+                # set type of data
+                easy_reading_dataType = 2
+
+                # process json_data into useful features for data analysis
+                processed_data = processData(json_data, threshold_1, threshold_2, easy_reading_dataType)
+
                 # NOTE: MongoDB (currently using free version)
+                # store to database
                 insertToMongoDB(processed_data)
 
                 res = make_response("Data Processed!", 200)
@@ -180,18 +131,8 @@ def reading():
 @app.route('/hard_reading', methods=['POST', 'OPTIONS'])
 def hard_video():
         if request.method == 'POST':
-                # OG
-                json_data = json.loads(request.data)
-                
-                print(json_data)
-
                 # unpack json
-                # received_data = json.loads(request.data)
-
-                # print(received_data)
-
-                # dataType = received_data['dataType']
-                # json_data = received_data['data']
+                json_data = json.loads(request.data)
                 
                 if len(json_data) == 0:
                         print("*******NO DATA*******")
@@ -200,27 +141,17 @@ def hard_video():
                         res.headers['Access-Control-Allow-Origin'] = '*'
                         return res
                 
-                print("Received data...")
-                print("Processing data...")
-                # NOTE: data_collection is the amalgamation of fixations and saccades data
-                # classify fixations
-                data_collection = classify_fixation(json_data, threshold_1, threshold_2)
-                # measure distance between consecutive saccades
-                data_collection = measureDistance(data_collection)
-                # measure velocities between consecutive fixations
-                data_collection = measureVelocities(data_collection)
-                # separate final fixations and saccades information in "data_collection"
-                final_fixations, final_saccades = produceStructureOfData(data_collection)
-                # calculate reading score
-                reading_score = measureReadingScore(final_fixations)
-                # combine processed informations
-                processed_data = structureProcessedData(final_fixations, final_saccades, reading_score, 3)
-                # print processed data
-                printFinalData(processed_data)
+               # received data confirmation
+                print("Received data for hard reading...")
 
-                # NOTE: For development - write data to database
-                # writeToDB(processed_data)
+                # set type of data
+                hard_reading_dataType = 3
+
+                # process json_data into useful features for data analysis
+                processed_data = processData(json_data, threshold_1, threshold_2, hard_reading_dataType)
+
                 # NOTE: MongoDB (currently using free version)
+                # store to database
                 insertToMongoDB(processed_data)
 
                 res = make_response("Data Processed!", 200)
