@@ -1,11 +1,12 @@
 import React from "react";
 import "./Button.css";
 
-const Button = ({ label, BtnId, onClickHandler, selectedBtn }) => {
+// TODO: Might need to modify how this button works
+const Button = ({ label, BtnId, doneStartButtonClickHandler, selectedBtn }) => {
   const isSelected = selectedBtn === BtnId ? "selected" : "not-selected";
 
   return (
-    <button onClick={() => onClickHandler(selectedBtn)} className={`custom-button ${isSelected}`} id={BtnId}>
+    <button onClick={() => doneStartButtonClickHandler(selectedBtn)} className={`custom-button ${isSelected}`} id={BtnId}>
       {label}
     </button>
   );

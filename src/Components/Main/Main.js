@@ -11,12 +11,25 @@ import "./Main.css";
 export default function MainApp({ processCollectedData, clearDataCollection }) {
   /* State Variables */
   const [selectedContent, updateSelectedContent] = useState("1");
+  const [isStarted, updateIsStarted] = useState(false);
 
   /* Functions */
   // onClick Handler
   const onClickHandler = (BtnId) => {
     console.log(`current selectedContent = ${BtnId}`);
     updateSelectedContent(BtnId);
+  };
+
+  // toggle isStarted
+  const toggleIsStarted = () => {
+    updateIsStarted((prevState) => !prevState);
+  };
+
+  const doneStartButtonClickHandler = ({ selectedContent }) => {
+    // if not started, it means it's about to start
+    if (!isStarted) clearDataCollection();
+    else processCollectedData({ selectedContent });
+    toggleIsStarted();
   };
 
   return (
@@ -27,8 +40,17 @@ export default function MainApp({ processCollectedData, clearDataCollection }) {
       {/* selectedBtn = "done" for not ever showing it as "selected" */}
       {/* TODO: modify the Button functionality */}
       <div className="main-btns-container">
-        <Button label="Start" BtnId="start" onClickHandler={() => clearDataCollection()} selectedBtn={selectedContent} />
-        <Button label="Done!" BtnId="done" onClickHandler={() => processCollectedData({ selectedContent })} selectedBtn={selectedContent} />
+        <Button label={isStarted ? "Done!" : "Start"} BtnId="start" doneStartButtonClickHandler={() => doneStartButtonClickHandler({ selectedContent })} selectedBtn={selectedContent} />
+        {/* <Button
+          label={isStarted ? "Started!" : "Start"}
+          BtnId="start"
+          onClickHandler={() => {
+            clearDataCollection();
+            toggleIsStarted();
+          }}
+          selectedBtn={selectedContent}
+        />
+        <Button label="Done!" BtnId="done" onClickHandler={() => processCollectedData({ selectedContent })} selectedBtn={selectedContent} /> */}
       </div>
     </div>
   );

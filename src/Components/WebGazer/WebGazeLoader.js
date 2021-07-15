@@ -85,11 +85,10 @@ export default function WebGazeLoader() {
     console.log(collectedData);
 
     console.log(typeof type.selectedContent);
+    console.log(type.selectedContent);
 
     // request url
     const dataType = type.selectedContent;
-
-    console.log(`datatype`);
 
     var request_url = "";
     if (dataType === "1") request_url = `${url}/casual_video`;
