@@ -11,9 +11,9 @@ declare var webgazer;
 
 /* TODO: */
 // Development use
-const url = "http://localhost:5000";
+// const url = "http://localhost:5000";
 // Production use
-// const url = "https://api.aankh.co";
+const url = "https://api.aankh.co";
 
 export default function WebGazeLoader() {
   /* state fields */
