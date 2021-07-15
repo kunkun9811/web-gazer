@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./DataVisualization.css";
 import "zingchart/es6";
 import ZingChart from "zingchart-react";
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import "./Reading.css";
 import { easyRead, hardRead } from "./ReadingData";
-import ToggleButton from "@material-ui/lab/ToggleButton";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { ToggleButton } from "@material-ui/lab";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
+// import Switch from "@material-ui/core/Switch";
 
 export const Reading = ({ onClickHandler }) => {
   // true = easy, false = hard
   const [readingLvl, setReadingLvl] = useState(true);
   const [alignment, setAlignment] = React.useState("easy");
+  const [switchState, setSwitchState] = useState(false); // false = easy, true = hard
 
   const handleAlignment = (event, newAlignment) => {
     console.log(`newAlignment = ${newAlignment}`);
@@ -16,6 +19,10 @@ export const Reading = ({ onClickHandler }) => {
       changeReadingLvl();
     }
   };
+
+  // const handleSwitch = (event) => {
+  //   const currentState = setSwitchState({ [event.target.name]: event.target.checked });
+  // };
 
   const changeReadingLvl = () => {
     setReadingLvl((prevState) => {
