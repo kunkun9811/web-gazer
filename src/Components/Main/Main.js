@@ -25,7 +25,7 @@ export default function MainApp({ processCollectedData, clearDataCollection }) {
     updateIsStarted((prevState) => !prevState);
   };
 
-  // start or button click handler.
+  // start or button click handler
   const doneStartButtonClickHandler = () => {
     // if not started, it means it's about to start
     if (!isStarted) clearDataCollection();
