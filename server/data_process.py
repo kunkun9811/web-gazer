@@ -7,9 +7,9 @@ import datetime
 
 # ** MongoDB configuration **
 #name of the database
-db_name = "pitch_data"
+db_name = "demo"
 client = pymongo.MongoClient('mongodb+srv://dev:Devdev123@pitch-cluster.02iwu.mongodb.net/{db_name}?retryWrites=true&w=majority'.format(db_name=db_name))
-db = client.pitch_data
+db = client.demo
 
 # TODO: To be deleted
 def addOne(num):
@@ -254,20 +254,27 @@ def produceStructureOfData(fixations):
 
                 final_fixations[key] = cur_fixation
 
-                # if this is the first fixation, no saccade info yet
-                if key == 0:
-                        prevEndTime = fixations[key]['endTime']
-                        continue
-                
                 # current saccade info
-                cur_saccade = {
-                        'distance': fixations[key]['distance'],
-                        'duration': fixations[key]['startTime'] - prevEndTime,
-                        'velocity': fixations[key]['velocity'],  # NOTE: in pixels/ms
-                }
+                cur_saccade = None
+                # if this is the first fixation, saccade information will all be zeroes
+                if key == 0:
+                        # current saccade info
+                        cur_saccade = {
+                                'distance': 0,
+                                'duration': 0,
+                                'velocity': 0,  # NOTE: in pixels/ms
+                        }
+                else:
+                        # current saccade info
+                        cur_saccade = {
+                                'distance': fixations[key]['distance'],
+                                'duration': fixations[key]['startTime'] - prevEndTime,
+                                'velocity': fixations[key]['velocity'],  # NOTE: in pixels/ms
+                        }
 
-                # final_saccades[0] is the saccade from fixation[0] to fixation[1]
-                final_saccades[key-1] = cur_saccade
+                # final_saccades[0] is the saccade from fixation[-1] to fixation[0], final_saccades[1] is the saccade from fixation[0] to fixation[1]
+                # fixation[-1] means nothing, it's just the beginning
+                final_saccades[key] = cur_saccade
 
                 # update prevEndTime
                 prevEndTime = fixations[key]['endTime']
