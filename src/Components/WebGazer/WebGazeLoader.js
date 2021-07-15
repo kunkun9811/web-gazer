@@ -11,9 +11,9 @@ declare var webgazer;
 
 /* TODO: */
 // Development use
-// const url = "http://localhost:5000";
+const url = "http://localhost:5000";
 // Production use
-const url = "https://api.aankh.co";
+// const url = "https://api.aankh.co";
 
 export default function WebGazeLoader() {
   /* state fields */
@@ -84,11 +84,13 @@ export default function WebGazeLoader() {
     console.log(`collectedData size = ${collectedData.length}`);
     console.log(collectedData);
 
-    console.log(typeof type.selectedContent);
-    console.log(type.selectedContent);
+    // console.log(typeof type.selectedContent);
+    // console.log(type.selectedContent);
+    // console.log(typeof type);
+    // console.log(type);
 
     // request url
-    const dataType = type.selectedContent;
+    const dataType = type;
 
     var request_url = "";
     if (dataType === "1") request_url = `${url}/casual_video`;

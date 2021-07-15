@@ -25,10 +25,11 @@ export default function MainApp({ processCollectedData, clearDataCollection }) {
     updateIsStarted((prevState) => !prevState);
   };
 
-  const doneStartButtonClickHandler = ({ selectedContent }) => {
+  // start or button click handler.
+  const doneStartButtonClickHandler = () => {
     // if not started, it means it's about to start
     if (!isStarted) clearDataCollection();
-    else processCollectedData({ selectedContent });
+    else processCollectedData(selectedContent);
     toggleIsStarted();
   };
 
@@ -38,19 +39,8 @@ export default function MainApp({ processCollectedData, clearDataCollection }) {
       {selectedContent === "1" ? <YoutubeEmbed embedId="JUF5cJCCp-8" /> : selectedContent === "2" ? <YoutubeEmbed embedId="QVKj3LADCnA" /> : <Reading onClickHandler={onClickHandler} />}
       {/* BtnId = selectedContent for deciding which database to populate in the backend */}
       {/* selectedBtn = "done" for not ever showing it as "selected" */}
-      {/* TODO: modify the Button functionality */}
       <div className="main-btns-container">
-        <Button label={isStarted ? "Done!" : "Start"} BtnId="start" doneStartButtonClickHandler={() => doneStartButtonClickHandler({ selectedContent })} selectedBtn={selectedContent} />
-        {/* <Button
-          label={isStarted ? "Started!" : "Start"}
-          BtnId="start"
-          onClickHandler={() => {
-            clearDataCollection();
-            toggleIsStarted();
-          }}
-          selectedBtn={selectedContent}
-        />
-        <Button label="Done!" BtnId="done" onClickHandler={() => processCollectedData({ selectedContent })} selectedBtn={selectedContent} /> */}
+        <Button label={isStarted ? "Done!" : "Start"} BtnId="start" buttonOnClickHandler={() => doneStartButtonClickHandler()} selectedBtn={selectedContent} />
       </div>
     </div>
   );
