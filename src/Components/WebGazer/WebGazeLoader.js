@@ -84,19 +84,12 @@ export default function WebGazeLoader() {
     console.log(`collectedData size = ${collectedData.length}`);
     console.log(collectedData);
 
-    // console.log(typeof type.selectedContent);
-    // console.log(type.selectedContent);
-    // console.log(typeof type);
-    // console.log(type);
-
     // request url
-    const dataType = type;
-
     var request_url = "";
-    if (dataType === "1") request_url = `${url}/casual_video`;
-    else if (dataType === "2") request_url = `${url}/serious_video`;
-    else if (dataType === "3") request_url = `${url}/reading`;
-    else if (dataType === "4") request_url = `${url}/hard_reading`;
+    if (type === "1") request_url = `${url}/casual_video`;
+    else if (type === "2") request_url = `${url}/serious_video`;
+    else if (type === "3") request_url = `${url}/reading`;
+    else if (type === "4") request_url = `${url}/hard_reading`;
 
     console.log(`request_url = ${request_url}`);
 
@@ -118,12 +111,13 @@ export default function WebGazeLoader() {
     updateCollectedData([]);
   };
 
-  useEffect(() => {
-    if (collectedData.length === 0) {
-      console.log("*** CLEARED ***");
-      console.log(collectedData);
-    }
-  }, [collectedData]);
+  /* Debug Use */
+  // useEffect(() => {
+  //   if (collectedData.length === 0) {
+  //     console.log("*** CLEARED ***");
+  //     console.log(collectedData);
+  //   }
+  // }, [collectedData]);
 
   return (
     <div class="web-gazer-container">
