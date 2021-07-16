@@ -12,6 +12,10 @@ const Result = ({ easyReadDocId, hardReadDocId }) => {
   const renderChart = async () => {
     // MongoDB only accept ObjectId objects for "_id"
     const ObjectID = require("mongodb").ObjectId;
+
+    console.log("**************************MONGODB**************************");
+    console.log(require("mongodb"));
+
     // Easy Reading Chart
     if (easyReadDocId) {
       const sdk = new EmbedSDK({
