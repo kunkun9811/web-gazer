@@ -12,7 +12,7 @@ const Result = ({ easyReadDocId, hardReadDocId }) => {
   /* Methods */
   const renderChart = async () => {
     // MongoDB only accept ObjectId objects for "_id"
-    // const ObjectID = require("mongodb").ObjectId;
+    const ObjectID = require("mongodb").ObjectId;
 
     console.log("**************************MONGODB**************************");
     console.log(require("mongodb"));
