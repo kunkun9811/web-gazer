@@ -6,7 +6,7 @@ import pymongo
 import datetime
 
 # ** MongoDB configuration **
-#name of the database
+# TODO: name of the database
 db_name = "demo"
 client = pymongo.MongoClient('mongodb+srv://dev:Devdev123@pitch-cluster.02iwu.mongodb.net/{db_name}?retryWrites=true&w=majority'.format(db_name=db_name))
 db = client.demo
@@ -428,6 +428,17 @@ def getLatestData(dataType):
 
 
 # *** NEW ***
+# insert to database in mongodb
+# Input (object): fixation, saccades, and other information for current trial of demo
+# Output (string): hex string of the document ID inserted into MongoDB
 def insertToMongoDB(processed_data):
         collection = db.all
-        collection.insert_one(processed_data)
+        # collection.insert_one(processed_data)
+        # TODO: grab the inserted document id
+        newDoc = collection.insert_one(processed_data)
+        newDocId = newDoc.inserted_id
+
+        print("newDocId = ", newDocId)
+        print("newDocId type = ", type(str(newDocId)))
+
+        return str(newDocId)

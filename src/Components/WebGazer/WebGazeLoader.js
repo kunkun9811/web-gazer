@@ -19,6 +19,11 @@ export default function WebGazeLoader() {
   /* state fields */
   const [curPageState, updateCurPageState] = useState(PageState.CALIBRATION); // for switching page content
   const [collectedData, updateCollectedData] = useState([]); // for collecting WebGazer.js data
+  const [easyReadDocId, updateEasyReadDocId] = useState(undefined);
+  const [hardReadDocId, updateHardReadDocId] = useState(undefined);
+  // TODO: Need to get data from backend to calculate statistics
+  const [easyReadData, updateEasyReadData] = useState({});
+  const [hardReadData, updateHardReadData] = useState({});
 
   /** Methods **/
   /* For Calibration */
@@ -97,10 +102,22 @@ export default function WebGazeLoader() {
     await fetch(request_url, {
       method: "POST",
       body: JSON.stringify(collectedData),
-    }).then((response) => {
-      console.log(`Successfully connected with {POST} endpoint => response:`);
-      console.log(response.body);
-    });
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(`Successfully connected with {POST} endpoint => response:`);
+        console.log(data);
+        if (type === "3") {
+          updateEasyReadDocId(data.newDocId);
+          // TODO: Get the data to calculate mean and all that shit
+          // updateEasyReadData(data.data);
+          console.log("********************************Updated Easy Read ID + DATA********************************");
+        } else if (type === "4") {
+          updateHardReadDocId(data.newDocId);
+          // updateHardReadData(data.data);
+          console.log("********************************Updated Hard Read ID + DATA********************************");
+        }
+      });
 
     // clear sent data
     updateCollectedData([]);
@@ -127,7 +144,7 @@ export default function WebGazeLoader() {
       {curPageState === PageState.CALIBRATION ? (
         <Calibration calibratePosition={calibratePosition} calibrationFinished={calibrationFinished} />
       ) : (
-        <MainApp processCollectedData={processCollectedData} clearDataCollection={clearDataCollection} />
+        <MainApp processCollectedData={processCollectedData} clearDataCollection={clearDataCollection} easyReadDocId={easyReadDocId} hardReadDocId={hardReadDocId} />
       )}
     </div>
   );

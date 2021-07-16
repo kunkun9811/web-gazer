@@ -37,36 +37,6 @@ const DataVisualization = () => {
         <Grid item xs={12} lg={3}>
           <ZingChart data={barConfig} />
         </Grid>
-        <Grid item xs={12} lg={3}>
-          <ZingChart data={barConfig} />
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <ZingChart data={barConfig} />
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <ZingChart data={barConfig} />
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <ZingChart data={barConfig} />
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <ZingChart data={barConfig} />
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <ZingChart data={barConfig} />
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <ZingChart data={barConfig} />
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <ZingChart data={barConfig} />
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <ZingChart data={barConfig} />
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <ZingChart data={barConfig} />
-        </Grid>
       </Grid>
     </div>
   );

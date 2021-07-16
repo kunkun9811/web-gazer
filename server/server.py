@@ -1,4 +1,4 @@
-from flask import Flask, Response, request, make_response
+from flask import Flask, Response, request, make_response, jsonify
 import json
 from data_process import *
 
@@ -40,11 +40,14 @@ def casual_video():
                 processed_data = processData(json_data, threshold_1, threshold_2, casual_video_dataType)
 
                 # NOTE: MongoDB (currently using free version)
-                # store to database
-                insertToMongoDB(processed_data)
+                # store to database and get inserted doc's ID to send back to the front end
+                newDocId = insertToMongoDB(processed_data)
                 
 
-                res = make_response("Data Processed!", 200)
+                res = make_response(jsonify({
+                        "newDocId": newDocId,
+                        # "data": processed_data,
+                }), 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
                 return res
         elif request.method == 'OPTIONS':
@@ -77,10 +80,13 @@ def serious_video():
                 processed_data = processData(json_data, threshold_1, threshold_2, serious_video_dataType)
 
                 # NOTE: MongoDB (currently using free version)
-                # store to database
-                insertToMongoDB(processed_data)
+                # store to database and get inserted doc's ID to send back to the front end
+                newDocId = insertToMongoDB(processed_data)
 
-                res = make_response("Data Processed!", 200)
+                res = make_response(jsonify({
+                        "newDocId": newDocId,
+                        # "data": processed_data,
+                }), 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
                 return res
         elif request.method == 'OPTIONS':
@@ -114,10 +120,16 @@ def reading():
                 processed_data = processData(json_data, threshold_1, threshold_2, easy_reading_dataType)
 
                 # NOTE: MongoDB (currently using free version)
-                # store to database
-                insertToMongoDB(processed_data)
+                # store to database and get inserted doc's ID to send back to the front end
+                newDocId = insertToMongoDB(processed_data)
 
-                res = make_response("Data Processed!", 200)
+                # TODO: Send processed_Data back too
+                # print("processed_data type = ", type(processed_data))
+
+                res = make_response(jsonify({
+                        "newDocId": newDocId,
+                        # "processed_data": JSON.stringify(processed_data),
+                }), 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
                 return res
         elif request.method == 'OPTIONS':
@@ -151,10 +163,13 @@ def hard_video():
                 processed_data = processData(json_data, threshold_1, threshold_2, hard_reading_dataType)
 
                 # NOTE: MongoDB (currently using free version)
-                # store to database
-                insertToMongoDB(processed_data)
+                # store to database and get inserted doc's ID to send back to the front end
+                newDocId = insertToMongoDB(processed_data)
 
-                res = make_response("Data Processed!", 200)
+                res = make_response(jsonify({
+                        "newDocId": newDocId,
+                        # "data": processed_data,
+                }), 200)
                 res.headers['Access-Control-Allow-Origin'] = '*'
                 return res
         elif request.method == 'OPTIONS':

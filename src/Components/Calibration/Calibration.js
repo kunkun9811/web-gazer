@@ -145,9 +145,9 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
     }, 7000);
   };
 
-  console.log(`------------------------------------------------calibPageState = ${calibPageState}`);
-  console.log(`------------------------------------------------agreementModalIsOpen = ${agreementModalIsOpen}`);
-  console.log(`------------------------------------------------calibCompleteModalIsOpen = ${calibCompleteModalIsOpen}`);
+  // console.log(`------------------------------------------------calibPageState = ${calibPageState}`);
+  // console.log(`------------------------------------------------agreementModalIsOpen = ${agreementModalIsOpen}`);
+  // console.log(`------------------------------------------------calibCompleteModalIsOpen = ${calibCompleteModalIsOpen}`);
 
   return (
     <div className="calibration-container">
