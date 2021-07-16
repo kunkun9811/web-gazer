@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { ResultContainer, ResultInnerContainer, ResultColumn1, ResultColumn2, ResultChart } from "./ResultElements";
 import EmbedSDK from "@mongodb-js/charts-embed-dom";
-import { ObjectId as ObjectID } from "mongodb";
 
 const Result = ({ easyReadDocId, hardReadDocId }) => {
   /* Listeners*/
@@ -36,6 +35,7 @@ const Result = ({ easyReadDocId, hardReadDocId }) => {
         chart.setFilter({ _id: easyChartObjectId });
       });
     }
+
     // Hard Reading Chart
     if (hardReadDocId) {
       const sdk = new EmbedSDK({
