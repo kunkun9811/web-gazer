@@ -11,6 +11,7 @@ const Result = ({ easyReadDocId, hardReadDocId }) => {
   /* Methods */
   const renderChart = async () => {
     // MongoDB only accept ObjectId objects for "_id"
+    // TODO: Figure out why this is undefined when in the build folder
     const ObjectID = require("mongodb").ObjectId;
 
     console.log("**************************MONGODB**************************");

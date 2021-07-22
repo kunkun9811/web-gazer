@@ -1,21 +1,33 @@
+// TODO: Figure out why fast clicking causes a crash
 import React, { useState, useEffect } from "react";
 import Script from "react-load-script";
 import "./WebGazeLoader.css";
-import { WebGazeContext } from "./WebGazeContext";
 import MainApp from "../Main/Main";
 import Calibration from "../Calibration/Calibration";
 import PageState from "../Utils/PageState";
+import ClientDimensions from "../Utils/ClientDimensions";
+
+/* TODO: DELETE THIS AFTER TESTING */
+import { gaze_x, gaze_y, gaze_t } from "./TempData";
+/* END TO BE DELETED */
+
+/* Scripts */
+import { EKDetector } from "../../scripts/EKDetector";
+const ekd_detector = new EKDetector();
 
 // instruct compiler that "webgazer" was already declared From WebGazer.js [consider using Typescript instead of Javascript?]
 declare var webgazer;
 
 /* TODO: */
 // Development use
-// const url = "http://localhost:5000";
+const url = "http://localhost:5000";
 // Production use
-const url = "https://api.aankh.co";
+// const url = "https://api.aankh.co";
 
 export default function WebGazeLoader() {
+  /* Client Dimensions */
+  const { width: clientWidth, height: clientHeight } = ClientDimensions();
+
   /* state fields */
   const [curPageState, updateCurPageState] = useState(PageState.CALIBRATION); // for switching page content
   const [collectedData, updateCollectedData] = useState([]); // for collecting WebGazer.js data
@@ -87,6 +99,7 @@ export default function WebGazeLoader() {
     console.log("Sending data to backend...");
     console.log("Processing data to backend...");
     console.log(`collectedData size = ${collectedData.length}`);
+    console.log("*********collectedData*********");
     console.log(collectedData);
 
     // request url
@@ -97,6 +110,45 @@ export default function WebGazeLoader() {
     else if (type === "4") request_url = `${url}/hard_reading`;
 
     console.log(`request_url = ${request_url}`);
+
+    /* TODO: OFFICIAL - CHANGE TO THIS WHEN DONE TESTING PYTHON */
+    const samples = {
+      x: collectedData.map((entry) => entry.data.x),
+      y: collectedData.map((entry) => entry.data.y),
+      t: collectedData.map((entry) => entry.elapsedTime),
+    };
+
+    /* TODO: TESTING - for converting to python */
+    // const samples = {
+    //   x: gaze_x,
+    //   y: gaze_y,
+    //   t: gaze_t,
+    //   clientWidth: clientWidth,
+    //   clientHeight: clientHeight,
+    // };
+
+    // calculate "fixations" and "saccades"
+    const [fixations, saccades] = ekd_detector.detect(samples);
+
+    // populate the corresponding variable
+    if (type === "3") {
+      updateEasyReadData({
+        fixations: fixations,
+        saccades: saccades,
+      });
+    } else if (type === "4") {
+      updateHardReadData({
+        fixations: fixations,
+        saccades: saccades,
+      });
+    }
+
+    console.log("*******************Fixations*******************");
+    console.log(fixations);
+    console.log("*******************Saccades*******************");
+    console.log(saccades);
+
+    // END TEST EKDetector-------------------------------------------------------------------------
 
     // send data to backend for processing
     await fetch(request_url, {
@@ -136,6 +188,19 @@ export default function WebGazeLoader() {
   //   }
   // }, [collectedData]);
 
+  // For reading easyReadData
+  useEffect(() => {
+    console.log("*********************easy read populated*********************");
+    console.log(easyReadData);
+  }, [easyReadData]);
+
+  // For reading hardReadData
+  useEffect(() => {
+    console.log("*********************hard read populated*********************");
+    console.log(hardReadData);
+  }, [hardReadData]);
+  /* END Debug use */
+
   return (
     <div class="web-gazer-container">
       {/* Load WebGazer.js */}
@@ -144,7 +209,8 @@ export default function WebGazeLoader() {
       {curPageState === PageState.CALIBRATION ? (
         <Calibration calibratePosition={calibratePosition} calibrationFinished={calibrationFinished} />
       ) : (
-        <MainApp processCollectedData={processCollectedData} clearDataCollection={clearDataCollection} easyReadDocId={easyReadDocId} hardReadDocId={hardReadDocId} />
+        // <MainApp processCollectedData={processCollectedData} clearDataCollection={clearDataCollection} easyReadDocId={easyReadDocId} hardReadDocId={hardReadDocId} />
+        <MainApp processCollectedData={processCollectedData} clearDataCollection={clearDataCollection} easyReadData={easyReadData} hardReadData={hardReadData} />
       )}
     </div>
   );

@@ -1,4 +1,5 @@
-/* Handles and stores current viewport/browser dimensions */
+/* Handles and stores current VIEWPORT/BROWSER dimensions */
+// NOTE: this *width* includes "scrollbar"
 import { useState, useEffect } from "react";
 
 function getWindowDimensions() {
@@ -10,7 +11,7 @@ function getWindowDimensions() {
 }
 
 const BrowserDimensions = () => {
-  const [browserDim, setBrowserDim] = useState(getWindowDimensions);
+  const [browserDim, setBrowserDim] = useState(getWindowDimensions());
 
   useEffect(() => {
     function handleResize() {

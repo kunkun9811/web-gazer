@@ -4,12 +4,14 @@ import Button from "../Button/Button";
 import YoutubeEmbed from "../YoutubeEmbed";
 import Reading from "../Reading/Reading";
 import NavBar from "../NavBar";
-import Result from "../Result";
+// import Result from "../Result";
+import ResultZingChart from "../ResultZingChart";
 
 // css
 import "./Main.css";
 
-export default function MainApp({ processCollectedData, clearDataCollection, easyReadDocId, hardReadDocId }) {
+// export default function MainApp({ processCollectedData, clearDataCollection, easyReadDocId, hardReadDocId }) {
+export default function MainApp({ processCollectedData, clearDataCollection, easyReadData, hardReadData }) {
   /* State Variables */
   // NOTE: Contains all content starting from 1
   // const [selectedContent, updateSelectedContent] = useState("1");
@@ -41,7 +43,9 @@ export default function MainApp({ processCollectedData, clearDataCollection, eas
       <NavBar selectedContent={selectedContent} onClickHandler={onClickHandler} />
       {/* All three contents */}
       {/* {selectedContent === "1" ? <YoutubeEmbed embedId="JUF5cJCCp-8" /> : selectedContent === "2" ? <YoutubeEmbed embedId="QVKj3LADCnA" /> : <Reading onClickHandler={onClickHandler} />} */}
-      {selectedContent === "5" ? <Result easyReadDocId={easyReadDocId} hardReadDocId={hardReadDocId} /> : <Reading onClickHandler={onClickHandler} />}
+      easyReadData
+      {/* {selectedContent === "5" ? <Result easyReadDocId={easyReadDocId} hardReadDocId={hardReadDocId} /> : <Reading onClickHandler={onClickHandler} />} */}
+      {selectedContent === "5" ? <ResultZingChart easyReadData={easyReadData} hardReadData={hardReadData} /> : <Reading onClickHandler={onClickHandler} />}
       {/* BtnId = selectedContent for deciding which database to populate in the backend */}
       {/* selectedBtn = "done" for not ever showing it as "selected" */}
       {selectedContent !== "5" ? (
