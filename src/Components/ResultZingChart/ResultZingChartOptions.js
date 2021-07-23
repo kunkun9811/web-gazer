@@ -10,9 +10,27 @@ export const barChartOptions = {
   //   backgroundColor: "black",
 };
 
-export const getBarChartOptions = (isEasy) => {
+export const getColumnChartNumPointsFixationOptions = (isEasy) => {
   //   console.log(`isEasy = ${isEasy}`);
   const title = isEasy ? "Time Series of Number of Points in Fixation (Easy)" : "Time Series of Number of Points in Fixation (Hard)";
+  const color = isEasy ? ["#7BB9FF"] : ["#e81a0c"];
+
+  const options = {
+    title: title,
+    width: "100%",
+    height: "100%",
+    titleTextStyle: {
+      fontSize: 20, // 12, 18 whatever you want (don't specify px)
+    },
+    colors: color,
+  };
+
+  return options;
+};
+
+export const getColumnChartDurationsOptions = (isEasy) => {
+  //   console.log(`isEasy = ${isEasy}`);
+  const title = isEasy ? "Duration of Fixations (Easy)" : "Duration of Fixations (Hard)";
   const color = isEasy ? ["#7BB9FF"] : ["#e81a0c"];
 
   const options = {

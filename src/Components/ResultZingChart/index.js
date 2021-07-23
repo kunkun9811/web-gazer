@@ -1,22 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { ResultContainer, ResultInnerContainer, ResultColumn1, ResultColumn2, ResultChartWrapper } from "./ResultZingChartElements";
+import { ResultContainer, ResultInnerContainer, ResultColumn1, ResultColumn2, ResultRow, ResultChartWrapper } from "./ResultZingChartElements";
 import ZingChart from "zingchart-react";
 import Chart from "react-google-charts";
 import ResultPageState from "../Utils/ResultPageState";
-import { barChartOptions, getBarChartOptions } from "./ResultZingChartOptions";
+import { getColumnChartNumPointsFixationOptions, getColumnChartDurationsOptions } from "./ResultZingChartOptions";
 import { CircularProgress } from "@material-ui/core";
-import { hardRead } from "../Reading/ReadingData";
 import ReadingLevel from "../Utils/ReadingLevel";
 
 const ResultZingChart = ({ easyReadData, hardReadData }) => {
   /* states */
   const [displayChartType, setDisplayChartType] = useState(ResultPageState.NUM_POINTS_PER_FIXATION);
+
+  // # of Points per Fixation vs. Time
   const [numEasyPointsPerFixation, setNumEasyPointsPerFixation] = useState(undefined);
   const [easyFixationsStartTimes, setEasyFixationsStartTimes] = useState(undefined);
   const [easyColumnData, setEasyColumnData] = useState(undefined);
   const [numHardPointsPerFixation, setNumHardPointsPerFixation] = useState(undefined);
   const [hardFixationsStartTimes, setHardFixationsStartTimes] = useState(undefined);
   const [hardColumnData, setHardColumnData] = useState(undefined);
+
+  // Duration of each fixation
+  const [easyFixationDurations, setEasyFixationDurations] = useState(undefined);
+  const [hardFixationDurations, setHardFixationDurations] = useState(undefined);
+  const [easyColumnDurationData, setEasyColumnDurationData] = useState(undefined);
+  const [hardColumnDurationData, setHardColumnDurationData] = useState(undefined);
+
+  // Heatmap of coordinates - TODO: Check if this is a valid way of doing it (midpoint of each fixation)
+  // const [mid]
 
   /* Listeners*/
   // listens to changes with "easyReadData" and "hardReadData"
@@ -28,13 +38,14 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
     if (easyReadData !== undefined || hardReadData !== undefined) {
       setStartTimes();
       setNumPointsPerFixation();
+      setDurationPerFixation();
     }
   }, [easyReadData, hardReadData]); //easyReadData, hardReadData
 
   // listens to changes in "easyColumnData" and  "hardColumnData"
   useEffect(() => {
     renderChart();
-  }, [numEasyPointsPerFixation, easyFixationsStartTimes, numHardPointsPerFixation, hardFixationsStartTimes]);
+  }, [numEasyPointsPerFixation, easyFixationsStartTimes, numHardPointsPerFixation, hardFixationsStartTimes, easyFixationDurations, hardFixationDurations]);
 
   // bar chart - Number of Points per Fixation v.s. Start Times
 
@@ -63,7 +74,18 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
     }
   };
 
-  // TODO: Not sure why it only display after I reload it HM.
+  const setDurationPerFixation = () => {
+    if (easyReadData !== undefined) {
+      const newEasyFixationDuration = easyReadData.fixations.map((fixation) => fixation.data.duration);
+      setEasyFixationDurations(newEasyFixationDuration);
+    }
+
+    if (hardReadData !== undefined) {
+      const newHardFixationDuration = hardReadData.fixations.map((fixation) => fixation.data.duration);
+      setHardFixationDurations(newHardFixationDuration);
+    }
+  };
+
   const setBarChartData = () => {
     if (numEasyPointsPerFixation !== undefined) {
       const curData = [["Start Time", "Number of Points"]];
@@ -84,36 +106,72 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
     }
   };
 
+  const setBarChartFixationDurationData = () => {
+    if (easyFixationDurations !== undefined) {
+      const curData = [["Fixation", "Fixation Durations"]];
+      for (let idx in easyFixationDurations) {
+        const newData = [idx, easyFixationDurations[idx]];
+        curData.push(newData);
+      }
+      setEasyColumnDurationData(curData);
+    }
+
+    if (hardFixationDurations !== undefined) {
+      // TODO: Not sure why I still need to put "Fixation" here even though it doesn't display it
+      const curData = [["Fixation", "Fixation Durations"]];
+      for (let idx in hardFixationDurations) {
+        const newData = [idx, hardFixationDurations[idx]];
+        curData.push(newData);
+      }
+      setHardColumnDurationData(curData);
+    }
+  };
+
   // render charts based on "displayChartType"
   const renderChart = async () => {
     setBarChartData();
+    setBarChartFixationDurationData();
   };
 
   // TODO: Change it to rows instead of columns actually
   return (
     <ResultContainer>
-      {/* {console.log("hello")} */}
       <ResultInnerContainer>
-        <ResultColumn1>
-          {/* Number of points vs. Time */}
+        {/* # of Points Per Fixation vs Time */}
+        <ResultRow>
           <ResultChartWrapper>
             {easyColumnData !== undefined ? (
-              <Chart chartType="ColumnChart" data={easyColumnData} loader={<CircularProgress />} options={getBarChartOptions(ReadingLevel.EASY)} legendToggle />
+              <Chart chartType="ColumnChart" data={easyColumnData} loader={<CircularProgress />} options={getColumnChartNumPointsFixationOptions(ReadingLevel.EASY)} legendToggle />
             ) : (
               "No Data"
             )}
           </ResultChartWrapper>
-        </ResultColumn1>
-        <ResultColumn2>
-          {/* Number of points vs. Time */}
           <ResultChartWrapper>
             {hardColumnData !== undefined ? (
-              <Chart chartType="ColumnChart" data={hardColumnData} loader={<CircularProgress />} options={getBarChartOptions(ReadingLevel.HARD)} legendToggle />
+              <Chart chartType="ColumnChart" data={hardColumnData} loader={<CircularProgress />} options={getColumnChartNumPointsFixationOptions(ReadingLevel.HARD)} legendToggle />
             ) : (
               "No Data"
             )}
           </ResultChartWrapper>
-        </ResultColumn2>
+        </ResultRow>
+
+        {/* Durations of each Fixation */}
+        <ResultRow>
+          <ResultChartWrapper>
+            {easyColumnData !== undefined ? (
+              <Chart chartType="ColumnChart" data={easyColumnDurationData} loader={<CircularProgress />} options={getColumnChartDurationsOptions(ReadingLevel.EASY)} legendToggle />
+            ) : (
+              "No Data"
+            )}
+          </ResultChartWrapper>
+          <ResultChartWrapper>
+            {hardColumnData !== undefined ? (
+              <Chart chartType="ColumnChart" data={hardColumnDurationData} loader={<CircularProgress />} options={getColumnChartDurationsOptions(ReadingLevel.HARD)} legendToggle />
+            ) : (
+              "No Data"
+            )}
+          </ResultChartWrapper>
+        </ResultRow>
       </ResultInnerContainer>
     </ResultContainer>
   );
