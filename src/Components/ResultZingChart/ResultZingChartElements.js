@@ -34,4 +34,15 @@ export const ResultColumn2 = styled.div`
   /* background-color: teal; */
 `;
 
-// export const ResultChart = styled.div``;
+export const ResultChartWrapper = styled.div`
+  height: 40%;
+  width: 80%;
+  min-height: 400px;
+  min-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+
+  /* background-color: purple; */
+`;

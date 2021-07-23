@@ -26,27 +26,27 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
   const [currentCalibPoint, updateCurrentCalibPoint] = useState(0);
   const [calibrationPoints, updateCalibrationPoints] = useState([
     { top: browserHeight / 15, left: browserWidth / 30 },
-    // { top: browserHeight / 15, left: browserWidth / 3.7 },
-    // { top: browserHeight / 15, left: browserWidth / 2 },
-    // { top: browserHeight / 15, left: browserWidth / 1.38 },
-    // { top: browserHeight / 15, left: browserWidth / 1.05 },
-    // { top: browserHeight / 2, left: browserWidth / 1.05 },
-    // { top: browserHeight / 1.1, left: browserWidth / 1.05 },
-    // { top: browserHeight / 1.1, left: browserWidth / 1.38 },
-    // { top: browserHeight / 1.1, left: browserWidth / 2 },
-    // { top: browserHeight / 1.1, left: browserWidth / 3.7 },
-    // { top: browserHeight / 1.1, left: browserWidth / 30 },
-    // { top: browserHeight / 2, left: browserWidth / 30 },
-    // { top: browserHeight / 4, left: browserWidth / 7 },
-    // { top: browserHeight / 4, left: browserWidth / 2 },
-    // { top: browserHeight / 4, left: browserWidth / 1.17 },
-    // { top: browserHeight / 1.37, left: browserWidth / 7 },
-    // { top: browserHeight / 1.37, left: browserWidth / 2 },
-    // { top: browserHeight / 1.37, left: browserWidth / 1.17 },
-    // { top: browserHeight / 3, left: browserWidth / 2 },
-    // { top: browserHeight / 2, left: browserWidth / 2.5 },
-    // { top: browserHeight / 1.55, left: browserWidth / 2 },
-    // { top: browserHeight / 2, left: browserWidth / 1.68 },
+    { top: browserHeight / 15, left: browserWidth / 3.7 },
+    { top: browserHeight / 15, left: browserWidth / 2 },
+    { top: browserHeight / 15, left: browserWidth / 1.38 },
+    { top: browserHeight / 15, left: browserWidth / 1.05 },
+    { top: browserHeight / 2, left: browserWidth / 1.05 },
+    { top: browserHeight / 1.1, left: browserWidth / 1.05 },
+    { top: browserHeight / 1.1, left: browserWidth / 1.38 },
+    { top: browserHeight / 1.1, left: browserWidth / 2 },
+    { top: browserHeight / 1.1, left: browserWidth / 3.7 },
+    { top: browserHeight / 1.1, left: browserWidth / 30 },
+    { top: browserHeight / 2, left: browserWidth / 30 },
+    { top: browserHeight / 4, left: browserWidth / 7 },
+    { top: browserHeight / 4, left: browserWidth / 2 },
+    { top: browserHeight / 4, left: browserWidth / 1.17 },
+    { top: browserHeight / 1.37, left: browserWidth / 7 },
+    { top: browserHeight / 1.37, left: browserWidth / 2 },
+    { top: browserHeight / 1.37, left: browserWidth / 1.17 },
+    { top: browserHeight / 3, left: browserWidth / 2 },
+    { top: browserHeight / 2, left: browserWidth / 2.5 },
+    { top: browserHeight / 1.55, left: browserWidth / 2 },
+    { top: browserHeight / 2, left: browserWidth / 1.68 },
   ]);
 
   /* useEffect listeners */
@@ -79,27 +79,27 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
   useEffect(() => {
     updateCalibrationPoints([
       { top: browserHeight / 15, left: browserWidth / 30 },
-      // { top: browserHeight / 15, left: browserWidth / 3.7 },
-      // { top: browserHeight / 15, left: browserWidth / 2 },
-      // { top: browserHeight / 15, left: browserWidth / 1.38 },
-      // { top: browserHeight / 15, left: browserWidth / 1.05 },
-      // { top: browserHeight / 2, left: browserWidth / 1.05 },
-      // { top: browserHeight / 1.1, left: browserWidth / 1.05 },
-      // { top: browserHeight / 1.1, left: browserWidth / 1.38 },
-      // { top: browserHeight / 1.1, left: browserWidth / 2 },
-      // { top: browserHeight / 1.1, left: browserWidth / 3.7 },
-      // { top: browserHeight / 1.1, left: browserWidth / 30 },
-      // { top: browserHeight / 2, left: browserWidth / 30 },
-      // { top: browserHeight / 4, left: browserWidth / 7 },
-      // { top: browserHeight / 4, left: browserWidth / 2 },
-      // { top: browserHeight / 4, left: browserWidth / 1.17 },
-      // { top: browserHeight / 1.37, left: browserWidth / 7 },
-      // { top: browserHeight / 1.37, left: browserWidth / 2 },
-      // { top: browserHeight / 1.37, left: browserWidth / 1.17 },
-      // { top: browserHeight / 3, left: browserWidth / 2 },
-      // { top: browserHeight / 2, left: browserWidth / 2.5 },
-      // { top: browserHeight / 1.55, left: browserWidth / 2 },
-      // { top: browserHeight / 2, left: browserWidth / 1.68 },
+      { top: browserHeight / 15, left: browserWidth / 3.7 },
+      { top: browserHeight / 15, left: browserWidth / 2 },
+      { top: browserHeight / 15, left: browserWidth / 1.38 },
+      { top: browserHeight / 15, left: browserWidth / 1.05 },
+      { top: browserHeight / 2, left: browserWidth / 1.05 },
+      { top: browserHeight / 1.1, left: browserWidth / 1.05 },
+      { top: browserHeight / 1.1, left: browserWidth / 1.38 },
+      { top: browserHeight / 1.1, left: browserWidth / 2 },
+      { top: browserHeight / 1.1, left: browserWidth / 3.7 },
+      { top: browserHeight / 1.1, left: browserWidth / 30 },
+      { top: browserHeight / 2, left: browserWidth / 30 },
+      { top: browserHeight / 4, left: browserWidth / 7 },
+      { top: browserHeight / 4, left: browserWidth / 2 },
+      { top: browserHeight / 4, left: browserWidth / 1.17 },
+      { top: browserHeight / 1.37, left: browserWidth / 7 },
+      { top: browserHeight / 1.37, left: browserWidth / 2 },
+      { top: browserHeight / 1.37, left: browserWidth / 1.17 },
+      { top: browserHeight / 3, left: browserWidth / 2 },
+      { top: browserHeight / 2, left: browserWidth / 2.5 },
+      { top: browserHeight / 1.55, left: browserWidth / 2 },
+      { top: browserHeight / 2, left: browserWidth / 1.68 },
     ]);
   }, [browserWidth, browserHeight]);
 
@@ -151,6 +151,7 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
 
   return (
     <div className="calibration-container">
+      {/* Agreement Modal */}
       <CustomModal
         isOpen={agreementModalIsOpen}
         onClick1={() => changeCalibPageState(CalibrationPageState.CALIBRATE)}
@@ -159,6 +160,7 @@ export const Calibration = ({ calibratePosition, calibrationFinished }) => {
         label1={agreementModal.label1}
         label2={agreementModal.label2}
       />
+      {/* Calibration Completed Modal */}
       <CustomModal
         isOpen={calibCompleteModalIsOpen}
         onClick1={userReadyForDemo}
