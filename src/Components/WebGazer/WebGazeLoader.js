@@ -34,8 +34,8 @@ export default function WebGazeLoader() {
   const [easyReadDocId, updateEasyReadDocId] = useState(undefined);
   const [hardReadDocId, updateHardReadDocId] = useState(undefined);
   // TODO: Need to get data from backend to calculate statistics
-  const [easyReadData, updateEasyReadData] = useState({});
-  const [hardReadData, updateHardReadData] = useState({});
+  const [easyReadData, updateEasyReadData] = useState(undefined);
+  const [hardReadData, updateHardReadData] = useState(undefined);
 
   /** Methods **/
   /* For Calibration */
@@ -112,20 +112,20 @@ export default function WebGazeLoader() {
     console.log(`request_url = ${request_url}`);
 
     /* TODO: OFFICIAL - CHANGE TO THIS WHEN DONE TESTING PYTHON */
-    const samples = {
-      x: collectedData.map((entry) => entry.data.x),
-      y: collectedData.map((entry) => entry.data.y),
-      t: collectedData.map((entry) => entry.elapsedTime),
-    };
+    // const samples = {
+    //   x: collectedData.map((entry) => entry.data.x),
+    //   y: collectedData.map((entry) => entry.data.y),
+    //   t: collectedData.map((entry) => entry.elapsedTime),
+    // };
 
     /* TODO: TESTING - for converting to python */
-    // const samples = {
-    //   x: gaze_x,
-    //   y: gaze_y,
-    //   t: gaze_t,
-    //   clientWidth: clientWidth,
-    //   clientHeight: clientHeight,
-    // };
+    const samples = {
+      x: gaze_x,
+      y: gaze_y,
+      t: gaze_t,
+      clientWidth: clientWidth,
+      clientHeight: clientHeight,
+    };
 
     // calculate "fixations" and "saccades"
     const [fixations, saccades] = ekd_detector.detect(samples);

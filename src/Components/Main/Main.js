@@ -43,7 +43,6 @@ export default function MainApp({ processCollectedData, clearDataCollection, eas
       <NavBar selectedContent={selectedContent} onClickHandler={onClickHandler} />
       {/* All three contents */}
       {/* {selectedContent === "1" ? <YoutubeEmbed embedId="JUF5cJCCp-8" /> : selectedContent === "2" ? <YoutubeEmbed embedId="QVKj3LADCnA" /> : <Reading onClickHandler={onClickHandler} />} */}
-      easyReadData
       {/* {selectedContent === "5" ? <Result easyReadDocId={easyReadDocId} hardReadDocId={hardReadDocId} /> : <Reading onClickHandler={onClickHandler} />} */}
       {selectedContent === "5" ? <ResultZingChart easyReadData={easyReadData} hardReadData={hardReadData} /> : <Reading onClickHandler={onClickHandler} />}
       {/* BtnId = selectedContent for deciding which database to populate in the backend */}

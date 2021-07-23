@@ -34,4 +34,4 @@ export const ResultColumn2 = styled.div`
   /* background-color: teal; */
 `;
 
-export const ResultChart = styled.div``;
+// export const ResultChart = styled.div``;
