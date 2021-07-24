@@ -1,25 +1,21 @@
 import styled from "styled-components";
 
 export const ResultContainer = styled.div`
-  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding-top: 300px; */
 
-  background-color: green;
+  /* background-color: green; */
 `;
 export const ResultInnerContainer = styled.div`
-  height: 100%;
   width: 80%;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   min-width: 900px;
 
-  background-color: pink;
+  /* background-color: pink; */
 `;
 
 export const ResultColumn1 = styled.div`
@@ -50,8 +46,9 @@ export const ResultRow = styled.div`
   justify-content: center;
   align-items: center;
   /* padding-top: 200px; */
+  /* margin-bottom: 100px; */
 
-  background-color: orange;
+  /* background-color: orange; */
 `;
 
 // export const ResultRowChart1 = styled.div`

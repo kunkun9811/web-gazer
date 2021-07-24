@@ -80,6 +80,9 @@ export default function WebGazeLoader() {
     webgazer.showFaceOverlay(false);
     webgazer.showVideoPreview(false);
     webgazer.saveDataAcrossSessions(false);
+
+    /* TODO: Uncomment this for production */
+    webgazer.showPredictionPoints(false);
   };
 
   // callback for error loading WebGazer.js

@@ -11,5 +11,6 @@ export const calibCompleteModal = {
   label1: "OK",
 };
 
-export const instruction1 = "Please wait until the tracking red dot and the yellow calibration point to appear, thank you :)";
+// export const instruction1 = "Please wait until the tracking red dot and the yellow calibration point to appear, thank you :)";
+export const instruction1 = "Please wait until the yellow calibration point to appear, thank you :)";
 export const instruction2 = "To achieve the best accuracy, please keep your eyes on your cursor and while you hover over each point!";
