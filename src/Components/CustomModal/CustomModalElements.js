@@ -22,6 +22,7 @@ export const ModalInnerContainer = styled.div`
   min-height: 400px;
   width: 50%;
   min-width: 900px;
+  min-height: 700px;
   background-color: black;
   border-radius: 20px;
   display: flex;
@@ -46,7 +47,7 @@ export const ModalColumn2 = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 90px;
+  padding: 0 80px;
 `;
 
 // export const MyModal = styled.div`
@@ -55,8 +56,15 @@ export const ModalColumn2 = styled.div`
 // `;
 
 export const ModalLogoWrapper = styled.div`
-  height: 150px;
-  width: 500px;
+  /* height: 150px;
+  width: 500px; */
+  height: 120px;
+  width: 400px;
+
+  /* @media screen and (max-width: 1850px) {
+    height: 100px;
+    width: 300px;
+  } */
 `;
 
 export const ModalLogoImg = styled.img`
@@ -68,6 +76,10 @@ export const ModalTitle = styled.h2`
   color: black;
   font-size: 2rem;
   text-align: center;
+
+  /* @media screen and (max-height: 992px) {
+    font-size: 1.5rem;
+  } */
 `;
 
 export const ModalSubtitle = styled.p`
@@ -75,6 +87,10 @@ export const ModalSubtitle = styled.p`
   font-size: 1.5rem;
   text-align: center;
   padding: 20px 0 80px 0;
+
+  /* @media screen and (max-height: 992px) {
+    font-size: 1.1rem;
+  } */
 `;
 
 export const ModalButtonsContainer = styled.div`
