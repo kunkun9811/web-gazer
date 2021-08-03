@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { HomePage, TempText } from "./HomePageElement";
 import NavBarV2 from "../NavBarV2";
 import InfoSection from "../InfoSection";
@@ -8,22 +8,16 @@ import { teamMemberObj } from "../TeamSection/TeamData";
 import InsightSection from "../InsightSection";
 import { demoObj, vizObj } from "../InsightSection/InsightData";
 
-// TODO: Remove this
-import DropDownSideBar from "../DropDownSideBar";
-
 const Home = () => {
-  console.log("TOP OBJECT");
-  console.log(topDataObj);
-
   return (
     <HomePage>
-      {/* <DropDownSideBar /> */}
       <NavBarV2 />
       <InfoSection {...topDataObj} />
       <InfoSection {...aboutDataObj} />
-      <TeamSection {...teamMemberObj} />
       <InsightSection {...demoObj} />
-      <InsightSection {...vizObj} />
+      <TeamSection {...teamMemberObj} />
+      {/* TODO: Removed data visualization for now */}
+      {/* <InsightSection {...vizObj} /> */}
     </HomePage>
   );
 };

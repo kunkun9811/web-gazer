@@ -6,43 +6,63 @@ export const InfoSectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* padding-top: ${({ paddingTop }) => (paddingTop !== "undefined" ? `${paddingTop}px` : `none`)}; */
-  padding-top: ${({ paddingTop }) => `none`};
+  background-image: ${({ backgroundImg }) => (backgroundImg !== undefined ? `url(${backgroundImg})` : `none`)};
+  background-size: cover;
+  background-position: right 50% bottom 20%;
 
   /* background-color: teal; */
 `;
 
 export const InfoSectionInnerContainer = styled.div`
-  /* height: 1000px; */
   height: 100vh;
   width: 100%;
   max-width: 1400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 80px;
-  /* background: pink; */
 
-  /* @media screen and (max-width: 992px) {
-    padding: 0 50px;
-  } */
+  // if type is "topData"
+  position: ${({ type }) => (type === "topData" ? "relative" : "static")};
+  top: ${({ type }) => (type === "topData" ? "70%" : "0%")};
+
+  // if type is "about"
+  display: ${({ type }) => (type === "about" ? "flex" : "initial")};
+  flex-direction: ${({ type }) => (type === "about" ? "column" : "initial")};
+  justify-content: ${({ type }) => (type === "about" ? "center" : "initial")};
+  align-items: ${({ type }) => (type === "about" ? "center" : "initial")};
+  padding-top: ${({ type }) => (type === "about" ? "80px" : "0px")};
+
+  @media screen and (max-width: 992px) {
+    padding: 0 80px;
+  }
+
+  /* background: pink; */
 `;
 
 export const Title = styled.p`
   color: white;
-  font-size: 3rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: ${({ type }) => (type === "topData" ? "4rem" : "3rem")};
+  font-weight: 500;
   text-align: center;
   padding: 0;
   margin: 0;
+
+  @media screen and (max-width: 992px) {
+    font-size: 2rem;
+  }
+
   /* background: purple; */
 `;
 
 export const Subtitle = styled.p`
   color: white;
-  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: ${({ type }) => (type === "topData" ? "2.5rem" : "1.5rem")};
   text-align: center;
   padding: 0;
   margin: 0;
+
+  @media screen and (max-width: 992px) {
+    font-size: 1.5rem;
+  }
+
   /* background: purple; */
 `;

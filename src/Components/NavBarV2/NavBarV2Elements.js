@@ -8,25 +8,34 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: red; */
-  background-color: rgba(31, 31, 31, 1);
+  flex-direction: column;
+  padding: 0 20px;
+  background-color: ${({ navTransparent }) => (navTransparent ? "transparent" : "rgba(31, 31, 31, 1)")};
   position: fixed;
   z-index: 50;
   top: 0;
   left: 0;
-  padding-top: 20px;
-  cursor: pointer;
+  /* padding-top: 20px; */
+  /* cursor: pointer; */
+  transition: 0.25s;
+  transition-timing-function: ease-in-out;
+
+  /* background-color: red; */
 `;
 
 export const NavBarContainer = styled.div`
   width: 100%;
   max-width: 1100px;
-  height: 100%;
+  height: 80%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  border-radius: 50px;
+  background-color: rgba(31, 31, 31, 1);
+  padding: 0 40px;
+
   /* background-color: teal; */
-  background-color: transparent;
+  /* background-color: transparent; */
 `;
 
 export const NavLogo = styled.div`
@@ -51,6 +60,7 @@ export const NavBarMenu = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  padding-bottom: 2px;
   font-family: sans-serif;
   /* background-color: purple; */
   background-color: transparent;

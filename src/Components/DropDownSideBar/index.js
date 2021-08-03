@@ -15,15 +15,16 @@ const DropDownSideBar = ({ closedIconClicked, isOpen }) => {
         <MenuItem to="about" smooth={true} spy={true} duration={500} onClick={onClickHandler}>
           ABOUT
         </MenuItem>
-        <MenuItem to="team" smooth={true} spy={true} duration={500} onClick={onClickHandler}>
-          TEAM
-        </MenuItem>
         <MenuItem to="demo" smooth={true} spy={true} duration={500} onClick={onClickHandler}>
           DEMO
         </MenuItem>
-        <MenuItem to="viz" smooth={true} spy={true} duration={500} onClick={onClickHandler}>
-          DATA EXPLORATION
+        <MenuItem to="team" smooth={true} spy={true} duration={500} onClick={onClickHandler}>
+          TEAM
         </MenuItem>
+        {/* Removed data visualization for now */}
+        {/* <MenuItem to="viz" smooth={true} spy={true} duration={500} onClick={onClickHandler}>
+          DATA EXPLORATION
+        </MenuItem> */}
       </DropDownSideBarInnerContainer>
     </DropDownSideBarContainer>
   );

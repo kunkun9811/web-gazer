@@ -7,9 +7,10 @@ export const HomePage = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media screen and (max-width: 992px) {
+  /* Moved this to each home page sections to customize more */
+  /* @media screen and (max-width: 992px) {
     padding: 0 100px;
-  }
+  } */
 `;
 
 export const TempText = styled.p`
