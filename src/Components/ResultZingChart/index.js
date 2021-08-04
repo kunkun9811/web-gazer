@@ -1,11 +1,14 @@
+// TODO: Need to change "ResultZingChart" to "just charts" cuz I don't even use Zing Chart
+
 import React, { useState, useEffect } from "react";
-import { ResultContainer, ResultInnerContainer, ResultColumn1, ResultColumn2, ResultRow, ResultChartWrapper } from "./ResultZingChartElements";
+import { ResultContainer, ResultInnerContainer, ResultRow, ResultChartWrapper } from "./ResultZingChartElements";
 import ZingChart from "zingchart-react";
 import Chart from "react-google-charts";
 import ResultPageState from "../Utils/ResultPageState";
 import { getColumnChartNumPointsFixationOptions, getColumnChartDurationsOptions, getSaccadeVelocityOptions, getSingleValueOptions } from "./ResultZingChartOptions";
 import { CircularProgress } from "@material-ui/core";
 import { ReadingLevel, OrientationState } from "../Utils/AdditionalStates";
+import ScatterPlot from "../../ScatterPlot";
 const math = require("mathjs");
 
 const ResultZingChart = ({ easyReadData, hardReadData }) => {
@@ -14,11 +17,15 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
 
   // # of Points per Fixation vs. Time
   const [numEasyPointsPerFixation, setNumEasyPointsPerFixation] = useState(undefined);
-  const [easyFixationsStartTimes, setEasyFixationsStartTimes] = useState(undefined);
-  const [easyColumnData, setEasyColumnData] = useState(undefined);
   const [numHardPointsPerFixation, setNumHardPointsPerFixation] = useState(undefined);
+  const [easyFixationsStartTimes, setEasyFixationsStartTimes] = useState(undefined);
   const [hardFixationsStartTimes, setHardFixationsStartTimes] = useState(undefined);
+  const [easyColumnData, setEasyColumnData] = useState(undefined);
   const [hardColumnData, setHardColumnData] = useState(undefined);
+
+  // max # of points in a fixation
+  const [easyMaxNumPointsInFixation, setEasyMaxNumPointsInFixation] = useState(undefined);
+  const [hardMaxNumPointsInFixation, setHardMaxNumPointsInFixation] = useState(undefined);
 
   /* fixations info */
   // duration of each fixation
@@ -27,8 +34,9 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
   const [easyColumnDurationData, setEasyColumnDurationData] = useState(undefined);
   const [hardColumnDurationData, setHardColumnDurationData] = useState(undefined);
 
-  // Heatmap of coordinates - TODO: Check if this is a valid way of doing it (midpoint of each fixation) - BUBBLE CHART
-  // const [mid]
+  // heatmap of where user looked at
+  const [easyFixationMidPoints, setEasyFixationMidPoints] = useState(undefined);
+  const [hardFixationMidPoints, setHardFixationMidPoints] = useState(undefined);
 
   /* saccades info */
   // Horizontal Velocities
@@ -68,7 +76,11 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
       setFixationFrequencies();
       setSaccadeHorizontalVelocities();
       setSaccadeVerticalVelocities();
+
+      // TODO: not implemented in "render" yet
       setAvgSaccadeLength();
+
+      setFixationMidPoints();
     }
   }, []); //easyReadData, hardReadData
 
@@ -95,9 +107,9 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
     hardSaccadeVerticalVelocities,
     easyAvgSaccadeLength,
     hardAvgSaccadeLength,
+    easyFixationMidPoints,
+    hardFixationMidPoints,
   ]);
-
-  // bar chart - Number of Points per Fixation v.s. Start Times
 
   /*** Methods ***/
   /** helper functions **/
@@ -111,6 +123,13 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
 
   const calcPointDistance = (x1, x2, y1, y2) => {
     return sqrt(power2(x1 - x2) + power2(y1 - y2));
+  };
+
+  const getMidPoint = (x, y) => {
+    const xMid = math.mean(x);
+    const yMid = math.mean(y);
+    const numPoints = x.length;
+    return { x: xMid, y: yMid, numPoints: numPoints };
   };
 
   /** set data **/
@@ -131,12 +150,22 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
     if (easyReadData !== undefined) {
       const newEasyNumPointsPerFixation = easyReadData.fixations.map((fixation) => fixation.data.xall.length);
       setNumEasyPointsPerFixation(newEasyNumPointsPerFixation);
+
+      // find max # of point in fixation
+      setEasyMaxNumPointsInFixation(math.max(newEasyNumPointsPerFixation));
     }
 
     if (hardReadData !== undefined) {
       const newHardNumPointsPerFixation = hardReadData.fixations.map((fixation) => fixation.data.xall.length);
       setNumHardPointsPerFixation(newHardNumPointsPerFixation);
+
+      // find max # of point in fixation
+      setHardMaxNumPointsInFixation(math.max(newHardNumPointsPerFixation));
     }
+  };
+
+  const setMaxNumPointsInFixation = () => {
+    return math.max();
   };
 
   const setDurationPerFixation = () => {
@@ -166,6 +195,29 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
       const newEndTime = hardReadData.fixations[newNumFixations - 1].data.end;
       const newHardFixationFrequencies = newNumFixations / (newEndTime - newStartTime);
       setHardFixationFrequencies(newHardFixationFrequencies);
+    }
+  };
+
+  // midpoints of all fixations
+  const setFixationMidPoints = () => {
+    if (easyReadData !== undefined) {
+      const midPoints = easyReadData.fixations.map((fixation) => {
+        return getMidPoint(fixation.data.xall, fixation.data.yall);
+      });
+
+      console.log(`============================================easy midPoints============================================`);
+      console.log(midPoints);
+      setEasyFixationMidPoints(midPoints);
+    }
+
+    if (hardReadData !== undefined) {
+      const midPoints = hardReadData.fixations.map((fixation) => {
+        return getMidPoint(fixation.data.xall, fixation.data.yall);
+      });
+
+      console.log(`============================================hard midPoints============================================`);
+      console.log(midPoints);
+      setHardFixationMidPoints(midPoints);
     }
   };
 
@@ -240,6 +292,7 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
 
     if (hardReadData !== undefined) {
       // calc all midpoints of fixations
+      // TODO: Potentially modify this to use "getMidPoint"
       const newHardFixationsMidPoints = hardReadData.fixations.map((fixation) => {
         const midX = math.mean(fixation.data.xall);
         const midY = math.mean(fixation.data.yall);
@@ -381,12 +434,23 @@ const ResultZingChart = ({ easyReadData, hardReadData }) => {
     setSaccadeVelocitiesHorizontalChartData();
     setSaccadeVelocitiesVerticalChartData();
     setSingleValueComparisonChartData();
+    // NOTE: heatmap uses SVG and d3, directly creates component in the ResultContainer
   };
 
   return (
     <ResultContainer>
       {/* {console.log("HI")} */}
       <ResultInnerContainer>
+        {/* fixation + saccade trajectories */}
+        <ResultRow>
+          <ResultChartWrapper>
+            {easyFixationMidPoints !== undefined ? <ScatterPlot xYCoordinates={easyFixationMidPoints} maxNumPointsInFixation={easyMaxNumPointsInFixation} /> : "No Data"}
+          </ResultChartWrapper>
+          <ResultChartWrapper>
+            {hardFixationMidPoints !== undefined ? <ScatterPlot xYCoordinates={hardFixationMidPoints} maxNumPointsInFixation={hardMaxNumPointsInFixation} /> : "No Data"}
+          </ResultChartWrapper>
+        </ResultRow>
+
         {/* # of Points Per Fixation vs Time */}
         <ResultRow>
           <ResultChartWrapper>

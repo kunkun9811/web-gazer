@@ -5,8 +5,11 @@ import Home from "./Components/Home";
 import Try from "./Components/Entry";
 import DataVisualization from "./Components/DataVisualization";
 
+import ScatterPlot from "./ScatterPlot";
+
 function App() {
   return (
+    /* TODO: Official */
     <Router>
       <Switch>
         <Route exact path="/">
@@ -20,6 +23,9 @@ function App() {
         </Route>
       </Switch>
     </Router>
+    /* End Official */
+
+    // <ScatterPlot />
   );
 }
 

@@ -82,7 +82,7 @@ export default function WebGazeLoader() {
     webgazer.saveDataAcrossSessions(false);
 
     /* TODO: Uncomment this for production */
-    webgazer.showPredictionPoints(false);
+    webgazer.showPredictionPoints(true);
   };
 
   // callback for error loading WebGazer.js
@@ -120,6 +120,9 @@ export default function WebGazeLoader() {
       y: collectedData.map((entry) => entry.data.y),
       t: collectedData.map((entry) => entry.elapsedTime),
     };
+
+    console.log("=======================================Samples=======================================");
+    console.log(samples);
 
     /* TODO: TESTING - for converting to python */
     // const samples = {

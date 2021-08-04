@@ -18,44 +18,17 @@ export const ResultInnerContainer = styled.div`
   /* background-color: pink; */
 `;
 
-export const ResultColumn1 = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  /* background-color: pink; */
-`;
-
-export const ResultColumn2 = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* background-color: teal; */
-`;
-
 export const ResultRow = styled.div`
   height: 50vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding-top: 200px; */
-  /* margin-bottom: 100px; */
+  margin-top: 10vh;
+  margin-bottom: 10vh;
 
   /* background-color: orange; */
 `;
-
-// export const ResultRowChart1 = styled.div`
-//   height: 100%;
-//   width: 50%;
-//   padding: 0
-// `
 
 export const ResultChartWrapper = styled.div`
   height: 40%;

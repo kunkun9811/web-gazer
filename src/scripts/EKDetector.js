@@ -225,10 +225,14 @@ export class EKDetector {
     // =============================================================END TEST=============================================================
 
     if (samples.saccade._data.every((indicator) => indicator === false)) {
+      // console.log("______________________________ALL FIXATIONS______________________________");
+
       // if all are fixations
       fixations.push(new Fixation(samples.x, samples.y, samples.t.get([0]), samples.t.get([samples.saccade.size()[0]])));
       return [fixations, saccades];
     } else if (samples.saccade._data.every((indicator) => indicator === true)) {
+      // console.log("______________________________ALL SACCADES_______________________________");
+
       // if all are saccades
       saccades.push(new Saccade(samples.x, samples.y, samples.vx, samples.vy));
       return [fixations, saccades];
@@ -348,6 +352,13 @@ export class EKDetector {
       let slice = math.index(math.range(element, end.get(i) + 1));
       fixations.push(new Fixation(samples.x.subset(slice), samples.y.subset(slice), samples.t.get([element]), samples.t.get([end.get(i)])));
     });
+
+    // =============================================================TEST=============================================================
+    // console.log("--------------------------------fixations--------------------------------");
+    // console.log(fixations);
+    // console.log("--------------------------------saccades--------------------------------");
+    // console.log(saccades);
+    // =============================================================END TEST=============================================================
 
     return [fixations, saccades];
   }
