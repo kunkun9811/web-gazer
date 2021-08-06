@@ -1,11 +1,11 @@
 // TODO: Need to change "ResultZingChart" to "just charts" cuz I don't even use Zing Chart
 
 import React, { useState, useEffect } from "react";
-import { ResultContainer, ResultInnerContainer, ResultRow, ResultChartWrapper } from "./ResultZingChartElements";
+import { ResultContainer, ResultInnerContainer, ResultRow, ResultChartWrapper } from "./ResultChartsElements";
 import ZingChart from "zingchart-react";
 import Chart from "react-google-charts";
 import ResultPageState from "../Utils/ResultPageState";
-import { getColumnChartNumPointsFixationOptions, getColumnChartDurationsOptions, getSaccadeVelocityOptions, getSingleValueOptions } from "./ResultZingChartOptions";
+import { getColumnChartNumPointsFixationOptions, getColumnChartDurationsOptions, getSaccadeVelocityOptions, getSingleValueOptions } from "./ResultCharts";
 import { CircularProgress } from "@material-ui/core";
 import { ReadingLevel, OrientationState } from "../Utils/AdditionalStates";
 import ScatterPlot from "../../ScatterPlot";

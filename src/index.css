@@ -4,6 +4,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgba(0, 0, 0, 0.9);
+  /* background: linear-gradient(90deg, rgb(186, 186, 246), rgb(80, 55, 192)); */
+  /* background: linear-gradient(90deg, transparent, 80%rgb (80, 55, 192)); */
+  /* background-color: rgb(76, 59, 98); this your primary color */
 }
 
 code {

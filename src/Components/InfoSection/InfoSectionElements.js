@@ -6,6 +6,7 @@ export const InfoSectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   background-image: ${({ backgroundImg }) => (backgroundImg !== undefined ? `url(${backgroundImg})` : `none`)};
   background-size: cover;
   background-position: right 50% bottom 20%;
