@@ -24,6 +24,7 @@ export const InsightSectionInnerContainer = styled.div`
 
   @media screen and (max-width: 992px) {
     height: 1000px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -33,6 +33,7 @@ export const InfoSectionInnerContainer = styled.div`
 
   @media screen and (max-width: 992px) {
     padding: 0 80px;
+    min-height: 600px;
   }
 
   /* background: pink; */
