@@ -82,7 +82,7 @@ export default function WebGazeLoader() {
     webgazer.saveDataAcrossSessions(false);
 
     /* TODO: Uncomment this for production */
-    webgazer.showPredictionPoints(true);
+    webgazer.showPredictionPoints(false);
   };
 
   // callback for error loading WebGazer.js
