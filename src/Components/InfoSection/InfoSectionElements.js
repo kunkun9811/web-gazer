@@ -16,6 +16,7 @@ export const InfoSectionContainer = styled.div`
 
 export const InfoSectionInnerContainer = styled.div`
   height: 100vh;
+  min-height: 900px;
   width: 100%;
   max-width: 1400px;
 
