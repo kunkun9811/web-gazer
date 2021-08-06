@@ -5,7 +5,7 @@ import YoutubeEmbed from "../YoutubeEmbed";
 import Reading from "../Reading/Reading";
 import NavBar from "../NavBar";
 // import Result from "../Result";
-import ResultZingChart from "../ResultZingChart";
+import ResultZingChart from "../ResultCharts";
 
 /* TODO: make this work */
 // import Emotion from "../../scripts/emotion/emotion";

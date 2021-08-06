@@ -20,6 +20,7 @@ export const ResultInnerContainer = styled.div`
 
 export const ResultRow = styled.div`
   height: 50vh;
+  min-height: 400px;
   width: 100%;
   display: flex;
   justify-content: center;
