@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const InfoSectionContainer = styled.div`
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -9,7 +10,8 @@ export const InfoSectionContainer = styled.div`
 
   background-image: ${({ backgroundImg }) => (backgroundImg !== undefined ? `url(${backgroundImg})` : `none`)};
   background-size: cover;
-  background-position: right 50% bottom 20%;
+  background-position: right 50% bottom 7%;
+  background-repeat: no-repeat;
 
   /* background-color: teal; */
 `;
@@ -40,7 +42,7 @@ export const InfoSectionInnerContainer = styled.div`
 `;
 
 export const Title = styled.p`
-  color: white;
+  color: black;
   font-family: "Open Sans", sans-serif;
   font-size: ${({ type }) => (type === "topData" ? "4rem" : "3rem")};
   font-weight: 500;
@@ -56,7 +58,7 @@ export const Title = styled.p`
 `;
 
 export const Subtitle = styled.p`
-  color: white;
+  color: black;
   font-family: "Open Sans", sans-serif;
   font-size: ${({ type }) => (type === "topData" ? "2.5rem" : "1.5rem")};
   text-align: center;

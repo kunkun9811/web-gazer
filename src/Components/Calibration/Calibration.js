@@ -6,7 +6,6 @@ import CustomModal from "../CustomModal";
 import { agreementModal, calibCompleteModal, instruction1, instruction2 } from "./CalibrationData";
 import CalibrationPageState from "../Utils/CalibrationPageState";
 
-// TODO: Might need to turn off clickListener after calibration - understand what clickListener do in WebGazer.js
 export const Calibration = ({ calibratePosition, calibrationFinished }) => {
   /* Browser Dimensions */
   const { width: browserWidth, height: browserHeight } = BrowserDimensions();

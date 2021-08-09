@@ -12,8 +12,8 @@ const Home = () => {
   return (
     <HomePage>
       <NavBarV2 />
-      <InfoSection {...topDataObj} />
-      <InfoSection {...aboutDataObj} />
+      <InfoSection id="top-section" {...topDataObj} />
+      <InfoSection id="intro-section" {...aboutDataObj} />
       <InsightSection {...demoObj} />
       <TeamSection {...teamMemberObj} />
       {/* TODO: Removed data visualization for now */}

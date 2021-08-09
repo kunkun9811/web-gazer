@@ -1,5 +1,6 @@
 /* Images */
-import brainImg from "../../asset/brain.jpg";
+import brainImg from "../../asset/brain_2.jpg";
+import aiFace from "../../asset/ai_face_small.png";
 
 /* Contains all the necessary data for Info Sections on the ABOUT/HOME page */
 export const topDataObj = {
@@ -8,7 +9,7 @@ export const topDataObj = {
   title: "Welcome to Aankh",
   subtitle: "Striving to be the eye of the future",
   paddingTop: 80,
-  backgroundImg: brainImg,
+  backgroundImg: aiFace,
 };
 
 export const aboutDataObj = {
