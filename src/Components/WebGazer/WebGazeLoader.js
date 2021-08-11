@@ -208,7 +208,7 @@ export default function WebGazeLoader() {
   /* END Debug use */
 
   return (
-    <div class="web-gazer-container">
+    <div className="web-gazer-container">
       {/* Load WebGazer.js */}
       <Script url="https://webgazer.cs.brown.edu/webgazer.js" onLoad={handleScriptLoad} onError={handleScriptError} />
       {/* Load page by PageState's condition */}
