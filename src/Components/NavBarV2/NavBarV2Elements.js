@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link as LinkScroll, animateScroll as scroll } from "react-scroll";
+import { Link as LinkScroll } from "react-scroll";
 import MenuIcon from "@material-ui/icons/Menu";
 
 export const Nav = styled.nav`
@@ -25,12 +25,12 @@ export const Nav = styled.nav`
 
 export const NavBarContainer = styled.div`
   width: 100%;
-  max-width: 1100px;
+  max-width: 1400px;
   height: 80%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  border-radius: 50px;
+  border-radius: 20px;
   background-color: rgba(31, 31, 31, 1);
   padding: 0 40px;
 
@@ -46,9 +46,19 @@ export const NavLogo = styled.div`
   align-items: flex-end;
   color: white;
   font-size: 2rem;
-  padding-left: 50px;
+  padding-left: 5px;
+  padding-top: 55px;
+
   /* background-color: pink; */
   background-color: transparent;
+`;
+
+export const NavLogoText = styled.p`
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
 `;
 
 export const NavBarMenu = styled.ul`
@@ -68,7 +78,7 @@ export const NavBarMenu = styled.ul`
 
 export const MobileNavIconConatiner = styled.div`
   padding-top: 10px;
-  padding-right: 3.5em;
+  padding-right: 1em;
   display: none;
 
   @media screen and (max-width: 768px) {

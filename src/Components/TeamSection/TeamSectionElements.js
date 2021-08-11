@@ -24,40 +24,46 @@ export const TeamSectionInnerContainer = styled.div`
 
   @media screen and (max-width: 992px) {
     flex-direction: column;
-    height: 1500px;
+    justify-content: space-evenly;
   }
 `;
 
 export const TeamMember = styled.div`
-  flex: 1;
+  /* flex: 1; */
+  /* height: 20%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  /* padding: 50px; */
   /* background-color: blue; */
 
   @media screen and (max-width: 992px) {
-    padding: 50px;
+    /* padding: 50px; */
+    /* height: 20%; */
+    /* margin-bottom: 50px; */
   }
 `;
 
 /* TODO: Need to change this to image */
-export const TeamMemberImage = styled.div`
-  height: 500px;
-  width: 400px;
-  border-radius: 50px;
+export const TeamMemberImage = styled.img`
+  height: auto;
+  width: 100%;
+
+  border-radius: 50%;
   margin-bottom: 50px;
-  background-color: grey;
+  /* background-color: grey; */
 
   @media screen and (max-width: 992px) {
-    height: 400px;
-    width: 300px;
+    height: auto;
+    width: 40%;
+    min-width: 500px;
+    margin-bottom: 0px;
   }
 `;
 
 export const Name = styled.p`
-  color: white;
+  color: black;
   font-size: 2rem;
 
   @media screen and (max-width: 992px) {
@@ -66,7 +72,7 @@ export const Name = styled.p`
 `;
 
 export const TeamMemberDesc = styled.p`
-  color: white;
+  color: black;
   font-size: 1.5rem;
   text-align: center;
 

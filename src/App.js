@@ -2,10 +2,8 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Components/Home";
-import Try from "./Components/Entry";
+import DemoEntry from "./Components/DemoEntry";
 import DataVisualization from "./Components/DataVisualization";
-
-import ScatterPlot from "./ScatterPlot";
 
 function App() {
   return (
@@ -16,7 +14,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/demo">
-          <Try />
+          <DemoEntry />
         </Route>
         <Route exact path="/viz">
           <DataVisualization />

@@ -20,6 +20,7 @@
   animation-name: pop-in;
   animation-duration: 2s;
   animation-fill-mode: forwards; */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .welcome-text {

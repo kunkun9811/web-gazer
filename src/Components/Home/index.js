@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { HomePage, TempText } from "./HomePageElement";
 import NavBarV2 from "../NavBarV2";
-import InfoSection from "../InfoSection";
-import { topDataObj, aboutDataObj } from "../InfoSection/Data";
+import HeroSection from "../HeroSection";
+import { heroDataObj } from "../HeroSection/HeroData";
+import DetailSection from "../DetailSection";
+import DemoSection from "../DemoSection";
 import TeamSection from "../TeamSection";
 import { teamMemberObj } from "../TeamSection/TeamData";
-import InsightSection from "../InsightSection";
-import { demoObj, vizObj } from "../InsightSection/InsightData";
+import FooterSection from "../FooterSection";
 
+// TODO: Keep doing it, on DEMO section and remember to delete the deprecated ones (infosection)
 const Home = () => {
   return (
     <HomePage>
       <NavBarV2 />
-      <InfoSection id="top-section" {...topDataObj} />
-      <InfoSection id="intro-section" {...aboutDataObj} />
-      <InsightSection {...demoObj} />
+      <HeroSection {...heroDataObj} />
+      <DetailSection />
+      <DemoSection />
       <TeamSection {...teamMemberObj} />
-      {/* TODO: Removed data visualization for now */}
-      {/* <InsightSection {...vizObj} /> */}
+      <FooterSection />
     </HomePage>
   );
 };

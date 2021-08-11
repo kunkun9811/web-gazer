@@ -1,3 +1,4 @@
+/* TODO: Right here, is fked up.... Maybe need to refactor everything */
 .main-container {
   height: 100%;
   width: 100%;
@@ -10,6 +11,22 @@
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.main-inner-container {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  font-size: 5rem;
+  animation-name: pop-in;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .title-container {

@@ -1,14 +1,15 @@
 import React from "react";
-import { InsightSectionContainer, InsightSectionInnerContainer, Column1, Column2, DemoIntro, Button, ImgWrapper } from "./InsightElements";
+import { InsightSectionContainer, InsightSectionInnerContainer, Column1, Column2, DemoIntro, Button, InsightImg } from "./InsightElements";
+import coloredBrainImg from "../../asset/brain_2.png";
 
 const InsightSection = ({ id, page, title, button_label, imgPos }) => {
   return (
     <>
       <InsightSectionContainer id={id}>
         <InsightSectionInnerContainer imgPos={imgPos}>
-          {/* TODO: Column1 is going to be images */}
+          {/* Column1 is going to be images */}
           <Column1>
-            <ImgWrapper></ImgWrapper>
+            <InsightImg src={coloredBrainImg} />
           </Column1>
           <Column2>
             <DemoIntro>{title}</DemoIntro>

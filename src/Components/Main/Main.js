@@ -52,7 +52,7 @@ export default function MainApp({ processCollectedData, clearDataCollection, eas
   };
 
   return (
-    <div class="main-container">
+    <div className="main-container">
       <NavBar selectedContent={selectedContent} onNavChangeHandler={onNavChangeHandler} />
       {/* All three contents */}
       {/* {selectedContent === "1" ? <YoutubeEmbed embedId="JUF5cJCCp-8" /> : selectedContent === "2" ? <YoutubeEmbed embedId="QVKj3LADCnA" /> : <Reading onClickHandler={onClickHandler} />} */}

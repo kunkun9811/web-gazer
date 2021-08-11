@@ -79,11 +79,9 @@ export const Column2 = styled.div`
   }
 `;
 
-export const ImgWrapper = styled.div`
+export const InsightImg = styled.img`
   height: 55%;
   width: 100%;
-  border-radius: 50px;
-  background-color: grey;
 
   @media screen and (max-width: 992px) {
     height: 600px;

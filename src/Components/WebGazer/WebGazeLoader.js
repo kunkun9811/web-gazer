@@ -215,7 +215,6 @@ export default function WebGazeLoader() {
       {curPageState === PageState.CALIBRATION ? (
         <Calibration calibratePosition={calibratePosition} calibrationFinished={calibrationFinished} />
       ) : (
-        // <MainApp processCollectedData={processCollectedData} clearDataCollection={clearDataCollection} easyReadDocId={easyReadDocId} hardReadDocId={hardReadDocId} />
         <MainApp processCollectedData={processCollectedData} clearDataCollection={clearDataCollection} easyReadData={easyReadData} hardReadData={hardReadData} />
       )}
     </div>

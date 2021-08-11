@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Nav, NavBarContainer, NavLogo, NavBarMenu, MobileNavIconConatiner, MobileMenuIcon, NavItem, NavLink } from "./NavBarV2Elements";
+import { Nav, NavBarContainer, NavLogo, NavLogoText, NavBarMenu, MobileNavIconConatiner, MobileMenuIcon, NavItem, NavLink } from "./NavBarV2Elements";
 import { animateScroll as scroll } from "react-scroll";
 import DropDownSideBar from "../DropDownSideBar";
 
@@ -42,8 +42,8 @@ const NavBarV2 = () => {
     <Nav navTransparent={navTransparent}>
       <DropDownSideBar closedIconClicked={menuIconClicked} isOpen={isOpen} />
       <NavBarContainer>
-        <NavLogo to="top-page" onClick={scrollToTop}>
-          Aankh
+        <NavLogo>
+          <NavLogoText onClick={scrollToTop}>Aankh</NavLogoText>
         </NavLogo>
         <NavBarMenu>
           <MobileNavIconConatiner>

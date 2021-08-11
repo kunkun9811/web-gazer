@@ -1,5 +1,5 @@
 /* Images */
-import brainImg from "../../asset/brain_2.jpg";
+// import brainImg from "../../asset/brain_2.jpg";
 import aiFace from "../../asset/ai_face_small.png";
 
 /* Contains all the necessary data for Info Sections on the ABOUT/HOME page */
@@ -13,7 +13,7 @@ export const topDataObj = {
 };
 
 export const aboutDataObj = {
-  id: "about",
+  id: "none",
   type: "about",
   subtitle: "Aankh strives to become the eye of the future and transforms education to tailor towards every single individual",
 };
