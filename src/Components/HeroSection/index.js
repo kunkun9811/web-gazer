@@ -5,7 +5,7 @@ const HeroSection = ({ id, type, title, subtitle, paddingTop, backgroundImg }) =
   return (
     <>
       <HeroSectionContainer id={id} paddingTop={paddingTop} backgroundImg={backgroundImg}>
-        <HeroSectionInnerContainer type={type}>
+        <HeroSectionInnerContainer type={type} backgroundImg={backgroundImg}>
           {/* <HeroSectionLeftColumn></HeroSectionLeftColumn> */}
           <HeroSectionRightColumn>
             <HeroSectionTitle type={type}>{title}</HeroSectionTitle>

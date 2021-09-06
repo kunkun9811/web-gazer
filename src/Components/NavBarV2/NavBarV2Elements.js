@@ -33,9 +33,6 @@ export const NavBarContainer = styled.div`
   border-radius: 20px;
   background-color: rgba(31, 31, 31, 1);
   padding: 0 40px;
-
-  /* background-color: teal; */
-  /* background-color: transparent; */
 `;
 
 export const NavLogo = styled.div`
@@ -48,8 +45,6 @@ export const NavLogo = styled.div`
   font-size: 2rem;
   padding-left: 5px;
   padding-top: 55px;
-
-  /* background-color: pink; */
   background-color: transparent;
 `;
 
@@ -72,7 +67,6 @@ export const NavBarMenu = styled.ul`
   padding: 0;
   padding-bottom: 2px;
   font-family: sans-serif;
-  /* background-color: purple; */
   background-color: transparent;
 `;
 
@@ -115,10 +109,10 @@ export const NavLink = styled(LinkScroll)`
   cursor: pointer;
 
   &:hover {
-    color: pink;
+    color: #7cc3f1;
   }
 
-  &:active {
+  /* &:active {
     border-bottom: 3px solid white !important;
-  }
+  } */
 `;

@@ -13,7 +13,11 @@ export const HeroSectionContainer = styled.div`
   background-position: right 50% bottom 7%;
   background-repeat: no-repeat;
 
-  background-color: orange;
+  /* @media screen and (max-width: 1630px) {
+    background-position: right 0% bottom 7%;
+  } */
+
+  /* background-color: orange; */
 `;
 
 export const HeroSectionInnerContainer = styled.div`
@@ -27,11 +31,17 @@ export const HeroSectionInnerContainer = styled.div`
   justify-content: center;
   align-items: center;
 
+  /* background-image: ${({ backgroundImg }) => (backgroundImg !== undefined ? `url(${backgroundImg})` : `none`)};
+  background-size: cover;
+  background-position: right 50% bottom 7%;
+  background-repeat: no-repeat; */
+
   @media screen and (max-width: 992px) {
     padding: 0 80px;
     min-height: 600px;
   }
 
+  /* blur filter */
   background-color: rgba(208, 200, 202, 0.1);
 `;
 
@@ -50,9 +60,13 @@ export const HeroSectionRightColumn = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media screen and (max-width: 1270px) {
-    right: 5%;
+  /* @media screen and (max-width: 1630px) {
+    right: 1%;
   }
+
+  @media screen and (max-width: 1272px) {
+    right: 0%;
+  } */
 
   /* background-color: red; */
 `;
